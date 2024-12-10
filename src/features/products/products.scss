@@ -1,0 +1,24 @@
+@import '../../App.scss';
+
+@media (min-width: 766px) {
+    .products-page {
+        .items-container {
+            height: calc(100dvh - 263.5px) !important;
+        }
+    }
+}
+
+.product-nav {
+    .btn-back {
+        @include buttonBorder(transparent, $COLORS-base-900, $COLORS-base-900);
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        padding: 0.1rem 0.5rem;
+    }
+    .section-extra-nav {
+        .btn-border {
+            flex-flow: column nowrap;
+        }
+    }
+}

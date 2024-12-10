@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "menu": "Carta",
+    "foods": "Comida",
+    "drinks": "Bebidas",
+    "orders": "Pedido",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "signOut": "Cerrar sesión",
+    "reservation": "Reservar",
+    "gift": "Haz un regalo",
+    "rewards": "Tarjeta cliente",
+    "personal": "Área personal"
+  },
+  "home": {
+    "intro": {
+      "title": "Nombre del restaurante",
+      "paragraph": "Párrafo en la página de inicio",
+      "button": "Contacto"
+    }
+  },
+  "menu": {
+    "intro": {
+      "title": "Título en la página de la carta",
+      "paragraph": "Párrafo en la página de a carta"
+    }
+  },
+  "product": {
+    "intro": {
+      "title": "Nombre del restaurante",
+      "paragraph": "Párrafo en la página de a comidas",
+      "button": "Contacto"
+    },
+    "nav": {
+      "breakfast": {
+        "title": "Desayunos",
+        "description": "Jue - Sab de 06:00 a 11:00"
+      },
+      "brunch": {
+        "title": "Sunday Brunch",
+        "description": "Domingos de 10:00 a 15:00"
+      },
+      "snack": {
+        "title": "Lil'Snacks",
+        "description": "Jue - Dom de 11:00 a 18:30"
+      },
+      "lunch": {
+        "title": "Almuerzo",
+        "description": "Jue - Dom de 18:30 a 22:00"
+      },
+      "dinner": {
+        "title": "Cena",
+        "description": "Jue - Dom de 18:30 a 22:00"
+      },
+      "cold": {
+        "title": "Bebidas frías",
+        "description": "Jue - Sab de 06:00 a 11:00"
+      },
+      "hot": {
+        "title": "Cafés y tés",
+        "description": "Domingos de 10:00 a 15:00"
+      },
+      "fresh": {
+        "title": "Zumos naturales y batidos",
+        "description": "Jue - Dom de 11:00 a 18:30"
+      },
+      "alcohol": {
+        "title": "Vinos y Cervezas",
+        "description": "Jue - Dom de 18:30 a 22:00"
+      },
+      "cocktail": {
+        "title": "Cóckteles",
+        "description": "Jue - Dom de 18:30 a 22:00"
+      }
+    }
+  },
+  "drinks": {
+    "intro": {
+      "title": "Título en la página de la bebidas",
+      "paragraph": "Párrafo en la página de a bebidas"
+    },
+    "hotDrink": "Bebidas calientes",
+    "coldDrink": "Bebidas frías",
+    "alcoholicDrink": "Bebidas alcohólicas",
+    "nonAlcoholicDrink": "Bebidas sin alcohol"
+  }
+}

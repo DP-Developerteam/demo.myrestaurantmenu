@@ -1,0 +1,70 @@
+//ANIMATIONS
+
+
+//EXPAND-MENU is used in file:
+//--- src/components/__components.scss
+@keyframes expand-menu {
+    from { clip-path: circle(0% at 100% 0%); }
+    to { clip-path: circle(150% at 100% 0%); }
+}
+
+//POP-IN is used in files:
+//--- src/components/__components.scss
+@keyframes pop-in {
+    0% { opacity: 0; transform: translateY(-10px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+//FADE-IN is used in files:
+//--- src/styles/_layouts.scss
+@keyframes fade-in {
+    to {scale: 1; opacity: 1;}
+}
+
+//FADE-OUT is used in files:
+//--- src/styles/_layouts.scss
+@keyframes fade-out {
+    to {scale: .8; opacity: 0;}
+}
+
+//FADE-IN-OUT is used in files:
+//--- src/styles/_layouts.scss
+@keyframes fade-in-out {
+    0% { opacity: 0; transform: scale(0.8); }
+    10% { opacity: 1; transform: scale(1); }
+    95% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); }
+}
+
+//HORIZONTAL-SCROLLER is used in files:
+//--- src/styles/_pages.scss
+@keyframes horizontal-scroller {
+    from {  transform: translatex(50%); }
+    to { transform: translatex(-50%); }
+}
+
+//MIXINGS for the animations
+@mixin fade-in ($range) {
+    scale: .8;
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: $range;
+}
+@mixin fade-out ($range) {
+    scale: 1;
+    opacity: 1;
+    animation: fade-out linear forwards;
+    animation-timeline: view();
+    animation-range: $range;
+}
+@mixin fade-in-out() {
+    scale: 1;
+    opacity: 1;
+    animation: fade-in-out linear forwards;
+    animation-timeline: view();
+    animation-range: cover;
+}
+@mixin pop-in($duration: 0.4s, $easing: cubic-bezier(0.25, 1, 0.5, 1)) {
+    animation: pop-in $duration $easing forwards;
+}

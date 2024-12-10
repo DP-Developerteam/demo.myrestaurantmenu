@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "menu": "Speisekarte",
+    "food": "Essen",
+    "drinks": "Trinken",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signOut": "Abmelden"
+  },
+  "home": {
+    "intro": {
+      "title": "Title in Startseite",
+      "paragraph": "Texte in Startseite"
+    }
+  }
+}

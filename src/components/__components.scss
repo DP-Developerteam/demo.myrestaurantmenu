@@ -1,0 +1,138 @@
+@import '../App.scss';
+
+//Styles for Header, Footer, scrollTop and Notifications
+
+.scrollTop {
+    position: fixed;
+    bottom: 60px;
+    right: 0;
+    z-index: 95;
+    @include button($COLORS-base-900, $COLORS-base-100);
+    border-radius: 5px 0 0 5px;
+    padding: 5px 15px 5px 5px;
+    .icon {
+        width: 24px;
+    }
+}
+
+.header {
+    @include displayFlex(row nowrap, space-between, center);
+    @include fontSerif(16px, 400, $COLORS-base-900);
+    position: fixed;
+    top: 0;
+    z-index: 90;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    background-color: $COLORS-base-100;
+    .logo {
+        @include hoverPointer();
+        height: 30px;
+    }
+    .buttonMenu {
+        .icon {
+            width: 28px;
+        }
+    }
+    .navContainer {
+        display: none;
+        position: fixed;
+        top: 50px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $COLORS-base-900;
+        padding: 40px 10px;
+        z-index: 99;
+        &.open {
+            @include displayFlex(column wrap, center, center);
+            animation: expand-menu 1.2s forwards;
+        }
+        .tab {
+            @include hoverPointer();
+            margin: 10px 0;
+            @include fontSerif(28px, 400, $COLORS-base-900);
+        }
+        .languagesBox {
+            @include displayFlex(row wrap, center, center);
+            position: absolute;
+            bottom: 10px;
+            .language {
+                @include hoverPointer();
+                @include button($COLORS-base-100, $COLORS-base-100);
+                padding: 5px;
+                margin: 10px 5px;
+                width: 36px;
+                .flag {
+                    border-radius: 3px;
+                    width: 36px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+}
+
+.bottomNav {
+    @include displayFlex(row nowrap, center, center);
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+    background-color: $COLORS-base-100;
+    @include fontSans(16px, 400, $COLORS-base-900);
+    .bottomNavContainer {
+        @include displayFlex(row nowrap, space-around, center);
+        width: 100%;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .tab {
+            @include displayFlex(row nowrap, center, center);
+            @include hoverPointer();
+            padding: 10px;
+        }
+        .icon {
+            height: 28px;
+            margin-right: 5px;
+        }
+    }
+    .scrollButton {
+        @include displayFlex(row wrap, center, center);
+        padding: 0 10px;
+        .arrow {
+            width: 15px;
+        }
+    }
+}
+
+.notifications {
+    @include displayFlex(column nowrap, flex-start, flex-start);
+    gap: 10px;
+    padding: 20px;
+    position: fixed;
+    z-index: 999999;
+    top: 20px;
+    right: 20px;
+    background-color: $COLORS-base-300;
+    border-radius: 20px;
+    @include pop-in(0.6s);
+    .notification-header {
+        @include displayFlex(row nowrap, space-between, center);
+        width: 100%;
+        gap: 30px;
+    }
+    .notification-body {
+        @include displayFlex(column nowrap, flex-start, flex-start);
+    }
+}
+.notification-left {
+    top: 20px;
+    left: 20px;
+    right: auto;
+}

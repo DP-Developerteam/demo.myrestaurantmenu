@@ -1,0 +1,58 @@
+//FONTS styles
+
+@font-face {
+    font-family: 'PT Sans';
+    src:
+        url('../assets/fonts/PTSans-Regular.woff2') format('woff2'),
+        url('../assets/fonts/PTSans-Regular.woff') format('woff'),
+        url('../assets/fonts/PTSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+}
+
+@font-face {
+    font-family: 'PT Serif';
+    src:
+        url('../assets/fonts/PTSerif-Regular.woff2') format('woff2'),
+        url('../assets/fonts/PTSerif-Regular.woff') format('woff'),
+        url('../assets/fonts/PTSerif-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+}
+
+@mixin fontSans ($size, $weight, $color) {
+    font-family: 'PT Sans', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+@mixin fontSerif ($size, $weight, $color) {
+    font-family: 'PT Serif', serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+//FONTS helpers
+.bold {
+    font-weight: 800;
+}
+.title {
+    @include fontSans(1.5rem, 800, $COLORS-base-900);
+}
+.subtitle{
+    @include fontSans(1.25rem, 600, $COLORS-base-900);
+}
+.paragraph {
+    @include fontSans(1rem, 400, $COLORS-base-900);
+}
+.fontSans18 {
+    @include fontSans(18px, 400, $COLORS-base-900);
+}

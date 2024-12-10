@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "food": "Food",
+    "drinks": "Drinks",
+    "signIn": "Login",
+    "signUp": "Sign up",
+    "signOut": "Logout"
+  },
+  "home": {
+    "intro": {
+      "title": "Title in homepage",
+      "paragraph": "Paragraph in homepage"
+    }
+  }
+}

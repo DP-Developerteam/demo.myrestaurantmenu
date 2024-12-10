@@ -1,0 +1,38 @@
+//HELPERs styles and mixings
+
+@mixin displayFlex ($flow, $justify, $align) {
+    display: flex;
+    flex-flow: $flow;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin gap ($space) {
+    height: $space;
+    width: $space;
+}
+
+@mixin hoverPointer() {
+    &:not([disabled]):hover {
+        cursor: pointer;
+    }
+}
+
+.row-center {
+    @include displayFlex(row wrap, center, center);
+}
+.row-start {
+    @include displayFlex(row wrap, flex-start, flex-start);
+}
+.row-end {
+    @include displayFlex(row wrap, flex-end, flex-end);
+}
+.column-center {
+    @include displayFlex(column wrap, center, center);
+}
+.column-start {
+    @include displayFlex(column wrap, flex-start, flex-start);
+}
+.column-end {
+    @include displayFlex(column wrap, flex-end, flex-end);
+}

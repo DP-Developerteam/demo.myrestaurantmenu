@@ -1,0 +1,47 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import './general.scss';
+@import './helpers.scss';
+
+
+@mixin button ($background, $color) {
+    @include displayFlex(row nowrap, center, center);
+    @include hoverPointer();
+    width: fit-content;
+    padding: 10px 40px;
+    background-color: $background;
+    @font-face {
+        font-family: 'PT Serif';
+        src:
+            url('../assets/fonts/PTSerif-Regular.woff2') format('woff2'),
+            url('../assets/fonts/PTSerif-Regular.woff') format('woff'),
+            url('../assets/fonts/PTSerif-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+    }
+    color: $color;
+    border-radius: 5px;
+}
+
+@mixin buttonBorder ($background, $color, $border) {
+    @include displayFlex(row nowrap, center, center);
+    @include hoverPointer();
+    width: fit-content;
+    padding: 0.3rem 1rem;
+    background-color: $background;
+    @font-face {
+        font-family: 'PT Serif';
+        src:
+            url('../assets/fonts/PTSerif-Regular.woff2') format('woff2'),
+            url('../assets/fonts/PTSerif-Regular.woff') format('woff'),
+            url('../assets/fonts/PTSerif-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+    }
+    color: $color;
+    border-radius: 0.3rem;
+    border: solid 0.1rem;
+    border-color: $border;
+}

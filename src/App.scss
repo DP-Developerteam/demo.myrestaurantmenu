@@ -1,0 +1,38 @@
+@import './styles/animations.scss';
+@import './styles/_buttons.scss';
+@import './styles/colors.scss';
+@import './styles/fonts.scss';
+@import './styles/forms.scss';
+@import './styles/general.scss';
+@import './styles/helpers.scss';
+@import './styles/layouts.scss';
+@import './styles/pages.scss';
+
+html {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body{
+    background: $COLORS-base-200;
+    @include fontSans(18px, 400, $COLORS-base-900);
+}
+
+.dp-wrapper {
+    @include displayFlex(column nowrap, flex-start, center);
+    width: 100%;
+    min-height: 100dvh;
+}
+
+.dp-content {
+    @include displayFlex(column nowrap, center, center);
+    padding: 50px 0;
+    min-height: 100dvh;
+}
+
+@media (min-height: 150dvh) {
+    .dp-content {
+        justify-content: flex-start;
+    }
+}

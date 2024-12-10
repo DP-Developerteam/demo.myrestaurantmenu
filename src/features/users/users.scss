@@ -1,0 +1,7 @@
+@import '../../App.scss';
+
+@media (min-width: 766px) {
+    .users-page {
+        max-width: 360px !important;
+    }
+}

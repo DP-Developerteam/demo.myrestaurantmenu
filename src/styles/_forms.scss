@@ -1,0 +1,213 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import './general.scss';
+@import './helpers.scss';
+
+//Most forms are inside of a modal.
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.form-container {
+    @include displayFlex(column nowrap, flex-start, center);
+    gap: 20px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    height: auto;
+    max-height: fit-content;
+    max-height: 95%;
+    background-color: $COLORS-base-100;
+    padding: 15px 10px;
+    border-radius: 15px;
+    .form-header {
+        @include displayFlex(row wrap, space-between, center);
+        width: 100%;
+    }
+    .form-body {
+        @include displayFlex(column wrap, flex-start, flex-start);
+        gap: 10px;
+        .form-group {
+            @include displayFlex(column wrap, flex-start, flex-start);
+            gap: 10px;
+            .form-field {
+                @include displayFlex(column nowrap, flex-start, flex-start);
+                gap: 5px;
+                width: 90dvw;
+                label, input[type="text"], input[type="password"], select {
+                    width: 100%
+                }
+                label {
+                    @include fontSans(0.8rem, 400, $COLORS-base-900);
+                    text-align: start;
+                }
+                input[type="text"], input[type="password"], select, .custom-dropdown {
+                    @include fontSans(1rem, 400, $COLORS-base-900);
+                    background-color: $COLORS-base-100;
+                    padding: 15px 5px;
+                    border-radius: 5px;
+                    border: none;
+                }
+                .comments-container {
+                    @include displayFlex(row nowrap, space-between, center);
+                    gap: 10px;
+                    width: 100%;
+                    .button-icon {
+                        @include hoverPointer();
+                        background-color: $COLORS-base-100;
+                        padding: 15px;
+                        border-radius: 5px;
+                    }
+                    .buttons-container {
+                        @include displayFlex(row nowrap, center, center);
+                        gap: 10px;
+                    }
+                }
+                .comments-list {
+                    @include displayFlex(column nowrap, center, center);
+                    gap: 15px;
+                    width: 100%;
+                    margin: 10px 0;
+                    .comments-container {
+                        align-items: flex-start;
+                        .buttons-container {
+                            .button-icon {
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .form-footer {
+        width: 100%;
+        .error-message {
+            @include fontSans(0.8rem, 300, $COLORS-base-900);
+        }
+        .button {
+            @include button($COLORS-base-100, $COLORS-base-900);
+            width: 100%;
+            padding: 15px 0;
+            margin-top: 10px;
+        }
+    }
+    .button {
+        @include displayFlex(column nowrap, center, center);
+        @include hoverPointer();
+    }
+    @media (min-width: 810px) {
+        gap: 20px;
+        padding: 30px 30px;
+        border-radius: 35px;
+        .form-body {
+            @include displayFlex(row wrap, flex-start, flex-start);
+            gap: 30px;
+            .form-group {
+                @include displayFlex(column wrap, flex-start, flex-start);
+                gap: 10px;
+                .form-field {
+                    width: 350px;
+                }
+            }
+            @media (min-width: 950px ) {
+                :nth-child(even) {
+                    .form-field {
+                        width: 450px;
+                    }
+                }
+            }
+        }
+        .form-footer {
+            width: 100%;
+            .button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.filter-bar-container {
+    @include displayFlex(row nowrap, space-between, flex-end);
+    width: 100%;
+    .filter-bar {
+        @include displayFlex(column nowrap, flex-start, flex-start);
+        gap: 10px;
+        width:100%;
+        .form-group {
+            @include displayFlex(row nowrap, space-between, center);
+            gap: 10px;
+            width: 100%;
+            .form-field {
+                @include displayFlex(row nowrap, flex-start, center);
+                gap: 10px;
+                width: 100%;
+                label {
+                    @include displayFlex(row, center, center);
+                    @include fontSans(0.8rem, 300, $COLORS-base-900);
+                    width: 30px;
+                    height: 30px;
+                }
+                input[type="text"], select {
+                    width: 100%;
+                }
+                input[type="text"], select, .toggle {
+                    @include fontSans(1rem, 300, $COLORS-base-900);
+                    background-color: $COLORS-base-100;
+                    height: 52px;
+                    padding: 0 5px;
+                    border-radius: 5px;
+                    border: none;
+                }
+                select, .toggle {
+                    @include hoverPointer();
+                }
+                .toggle {
+                    @include displayFlex(row nowrap, center, center);
+                    width: 100%;
+                    width: 30px;
+                }
+                .icon {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+            .search-bar {
+                flex-shrink: 1;
+            }
+            .toggle {
+                flex-shrink: 2;
+                width: fit-content;
+            }
+        }
+        :nth-child(1) {
+            flex-shrink: 1;
+        }
+        :nth-child(2) {
+            flex-shrink: 2;
+            :nth-child(1) {
+                flex-shrink: 1;
+                min-width: 49px;
+            }
+            :nth-child(2) {
+                flex-shrink: 1;
+                min-width: 67px;
+            }
+        }
+    }
+    @media (min-width: 766px) {
+        .filter-bar {
+            @include displayFlex(row nowrap, flex-start, flex-start);
+        }
+    }
+}

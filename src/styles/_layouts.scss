@@ -1,0 +1,299 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import './general.scss';
+@import './helpers.scss';
+
+
+// LAYOUT HERO
+.page {
+//     .hero {
+//         min-height: calc(100dvh - 250px);
+//     }
+}
+// LAYOUT HERO - BIG TITLE
+.page {
+//     .hero {
+//         min-height: calc(100dvh - 250px);
+//     }
+//     .layout-big-title {
+//         @include displayFlex(column wrap, space-between, center);
+//         gap: 160px;
+//         width: 100%;
+//         padding-top: 60px;
+//         padding-bottom: 60px;
+//         padding: 60px 20px 60px 20px;
+//         .intro-text {
+//             width: 100%;
+//             max-width: 900px;
+//             gap: 20px;
+//             .name-tag {
+//                 @include fontSans(14px, 400, $COLORS-base-900);
+//                 text-align: start;
+//                 width: 100%;
+//             }
+//             .description-container {
+//                 @include displayFlex(column wrap, flex-start, flex-start);
+//                 gap: 10px;
+//                 width: 100%;
+//                 max-width: 900px;
+//                 .description-tag {
+//                     @include displayFlex(row wrap, flex-start, center);
+//                     @include fontSans(14px, 400, $COLORS-base-900);
+//                 }
+//                 .hover {
+//                     @include hoverPointer();
+//                     gap: 10px;
+//                     .dot {
+//                         display: none;
+//                         background-color: $COLORS-base-900;
+//                         width: 10px;
+//                         height: 10px;
+//                         border-radius: 50%;
+//                     }
+//                     .contact {
+//                         @include fontSans(14px, 600, $COLORS-base-900);
+//                         display: none;
+//                     }
+//                     &:hover {
+//                         @include fontSans(14px, 600, $COLORS-base-900);
+//                         text-decoration: underline;
+//                         .dot {
+//                             display: block;
+//                         }
+//                         .contact {
+//                             display: block;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         .title-tag {
+//             @include fontSans(4rem, 800, $COLORS-base-900);
+//             line-break:strict;
+//             text-align: end;
+//             line-height: 3.5rem;
+//             width: 100%;
+//             max-width: 900px;
+//             .color {
+//                 color: $COLORS-base-900;
+//             }
+//         }
+//     }
+//     @media (min-width: 430px) {
+//         .title-tag {
+//             @include fontSans(6rem, 800, $COLORS-base-900);
+//             line-height: 5.5rem;
+//         }
+//     }
+}
+
+// LAYOUT HERO - BIG CARD
+.page {
+//     .layout-big-card {
+//         width: 90%;
+//         max-width: 900px;
+//         padding: 40px;
+//         margin-top: -110px;
+//         border: none;
+//         border-radius: 20px;
+//         background-color: $COLORS-base-100;
+//         filter: drop-shadow(0px -1px 16px #00000020);
+//         .items-container {
+//             justify-content: space-between;
+//             height: 100%;
+//             width: 100%;
+//             gap: 20px;
+//             .item {
+//                 flex-grow: 1;
+//                 height: 100%;
+//                 gap: 10px;
+//                 .img {
+//                     object-fit: cover;
+//                     width: 100%;
+//                     height: auto;
+//                     max-height: 400px;
+//                     border-radius: 15px;
+//                     background-color: $COLORS-base-100;
+//                 }
+//             }
+//             :nth-child(2) {
+//                 flex-grow: 2;
+//             }
+//         }
+//     }
+
+}
+
+// LAYOUT BENTO - text & boxes container
+.page {
+//     .layout-bento {
+//         gap: 30px;
+//         padding: 0 10px;
+//         .text-boxes-container {
+//             gap: 20px;
+//             .text-container {
+//                 gap: 10px;
+//                 width:100%;
+//                 max-width: 400px;
+//             }
+//             .boxes-container {
+//                 flex-flow: row nowrap;
+//                 gap: 20px;
+//                 .box {
+//                     position: relative;
+//                     width: 165px;
+//                     height: 165px;
+//                     border-radius: 10px;
+//                     background-color: $COLORS-base-100;
+//                     padding: 20px;
+//                     .icon {
+//                         position: absolute;
+//                         display: block;
+//                         top: 10px;
+//                         width: 60px;
+//                         height: 60px;
+//                         border-radius: 50%;
+//                         background-color: $COLORS-base-900;
+//                     }
+//                     .top-right {
+//                         right: 10px;
+//                     }
+//                     .top-left {
+//                         left: 10px;
+//                     }
+//                 }
+//                 .box-large {
+//                     width: calc(100dvw - 20px);
+//                     max-width: 480px;
+//                 }
+//             }
+//         }
+//     }
+
+//     @media (min-width: 560px) {
+//         .layout-bento {
+//             gap: 20px;
+//             width: 90%;
+//             max-width: 900px;
+//             .text-boxes-container {
+//                 gap: 20px;
+//                 .boxes-container {
+//                     gap: 20px;
+//                     .box {
+//                         width: 230px;
+//                         height: 230px;
+//                         border-radius: 20px;
+//                         .icon {
+//                             position: absolute;
+//                             display: block;
+//                             top: 20px;
+//                             width: 70px;
+//                             height: 70px;
+//                         }
+//                         .top-right {
+//                             right: 20px;
+//                         }
+//                         .top-left {
+//                             left: 20px;
+//                         }
+//                     }
+//                     .box-large {
+//                         width: 480px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     @media (min-width: 820px) {
+//         .layout-bento {
+//             .text-boxes-container {
+//                 flex-flow: row nowrap;
+//                 .text-container {
+//                     max-width: 400px;
+//                 }
+//                 .boxes-container {
+//                     .box {
+//                         width: 230px;
+//                         height: 230px;
+//                     }
+//                     .box-large {
+//                         width: 480px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+}
+
+// LAYOUT CSM - rendering boxes from different collections.
+.layout-cms {
+    @include displayFlex(column wrap, flex-start, flex-start);
+    gap: 32px;
+    width: 100dvw;
+    min-height: calc(100dvh - 71px);
+    // LAYOUT CRUD
+    .crud-page {
+        @include displayFlex(column wrap, flex-start, flex-start);
+        gap: 24px;
+        padding: 10px;
+        width: 100%;
+        max-width: 900px;
+        .header-container {
+            @include displayFlex(row nowrap, space-between, center);
+            width: 100%;
+            .title-container {
+                @include displayFlex(row nowrap, space-between, center);
+                gap: 16px;
+            }
+            .button {
+                @include displayFlex(row nowrap, center, center);
+                @include hoverPointer();
+                gap: 10px;
+            }
+        }
+        .items-container {
+            @include displayFlex(column nowrap, flex-start, flex-start);
+            gap: 10px;
+            width: 100%;
+            max-width: 600px;
+            .item {
+                @include displayFlex(row nowrap, space-between, flex-start);
+                width: 100%;
+                gap: 10px;
+                padding: 10px;
+                background-color: $COLORS-base-100;
+                border-radius: 5px;
+                .text-container {
+                    @include displayFlex(column, flex-start, flex-start);
+                    width: 100%;
+                    gap: 5px;
+                }
+                .buttons-container {
+                    @include displayFlex(column, flex-start, flex-start);
+                    gap: 10px;
+                    .icon {
+                        @include hoverPointer();
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: 766px) and (max-width: 900px) {
+        gap: 10px;
+    }
+    @media (min-width: 766px) {
+        flex-flow: row nowrap;
+        .crud-page {
+            .items-container {
+                max-width: 100%;
+                height: calc(100dvh - 220px);
+                overflow: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                padding-bottom: 100px;
+            }
+        }
+    }
+}
