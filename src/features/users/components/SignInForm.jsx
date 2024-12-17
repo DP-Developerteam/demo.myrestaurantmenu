@@ -40,15 +40,13 @@ const SignInForm = ({ onSignInSuccess }) => {
             const userToken = action.token;
             const userRole = action.role;
             const expiresIn = action.expiresIn;
-            // const alertExpires = expiresIn - 20; // alert pop ups when there are 20 seconds for the auto signOut
 
             if (userToken) {
                 // Show success SignIn notification
                 onSignInSuccess();
 
                 //Conditional to redirect based on role after login
-                navigate(userRole === 'admin' ? '/crm' : '/');
-                // navigate('/');
+                navigate(userRole === 'employee' ? '/cms' : '/');
 
                 setTimeout(() => {
                     // Clear user when token expires

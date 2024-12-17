@@ -8,10 +8,19 @@ import { setAuthToken } from '../api';
 // THUNK - getProducts
 export const getProductsThunk = createAsyncThunk(
     'product/getProducts',
-    async (_, { rejectWithValue }) => {
+    async (_, { getState, rejectWithValue }) => {
         try {
-            // API call to fetch products
-            return await getProducts();
+
+            // Set sessionStorage to manage data in persist:root
+            sessionStorage.setItem('isTabActive', 'true');
+
+            // Retrieve the lastUpdated timestamp from the Redux state
+            const { lastUpdated } = getState().product;
+
+            // API call - Send lastUpdated as a query parameter in case it exists
+            const response = await getProducts(lastUpdated ? { lastUpdated } : {});
+
+            return response; // Return the response from the API
         } catch (error) {
             return rejectWithValue(
             error.response?.data.message || 'Failed to load products'
@@ -65,17 +74,22 @@ const productSlice = createSlice({
             })
             .addCase(getProductsThunk.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.products = action.payload.map((product) => ({
-                    _id: product._id,
-                    name: product.name,
-                    price: product.price,
-                    description: product.description,
-                    category: product.category,
-                    ingredients: product.ingredients,
-                    image: product.image,
-                    video: product.video,
-                    vegetarian: product.vegetarian
-                }));
+                state.lastUpdated = action.payload.lastUpdated;
+                // Conditional to update products state in case the payload is not empty/null
+                if (action.payload.products) {
+                    state.products = action.payload.products.map((product) => ({
+                        _id: product._id,
+                        name: product.name,
+                        price: product.price,
+                        description: product.description,
+                        category: product.category,
+                        ingredients: product.ingredients,
+                        image: product.image,
+                        video: product.video,
+                        vegetarian: product.vegetarian,
+                        lastUpdated: product.lastUpdated,
+                    }));
+                }
             })
             .addCase(getProductsThunk.rejected, (state, action) => {
                 state.isLoading = false;

@@ -40,3 +40,24 @@ export const store = configureStore({
 
 // Creating the persistor, which will manage the persistence of the Redux store
 export const persistor = persistStore(store);
+
+
+// Logic to clear persistor if we close the tab/browser. In case of reload in keeps the data from persist:root
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the sessionStorage marker exists
+    var isTabActive = sessionStorage.getItem('isTabActive');
+    if (!isTabActive) {
+        // Set sessionStorage marker
+        sessionStorage.setItem('isTabActive', true);
+    }
+});
+window.addEventListener('beforeunload', () => {
+    // Check if the sessionStorage marker exists
+    const isTabActive = sessionStorage.getItem('isTabActive');
+    if (!isTabActive) {
+        // Clear persist:root if isTabActive is missing
+        localStorage.removeItem('persist:root');
+    }
+    // Remove the session marker
+    sessionStorage.removeItem('isTabActive');
+});

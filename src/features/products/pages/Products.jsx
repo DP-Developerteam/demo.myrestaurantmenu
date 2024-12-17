@@ -21,15 +21,14 @@ import iconArrowDown from '../../../assets/img/icon-arrow-down.svg';
 function Products() {
     // REDUX
     const dispatch = useDispatch();
-    const { products: reduxProducts, errorMessage } = useSelector((state) => state.product);
-    const { token } = useSelector((state) => state.user);
+    // const { products: reduxProducts, errorMessage } = useSelector((state) => state.product);
+    const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
+    // const { token } = useSelector((state) => state.user);
     // State to show/hidde products
     const [showProducts, setShowProducts] = useState(true);
     // Array to store and filter products data
     const [productsList, setProductsList] = useState([]);
     const [productsFilterList, setProductsFilterList] = useState([]);
-    // State for current product
-    // const [currentProduct, setCurrentProduct] = useState();
     // States for modals and selected product
     const [deleteModal, setDeleteModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
@@ -44,15 +43,34 @@ function Products() {
         setShowProducts(!showProducts)
     }
 
-    // Fetch products when the component mounts
+    // Logic to fetch products when the component mounts
+    // Check internet speed
+    const isInternetSlow = () => {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (connection) {
+            return connection.downlink < 5; // Define slow threshold (e.g., 1 Mbps)
+        }
+        return false;
+    };
+    // If internet is slow and products have been fetched, avoid the API call
     useEffect(() => {
-        dispatch(getProductsThunk(token));
-    }, [dispatch, token]);
+        const internetIsSlow = isInternetSlow();
+        if (products.length === 0) {
+            // If Redux Products is empty, then fetch products.
+            dispatch(getProductsThunk());
+        } else if (!internetIsSlow) {
+            // If internet is fast, then do normal product fetching
+            dispatch(getProductsThunk());
+        } else {
+            // If internet is slow and products have been fetched once, then avoid doing API calls.
+            console.log("Using cache due to slow internet or already updated products.");
+        }
+    }, [dispatch, lastUpdated, products]);
     // Update local products when Redux products change
     useEffect(() => {
-        setProductsList(reduxProducts || []);
-        setProductsFilterList(reduxProducts || []);
-    }, [reduxProducts]);
+        setProductsList(products || []);
+        setProductsFilterList(products || []);
+    }, [products]);
 
     // DELETE. Selected product and show delete modal
     const selectProductDelete = (product) => {
@@ -86,8 +104,9 @@ function Products() {
         setSelectedProduct(null);
     };
 
-    // Display error message if fetching failed
-    if (errorMessage) return <div>{errorMessage}</div>;
+    // Handle return based in status fetched data
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
     return (
         <div className='products-page crud-page'>

@@ -54,6 +54,8 @@
                 input[type="text"], input[type="password"], select, .custom-dropdown {
                     @include fontSans(1rem, 400, $COLORS-base-900);
                     background-color: $COLORS-base-100;
+                    -webkit-box-shadow: inset 0px 0px 8px 6px rgba(0,0,0,0.1);
+                    box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.1);
                     padding: 15px 5px;
                     border-radius: 5px;
                     border: none;
@@ -96,7 +98,9 @@
             @include fontSans(0.8rem, 300, $COLORS-base-900);
         }
         .button {
-            @include button($COLORS-base-100, $COLORS-base-900);
+            @include button($COLORS-base-900, $COLORS-base-100);
+            -webkit-box-shadow: 0px 0px 8px 6px rgba(0,0,0,0.1);
+            box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1);
             width: 100%;
             padding: 15px 0;
             margin-top: 10px;

@@ -17,13 +17,36 @@ function Drinks() {
     const [currentView, setCurrentView] = useState(null);
     // REDUX
     const dispatch = useDispatch();
-    const { products, isLoading, error } = useSelector((state) => state.product);
-    // Fetch products when the component mounts if reduxProducts is empty
-    useEffect(() => {
-        if (products.length === 0) {
-            dispatch(getProductsThunk());
+    const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
+
+    // Check internet speed
+    const isInternetSlow = () => {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (connection) {
+            return connection.downlink < 5; // Define slow threshold (e.g., 1 Mbps)
         }
-    }, [dispatch, products.length]);
+        return false;
+    };
+    // If internet is slow and products have been fetched, avoid the API call
+    useEffect(() => {
+        const internetIsSlow = isInternetSlow();
+        if (products.length === 0) {
+            // If Redux Products is empty, then fetch products.
+            dispatch(getProductsThunk());
+        } else if (!internetIsSlow) {
+            // If internet is fast, then do normal product fetching
+            dispatch(getProductsThunk());
+        } else {
+            // If internet is slow and products have been fetched once, then avoid doing API calls.
+            console.log("Using cache due to slow internet or already updated products.");
+        }
+    }, [dispatch, lastUpdated, currentView, products]);
+    // // Fetch products when the component mounts if reduxProducts is empty
+    // useEffect(() => {
+    //     if (products.length === 0) {
+    //         dispatch(getProductsThunk());
+    //     }
+    // }, [dispatch, products.length]);
 
     // Category case to render buttons and components
     const componentMap = {

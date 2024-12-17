@@ -19,7 +19,7 @@ function Homepage() {
         <div className='page homepage'>
             <div className='intro'>
                 <h1>{t('home.intro.title')}</h1>
-                <button class="btn-solid">{t('home.intro.button')}</button>
+                <button className="btn-solid">{t('home.intro.button')}</button>
             </div>
             <div className='section-grid-nav'>
                 <NavLink className='nav-item' to='/'>
