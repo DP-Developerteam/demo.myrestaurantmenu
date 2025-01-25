@@ -15,6 +15,9 @@ function Foods() {
     const { t } = useTranslation();
     // Single state to manage current view
     const [currentView, setCurrentView] = useState(null);
+    // Single state to manage product card view: "default", "image", "video"
+    // const [productCardView, setProductCardView] = useState("default");
+    const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
     // REDUX
     const dispatch = useDispatch();
     const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
@@ -50,6 +53,7 @@ function Foods() {
                 titleKey="product.nav.breakfast.title"
                 descriptionKey="product.nav.breakfast.description"
                 crossCategory="foods"
+                productCardView={productCardView}
             />
         ),
         brunch: (
@@ -58,6 +62,7 @@ function Foods() {
                 titleKey="product.nav.brunch.title"
                 descriptionKey="product.nav.brunch.description"
                 crossCategory="foods"
+                productCardView={productCardView}
             />
         ),
         snack: (
@@ -66,6 +71,7 @@ function Foods() {
                 titleKey="product.nav.snack.title"
                 descriptionKey="product.nav.snack.description"
                 crossCategory="foods"
+                productCardView={productCardView}
             />
         ),
         dinner: (
@@ -73,7 +79,8 @@ function Foods() {
                 category="dinner"
                 titleKey="product.nav.dinner.title"
                 descriptionKey="product.nav.dinner.description"
-                crossCategory="drinks"
+                crossCategory="foods"
+                productCardView={productCardView}
             />
         ),
     };
@@ -83,8 +90,15 @@ function Foods() {
         setCurrentView(view);
     };
 
+    // Handler to set product card view
+    const handleViewProductCard = (view = null) => {
+        setProductCardView(!productCardView); //this is a temporary solution until I get videos.
+        // setProductCardView(view);
+        console.log(productCardView);
+    }
+
     // Handle return based in status fetched data
-    if (isLoading) return <p>Loading...</p>;
+    // if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
@@ -92,20 +106,29 @@ function Foods() {
             {currentView ? (
                 // Render selected component if a view is selected
                 <>
-                    <button className='btn btn-back' onClick={() => handleViewChange()}>&lt;</button>
+                    <div className='nav-products-view row-center'>
+                        <button className='btn-border-dark' onClick={() => handleViewChange()}>&lt;</button>
+                        <div className='view-icons row-center'>
+                            <button className='btn-border-dark' onClick={() => handleViewProductCard()}>change VIEW</button> {/* this is a temporary solution until I get videos. */}
+                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('default')}>Default VIEW</button> */}
+                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('image')}>Image VIEW</button> */}
+                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('video')}>Video VIEW</button> */}
+                        </div>
+                    </div>
                     {componentMap[currentView]}
                 </>
             ) : (
                 // Default view with navigation
                 <>
                     <div className='intro'>
-                        <h1>{t('product.intro.title')}</h1>
-                        <button className="btn-solid">{t('product.intro.button')}</button>
+                        <h1>{t('restaurant.info.name')}</h1>
+                        <br/>
+                        <button className="btn-border-dark">{t('nav.contact')}</button>
                     </div>
                     <div className='section-extra-nav'>
                         {Object.keys(componentMap).map((category) => (
                             <div
-                                className="btn-border"
+                                className="btn-border-dark btn-full-width btn-subtitel"
                                 key={category}
                                 onClick={() => handleViewChange(category)}
                             >

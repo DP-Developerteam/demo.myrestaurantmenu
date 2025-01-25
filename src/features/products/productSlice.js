@@ -37,7 +37,8 @@ const productSlice = createSlice({
     initialState: {
         products: [],
         isLoading: false,
-        error: null
+        error: null,
+        lastUpdated: null,
     },
     // Reducers for managing product state
     reducers: {

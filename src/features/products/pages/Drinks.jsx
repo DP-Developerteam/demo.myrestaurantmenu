@@ -15,6 +15,9 @@ function Drinks() {
     const { t } = useTranslation();
     // Single state to manage current view
     const [currentView, setCurrentView] = useState(null);
+    // Single state to manage product card view: "default", "image", "video"
+    // const [productCardView, setProductCardView] = useState("default");
+    const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
     // REDUX
     const dispatch = useDispatch();
     const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
@@ -41,12 +44,6 @@ function Drinks() {
             console.log("Using cache due to slow internet or already updated products.");
         }
     }, [dispatch, lastUpdated, currentView, products]);
-    // // Fetch products when the component mounts if reduxProducts is empty
-    // useEffect(() => {
-    //     if (products.length === 0) {
-    //         dispatch(getProductsThunk());
-    //     }
-    // }, [dispatch, products.length]);
 
     // Category case to render buttons and components
     const componentMap = {
@@ -54,40 +51,45 @@ function Drinks() {
             <ProductsCategory
                 category="cold"
                 titleKey="product.nav.cold.title"
-                descriptionKey="product.nav.cold.description"
+                // descriptionKey="product.nav.cold.description"
                 crossCategory="drinks"
+                productCardView={productCardView}
             />
         ),
         hot: (
             <ProductsCategory
                 category="hot"
                 titleKey="product.nav.hot.title"
-                descriptionKey="product.nav.hot.description"
+                // descriptionKey="product.nav.hot.description"
                 crossCategory="drinks"
+                productCardView={productCardView}
             />
         ),
         fresh: (
             <ProductsCategory
                 category="fresh"
                 titleKey="product.nav.fresh.title"
-                descriptionKey="product.nav.fresh.description"
+                // descriptionKey="product.nav.fresh.description"
                 crossCategory="drinks"
+                productCardView={productCardView}
             />
         ),
         alcohol: (
             <ProductsCategory
                 category="alcohol"
                 titleKey="product.nav.alcohol.title"
-                descriptionKey="product.nav.alcohol.description"
+                // descriptionKey="product.nav.alcohol.description"
                 crossCategory="drinks"
+                productCardView={productCardView}
             />
         ),
         cocktail: (
             <ProductsCategory
                 category="cocktail"
                 titleKey="product.nav.cocktail.title"
-                descriptionKey="product.nav.cocktail.description"
+                // descriptionKey="product.nav.cocktail.description"
                 crossCategory="drinks"
+                productCardView={productCardView}
             />
         ),
     };
@@ -97,8 +99,14 @@ function Drinks() {
         setCurrentView(view);
     };
 
+    // Handler to set product card view
+    const handleViewProductCard = (view = null) => {
+        setProductCardView(!productCardView); //this is a temporary solution until I get videos.
+        // setProductCardView(view);
+    }
+
     // Handle return based in status fetched data
-    if (isLoading) return <p>Loading...</p>;
+    // if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
@@ -106,26 +114,35 @@ function Drinks() {
             {currentView ? (
                 // Render selected component if a view is selected
                 <>
-                    <button className='btn btn-back' onClick={() => handleViewChange()}>&lt;</button>
+                    <div className='nav-products-view row-center'>
+                        <button className='btn-border-dark' onClick={() => handleViewChange()}>&lt;</button>
+                        <div className='view-icons row-center'>
+                            <button className='btn-border-dark' onClick={() => handleViewProductCard()}>change VIEW</button> {/* this is a temporary solution until I get videos. */}
+                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('default')}>Default VIEW</button> */}
+                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('image')}>Image VIEW</button> */}
+                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('video')}>Video VIEW</button> */}
+                        </div>
+                    </div>
                     {componentMap[currentView]}
                 </>
             ) : (
                 // Default view with navigation
                 <>
                     <div className='intro'>
-                        <h1>{t('product.intro.title')}</h1>
-                        <button className="btn-solid">{t('product.intro.button')}</button>
+                        <h1>{t('restaurant.info.name')}</h1>
+                        <br/>
+                        <button className="btn-border-dark">{t('nav.contact')}</button>
                     </div>
                     <div className='section-extra-nav'>
                         {Object.keys(componentMap).map((category) => (
                             <div
-                                className="btn-border"
+                                className="btn-border-dark btn-full-width btn-subtitel"
                                 key={category}
                                 onClick={() => handleViewChange(category)}
                             >
                                 <p>{t(`product.nav.${category}.title`)}</p>
                                 <span className="fontSans18">
-                                {t(`product.nav.${category}.description`)}
+                                {/* {t(`product.nav.${category}.description`)} */}
                                 </span>
                             </div>
                         ))}

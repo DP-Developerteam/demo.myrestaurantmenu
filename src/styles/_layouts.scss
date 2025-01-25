@@ -3,6 +3,42 @@
 @import './general.scss';
 @import './helpers.scss';
 
+/// WRAPPERS
+.dp-wrapper {
+    @include displayFlex(column nowrap, flex-start, center);
+    width: 100%;
+    min-height: 100dvh;
+}
+
+.dp-content {
+    @include displayFlex(column nowrap, center, center);
+    padding: 50px 0 0;
+    min-height: 100dvh;
+}
+
+@media (min-height: 150dvh) {
+    .dp-content {
+        justify-content: flex-start;
+    }
+}
+
+// LAYOUT SECTION
+.section {
+    @include displayFlex(column nowrap, flex-start, flex-start);
+    gap: 30px;
+    width: 100dvw;
+    padding: 20px;
+}
+
+.section-dark {
+    @include displayFlex(column nowrap, flex-start, flex-start);
+    gap: 30px;
+    width: 100dvw;
+    padding: 50px 20px;
+
+    background-color: $COLORS-base-800;
+    color: $COLORS-base-100;
+}
 
 // LAYOUT HERO
 .page {

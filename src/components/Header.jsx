@@ -46,14 +46,14 @@ function Header() {
         // Close Menu
         closeMenu();
         // Redirect to SignIn
-        navigate('/signin');
+        navigate('/cms');
     };
     // REDUX Variable to know if user is logged in or not. Used to render of the buttons.
     const { isLoggedIn } = useSelector((state) => state.user);
 
     // Variables to know if page is SignIn or SignUp
     const isOnSignInPage = location.pathname === '/signin';
-    const isOnSignUpPage = location.pathname === '/signup';
+    // const isOnSignUpPage = location.pathname === '/signup';
 
 
 
@@ -68,13 +68,11 @@ function Header() {
             </button>
             <nav className={`navContainer ${isMenuOpen ? 'open' : 'closed'}`}>
                 <NavLink className='tab' onClick={closeMenu} to='/'>{t('nav.home')}</NavLink>
-                <NavLink className='tab' onClick={closeMenu} to='/menu'>{t('nav.menu')}</NavLink>
+                <NavLink className='tab' onClick={closeMenu} to='/foods'>{t('nav.foods')}</NavLink>
+                <NavLink className='tab' onClick={closeMenu} to='/drinks'>{t('nav.drinks')}</NavLink>
 
                 {!isLoggedIn && !isOnSignInPage && (
-                    <NavLink className='tab' onClick={closeMenu} to='/signin'>{t('nav.signIn')}</NavLink>
-                )}
-                {!isLoggedIn && !isOnSignUpPage && (
-                    <NavLink className='tab' onClick={closeMenu} to='/signup'>{t('nav.signUp')}</NavLink>
+                    <NavLink className='tab' onClick={closeMenu} to='/cms'>{t('nav.signIn')}</NavLink>
                 )}
                 {isLoggedIn && (
                     <p className='tab' onClick={signOut}>{t('nav.signOut')}</p>

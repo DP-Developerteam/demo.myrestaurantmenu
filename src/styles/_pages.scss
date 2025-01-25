@@ -13,15 +13,16 @@
 
     .intro {
         // Intro class contains an h1 element and a button
-        @include displayFlex(column nowrap, flex-star, flex-start);
+        // @include displayFlex(column nowrap, flex-star, flex-start);
         gap: 20px;
-        padding: 0 20px;
-        width: 100dvw;
+        padding: 0 30px;
+        width: 100%;
+        // width: 100dvw;
         h1 {
             max-width: 240px;
         }
         .btn-solid {
-            @include button($COLORS-base-900, $COLORS-base-100);
+            // @include button($COLORS-base-900, $COLORS-base-100);
         }
     }
 
@@ -30,6 +31,7 @@
         @include displayFlex(row wrap, center, center);
         gap: 30px;
         width: 270px;
+        padding: 0;
         .nav-item {
             @include displayFlex(column nowrap, center, center);
             gap: 5px;
@@ -57,26 +59,18 @@
         border-radius: 5px;
         background-color: $COLORS-base-100;
         @include fontSans(24px, 400, $COLORS-base-900);
-        .btn-border {
-            @include buttonBorder(transparent, $COLORS-base-900, $COLORS-base-900);
-            width: 100%;
-        }
     }
 
     .section-carousel {
         // Section carousel contains a p element for intro, and the carousel container
-        @include displayFlex(column nowrap, flex-start, flex-start);
         gap: 30px;
-        width: 100dvw;
-        padding: 20px;
         p {
             max-width: 290px;
         }
         .carousel-container {
-            @include displayFlex(row nowrap, center, center);
-            width: 100dvw;
-            position: absolute;
-            top: 150px;
+            @include displayFlex(row nowrap, flex-start, flex-start);
+            gap: 20px;
+            width: calc(100dvw - 40px);
             overflow-x: auto;
             &::-webkit-scrollbar {
                 display: none;
@@ -85,10 +79,36 @@
             scrollbar-width: none;
             .img-container {
                 margin: 0 auto;
-                width: 333px;
-                height: 333px;
+                width: 250px;
+                height: auto;
+                // height: 250px;
                 object-fit: cover;
+                img {
+                    border-radius: 8px;
+                }
             }
         }
     }
+
+    .section-icon-text {
+        .icon-text-container {
+            gap: 20px;
+            flex-wrap: nowrap;
+            .icon-container {
+                flex-shrink: 0;
+                width: 100px;
+                height: 100px;
+                background-color: $COLORS-base-100;
+                border-radius: 8px;
+                .icon {
+                    max-width: 60px;
+                    max-height: 60px;
+                }
+            }
+        }
+        .text-container {
+            gap: 10px;
+        }
+    }
+
 }

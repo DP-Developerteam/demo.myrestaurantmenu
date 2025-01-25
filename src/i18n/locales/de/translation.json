@@ -2,16 +2,144 @@
   "nav": {
     "home": "Startseite",
     "menu": "Speisekarte",
-    "food": "Essen",
-    "drinks": "Trinken",
+    "foods": "Essen",
+    "drinks": "Getränke",
+    "orders": "Bestellung",
     "signIn": "Anmelden",
     "signUp": "Registrieren",
-    "signOut": "Abmelden"
+    "signOut": "Abmelden",
+    "reservation": "Reservierung",
+    "gift": "Ein Geschenk machen",
+    "rewards": "Kundenkarte",
+    "personal": "Persönlicher Bereich",
+    "contact": "Kontakt uns!"
   },
-  "home": {
+  "footer": {
+    "legal": "Impressum",
+    "privacy": "Datenschutzrichtlinie",
+    "cookies": "Cookie-Richtlinie",
+    "copyright": "Erstellt von Diego Pérez, 2025"
+  },
+  "restaurant": {
+    "info": {
+      "name": "Restaurantname",
+      "description": "Absatz/Slogan, um das Restaurant zu beschreiben.",
+      "timeTable": {
+        "mon": "Geschlossen",
+        "tue": "12:00 - 22:00",
+        "wed": "12:00 - 22:00",
+        "thu": "12:00 - 22:00",
+        "fri": "12:00 - 01:30",
+        "sat": "12:00 - 01:30",
+        "sun": "12:00 - 22:00"
+      }
+    }
+  },
+  "section": {
+    "carousel": {
+      "content": "Werfen Sie einen Blick in unser gemütliches Restaurant, wo gutes Essen auf eine einladende Atmosphäre trifft. Genießen Sie eine Mischung aus Kunst, Design und köstlichen Gerichten, die mit Liebe und Sorgfalt zubereitet werden – alles in einer entspannten und freundlichen Umgebung."
+    },
+    "review": {
+      "content": "Wir lieben es, von unseren Gästen zu hören! Wenn Sie eine schöne Zeit bei uns hatten, würden wir uns freuen, wenn Sie Ihre Gedanken in einer kurzen Bewertung auf Google teilen.<br/>Ihr Feedback hilft uns, uns weiter zu verbessern und motiviert unser Team, das bestmögliche Erlebnis zu bieten.",
+      "button": "Teilen Sie jetzt Ihre Gedanken"
+    },
+    "deals": {
+      "title": "Was Sie nicht verpassen sollten:",
+      "offerHappyHour": {
+        "title": "Happy Hour!",
+        "content-1": "Jeden Freitag",
+        "content-2": "Von 17:00 bis 19:00"
+      },
+      "eventNewYear": {
+        "title": "Silvesterparty",
+        "content-1": "Wir planen ein fantastisches Dinner und eine Party, um uns von diesem großartigen Jahr zu verabschieden.",
+        "content-2": "Wenn Sie die Freude mit uns an einem so besonderen Abend teilen möchten, empfehlen wir Ihnen, uns zu kontaktieren, um Ihren Platz zu reservieren.",
+        "button": "Weitere Informationen"
+      }
+    },
+    "newsletter": {
+      "title": "Lust, etwas Leckeres zu kochen?",
+      "content-1": "Dann kommen Sie zu unserem praktischen Workshop! Wir treffen uns jeden ersten Dienstag im Monat und würden uns freuen, Sie dabei zu haben.",
+      "content-2": "Abonnieren Sie unseren Newsletter, um auf unserer Prioritätenliste für Veranstaltungen zu stehen.",
+      "content-3": "Darüber hinaus erhalten Sie Rezepte, Sonderangebote und sind natürlich der Erste, der von Neuigkeiten und Events erfährt.",
+      "button": "Abonnieren"
+    },
+    "aboutUs": {
+      "title": "Erfahren Sie mehr über uns",
+      "content-1": "Gegründet im Jahr [Jahr], ist [Restaurantname] darauf ausgerichtet, köstliche, hausgemachte Gerichte in einer freundlichen und einladenden Umgebung zu servieren. Ob Sie für eine lockere Mahlzeit oder einen besonderen Anlass hier sind – unser Team ist bestrebt, jedes kulinarische Erlebnis unvergesslich zu machen.",
+      "content-2": "Im Laufe der Jahre wurden wir mit mehreren Auszeichnungen geehrt, die unser Engagement für Qualität, Service und kulinarische Exzellenz anerkennen. Wir sind stolz auf die Auszeichnungen, die wir erhalten haben, und streben weiterhin nach Exzellenz in jedem Gericht, das wir servieren.",
+      "content-3": "Bleiben Sie mit uns in Verbindung und erhalten Sie einen Einblick in das, was bei [Restaurantname] passiert, indem Sie uns in den sozialen Medien folgen. Wir lieben es, unsere neuesten Kreationen, besondere Events und mehr zu teilen!"
+    }
+  },
+  "product": {
     "intro": {
-      "title": "Title in Startseite",
-      "paragraph": "Texte in Startseite"
+      "title": "Restaurantname",
+      "paragraph": "Absatz auf der Essensseite",
+      "button": "Kontakt"
+    },
+    "nav": {
+      "breakfast": {
+        "title": "Frühstück",
+        "description": "Do - Sa von 06:00 bis 11:00"
+      },
+      "brunch": {
+        "title": "Sonntagsbrunch",
+        "description": "Sonntags von 10:00 bis 15:00"
+      },
+      "snack": {
+        "title": "Kleine Snacks",
+        "description": "Do - So von 11:00 bis 18:30"
+      },
+      "lunch": {
+        "title": "Mittagessen",
+        "description": "Do - So von 18:30 bis 22:00"
+      },
+      "dinner": {
+        "title": "Abendessen",
+        "description": "Do - So von 18:30 bis 22:00"
+      },
+      "cold": {
+        "title": "Kalte Getränke",
+        "description": "Keine Beschreibung"
+      },
+      "hot": {
+        "title": "Kaffees und Tees",
+        "description": "Keine Beschreibung"
+      },
+      "fresh": {
+        "title": "Natursäfte und Smoothies",
+        "description": "Keine Beschreibung"
+      },
+      "alcohol": {
+        "title": "Weine und Biere",
+        "description": "Keine Beschreibung"
+      },
+      "cocktail": {
+        "title": "Cocktails",
+        "description": "Keine Beschreibung"
+      }
+    },
+    "crossSelling": {
+      "food": {
+        "title": "Hast du Lust auf etwas zu essen?",
+        "button": "Zu den Speisen gehen"
+      },
+      "drink": {
+        "title": "Hast du Lust auf etwas zu trinken?",
+        "button": "Zu den Getränken gehen"
+      }
+    }
+  },
+  "foods": {
+    "intro": {
+      "title": "Titel auf der Speisekartenseite",
+      "paragraph": "Absatz auf der Speisekartenseite"
+    }
+  },
+  "drinks": {
+    "intro": {
+      "title": "Titel auf der Getränkeseite",
+      "paragraph": "Absatz auf der Getränkeseite"
     }
   }
 }

@@ -51,7 +51,7 @@
         .tab {
             @include hoverPointer();
             margin: 10px 0;
-            @include fontSerif(28px, 400, $COLORS-base-900);
+            @include fontSerif(28px, 400, $COLORS-base-100);
         }
         .languagesBox {
             @include displayFlex(row wrap, center, center);
@@ -71,6 +71,16 @@
             }
         }
     }
+}
+
+.footer {
+    width: 100%;
+    padding: 0 20px 60px;
+    div {
+        margin-bottom: 10px;
+        gap: 15px;
+    }
+    p {}
 }
 
 .bottomNav {
@@ -96,10 +106,16 @@
             @include displayFlex(row nowrap, center, center);
             @include hoverPointer();
             padding: 10px;
+            .icon {
+                height: 28px;
+                width: 28px;
+                // margin-right: 5px;
+            }
         }
-        .icon {
-            height: 28px;
-            margin-right: 5px;
+        .active {
+            // active tab
+            background-color: $COLORS-base-200;
+            border-radius: 50%;
         }
     }
     .scrollButton {

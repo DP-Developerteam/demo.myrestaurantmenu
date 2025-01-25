@@ -8,7 +8,7 @@
     @include displayFlex(row nowrap, center, center);
     @include hoverPointer();
     width: fit-content;
-    padding: 10px 40px;
+    padding: 0.3rem 1rem;
     background-color: $background;
     @font-face {
         font-family: 'PT Serif';
@@ -44,4 +44,27 @@
     border-radius: 0.3rem;
     border: solid 0.1rem;
     border-color: $border;
+}
+
+.btn-solid-dark {
+    @include button($COLORS-base-900, $COLORS-base-100);
+}
+.btn-solid-light {
+    @include button($COLORS-base-100, $COLORS-base-900);
+}
+
+.btn-border-dark {
+    @include buttonBorder(transparent, $COLORS-base-900, $COLORS-base-900);
+}
+.btn-border-light {
+    @include buttonBorder(transparent, $COLORS-base-100, $COLORS-base-100);
+}
+
+.btn-full-width {
+    width: 100%;
+    padding: 0.3rem 0;
+}
+
+.btn-subtitel {
+    flex-flow: column nowrap;
 }

@@ -2,16 +2,144 @@
   "nav": {
     "home": "Home",
     "menu": "Menu",
-    "food": "Food",
+    "foods": "Food",
     "drinks": "Drinks",
-    "signIn": "Login",
-    "signUp": "Sign up",
-    "signOut": "Logout"
+    "orders": "Order",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "reservation": "Reservation",
+    "gift": "Give a Gift",
+    "rewards": "Customer Card",
+    "personal": "Personal Area",
+    "contact": "Contact us!"
   },
-  "home": {
+  "footer": {
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie policy",
+    "copyright": "Created by Diego Pérez, 2025"
+  },
+  "restaurant": {
+    "info": {
+      "name": "Restaurant Name",
+      "description": "Paragraph/slogan to describe the restaurant.",
+      "timeTable": {
+        "mon": "Closed",
+        "tue": "12:00 - 22:00",
+        "wed": "12:00 - 22:00",
+        "thu": "12:00 - 22:00",
+        "fri": "12:00 - 01:30",
+        "sat": "12:00 - 01:30",
+        "sun": "12:00 - 22:00"
+      }
+    }
+  },
+  "section": {
+    "carousel": {
+      "content": "Take a sneak peek at our cozy restaurant, where great food meets a welcoming atmosphere. Enjoy a blend of art, design, and tasty dishes made with love and care, all served in a relaxed, friendly setting."
+    },
+    "review": {
+      "content": "We love hearing from our guests! If you had a great time, we’d love for you to share your thoughts with a quick review on Google.<br/>Your feedback helps us keep improving and keeps our team motivated to deliver the best experience possible.",
+      "button": "Share your thoughts now"
+    },
+    "deals": {
+      "title": "What you can't miss:",
+      "offerHappyHour": {
+        "title": "Happy Hour!",
+        "content-1": "Every Friday",
+        "content-2": "From 17:00 to 19:00"
+      },
+      "eventNewYear": {
+        "title": "New Year's Party",
+        "content-1": "We are planning a stunning dinner + party to say goodbye to this amazing year.",
+        "content-2": "If you want to share joy with us on such a special night, we highly recommend you contact us to book your spot.",
+        "button": "Get more info"
+      }
+    },
+    "newsletter": {
+      "title": "Fancy learning to cook something delicious?",
+      "content-1": "Then come join us for our hands-on workshop! We meet every first Tuesday of the month, and we’d love to have you there.",
+      "content-2": "Subscribe to our Newsletter to be on our priority list for events.",
+      "content-3": "On top of that, you could receive recipes, special offers, and of course, you’ll be the first to hear about news and events.",
+      "button": "Subscribe"
+    },
+    "aboutUs": {
+      "title": "Get to know us a little better",
+      "content-1": "Founded in [Year], [Restaurant Name] is dedicated to serving delicious, homemade dishes in a friendly and welcoming environment. Whether you’re here for a casual meal or a special occasion, our team is committed to making every dining experience memorable.",
+      "content-2": "Over the years, we’ve been honored to receive multiple awards, recognizing our commitment to quality, service, and culinary excellence. We’re proud of the accolades we’ve earned, and we continue to strive for excellence in every dish we serve.",
+      "content-3": "Stay connected with us and get a taste of what’s happening at [Restaurant Name] by following us on social media. We love sharing our latest creations, special events, and more!"
+    }
+  },
+  "product": {
     "intro": {
-      "title": "Title in homepage",
-      "paragraph": "Paragraph in homepage"
+      "title": "Restaurant Name",
+      "paragraph": "Paragraph on the food page",
+      "button": "Contact"
+    },
+    "nav": {
+      "breakfast": {
+        "title": "Breakfast",
+        "description": "Thu - Sat from 06:00 to 11:00"
+      },
+      "brunch": {
+        "title": "Sunday Brunch",
+        "description": "Sundays from 10:00 to 15:00"
+      },
+      "snack": {
+        "title": "Lil'Snacks",
+        "description": "Thu - Sun from 11:00 to 18:30"
+      },
+      "lunch": {
+        "title": "Lunch",
+        "description": "Thu - Sun from 18:30 to 22:00"
+      },
+      "dinner": {
+        "title": "Dinner",
+        "description": "Thu - Sun from 18:30 to 22:00"
+      },
+      "cold": {
+        "title": "Cold Drinks",
+        "description": "No description"
+      },
+      "hot": {
+        "title": "Coffees and Teas",
+        "description": "No description"
+      },
+      "fresh": {
+        "title": "Natural Juices and Smoothies",
+        "description": "No description"
+      },
+      "alcohol": {
+        "title": "Wines and Beers",
+        "description": "No description"
+      },
+      "cocktail": {
+        "title": "Cocktails",
+        "description": "No description"
+      }
+    },
+    "crossSelling": {
+      "food": {
+        "title": "Do you feel like something to eat?",
+        "button": "Go to food"
+      },
+      "drink": {
+        "title": "Do you feel like something to drink?",
+        "button": "Go to drinks"
+      }
+    }
+  },
+  "foods": {
+    "intro": {
+      "title": "Title on the menu page",
+      "paragraph": "Paragraph on the menu page"
+    }
+  },
+  "drinks": {
+    "intro": {
+      "title": "Title on the drinks page",
+      "paragraph": "Paragraph on the drinks page"
     }
   }
 }

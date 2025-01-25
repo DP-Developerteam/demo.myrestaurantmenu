@@ -2,6 +2,7 @@
 // import '../../../App.scss'; -> it's imported in products.scss
 import '../products.scss';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 // Import redux and slices
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductsThunk } from '../productSlice';
@@ -19,6 +20,10 @@ import iconArrowUp from '../../../assets/img/icon-arrow-up.svg';
 import iconArrowDown from '../../../assets/img/icon-arrow-down.svg';
 
 function Products() {
+    // const for translations
+    const { i18n } = useTranslation();
+    // get language code
+    let lang = i18n.language.split('-')[0];
     // REDUX
     const dispatch = useDispatch();
     // const { products: reduxProducts, errorMessage } = useSelector((state) => state.product);
@@ -134,23 +139,29 @@ function Products() {
                                 <FilterProductBar setProductsFilterList={setProductsFilterList} productsList={productsList} />
                             </div>
                             <ul className='items-container'>
-                                {productsFilterList.map((product) => (
-                                    <li key={`product-${product._id}`} className='item'>
-                                        <div className='text-container'>
-                                            <p className='paragraph bold'>{product.name}</p>
-                                            <p className='paragraph description'>{product.description}</p>
-                                            <p className='paragraph description'>{product.price} €</p>
-                                        </div>
-                                        <div className='buttons-container'>
-                                            <button className='icon' onClick={() => selectProductDelete(product)}>
-                                                <img className='icon' src={iconDelete} alt='delete icon' width='20px' height='20px' />
-                                            </button>
-                                            <button className='icon' onClick={() => selectProductEdit(product)}>
-                                                <img className='icon' src={iconEdit} alt='edit icon' width='20px' height='20px' />
-                                            </button>
-                                        </div>
-                                    </li>
-                                ))}
+                                {productsFilterList.map((product) => {
+                                    // Handle localized or non-localized name and description
+                                    const name = typeof product.name === 'string' ? product.name : product.name[lang] || product.name.en;
+                                    const description = typeof product.description === 'string' ? product.description : product.description[lang] || product.description.en;
+
+                                    return (
+                                        <li key={`product-${product._id}`} className='item'>
+                                            <div className='text-container'>
+                                                <p className='paragraph bold'>{name}</p>
+                                                <p className='paragraph description'>{description}</p>
+                                                <p className='paragraph description'>{product.price} €</p>
+                                            </div>
+                                            <div className='buttons-container'>
+                                                <button className='icon' onClick={() => selectProductDelete(product)}>
+                                                    <img className='icon' src={iconDelete} alt='delete icon' width='20px' height='20px' />
+                                                </button>
+                                                <button className='icon' onClick={() => selectProductEdit(product)}>
+                                                    <img className='icon' src={iconEdit} alt='edit icon' width='20px' height='20px' />
+                                                </button>
+                                            </div>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </>
                     )}

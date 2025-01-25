@@ -9,16 +9,19 @@
 }
 
 .product-nav {
-    .btn-back {
-        @include buttonBorder(transparent, $COLORS-base-900, $COLORS-base-900);
-        position: absolute;
-        top: 60px;
-        left: 10px;
-        padding: 0.1rem 0.5rem;
-    }
-    .section-extra-nav {
-        .btn-border {
-            flex-flow: column nowrap;
+    .nav-products-view{
+        justify-content: space-between;
+        position: fixed;
+        top: 55px;
+        z-index: 50;
+        width: 100%;
+        padding: 5px 20px;
+        background: $COLORS-base-100;
+        .btn-border-dark {
+            padding: 0.1rem 0.5rem;
+        }
+        .view-icons {
+            gap: 5px;
         }
     }
 }

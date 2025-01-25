@@ -11,19 +11,64 @@
     "reservation": "Reservar",
     "gift": "Haz un regalo",
     "rewards": "Tarjeta cliente",
-    "personal": "Área personal"
+    "personal": "Área personal",
+    "contact": "Contáctanos"
   },
-  "home": {
-    "intro": {
-      "title": "Nombre del restaurante",
-      "paragraph": "Párrafo en la página de inicio",
-      "button": "Contacto"
+  "footer": {
+    "legal": "Aviso legal",
+    "privacy": "Política de privacidad",
+    "cookies": "Política de cookies",
+    "copyright": "Creado por Diego Pérez, 2025"
+  },
+  "restaurant": {
+    "info": {
+      "name": "Nombre del restaurante",
+      "description": "Párrafo/slogan para describir el restaurante.",
+      "timeTable": {
+        "mon": "Cerrado",
+        "tue": "12:00 - 22:00",
+        "wed": "12:00 - 22:00",
+        "thu": "12:00 - 22:00",
+        "fri": "12:00 - 01:30",
+        "sat": "12:00 - 01:30",
+        "sun": "12:00 - 22:00"
+      }
     }
   },
-  "menu": {
-    "intro": {
-      "title": "Título en la página de la carta",
-      "paragraph": "Párrafo en la página de a carta"
+  "section": {
+    "carousel": {
+      "content": "Echa un vistazo a nuestro acogedor restaurante, donde la buena comida se encuentra con un ambiente acogedor. Disfruta de una mezcla de arte, diseño y platos deliciosos hechos con amor y cuidado, todo servido en un entorno relajado y amigable."
+    },
+    "review": {
+      "content": "Nos encanta escuchar a nuestros invitados. Si disfrutaste tu experiencia, nos encantaría que compartieras tus pensamientos con una reseña rápida en Google.<br/>Tu feedback nos ayuda a seguir mejorando y mantiene a nuestro equipo motivado para ofrecer la mejor experiencia posible.",
+      "button": "Comparte tus pensamientos ahora"
+    },
+    "deals": {
+      "title": "Lo que no te puedes perder:",
+      "offerHappyHour": {
+        "title": "¡Happy Hour!",
+        "content-1": "Todos los viernes",
+        "content-2": "De 17:00 a 19:00"
+      },
+      "eventNewYear": {
+        "title": "Fiesta de fin de año",
+        "content-1": "Estamos planeando una cena y fiesta espectacular para despedir este año increíble.",
+        "content-2": "Si quieres compartir la alegría con nosotros en una noche tan especial, te recomendamos que nos contactes para reservar tu lugar.",
+        "button": "Obtén más información"
+      }
+    },
+    "newsletter": {
+      "title": "¿Te gustaría aprender a cocinar algo delicioso?",
+      "content-1": "¡Entonces únete a nuestro taller práctico! Nos reunimos cada primer martes del mes, y nos encantaría que estés allí.",
+      "content-2": "Suscríbete a nuestro boletín para estar en nuestra lista prioritaria para eventos.",
+      "content-3": "Además, podrás recibir recetas, ofertas especiales y, por supuesto, serás el primero en enterarte de noticias y eventos.",
+      "button": "Suscribirse"
+    },
+    "aboutUs": {
+      "title": "Conoce un poco más sobre nosotros",
+      "content-1": "Fundado en [Año], [Nombre del Restaurante] está dedicado a servir platos deliciosos y caseros en un ambiente amigable y acogedor. Ya sea que estés aquí para una comida casual o una ocasión especial, nuestro equipo se compromete a hacer que cada experiencia culinaria sea memorable.",
+      "content-2": "A lo largo de los años, hemos tenido el honor de recibir múltiples premios, reconociendo nuestro compromiso con la calidad, el servicio y la excelencia culinaria. Estamos orgullosos de los galardones que hemos obtenido y seguimos esforzándonos por la excelencia en cada plato que servimos.",
+      "content-3": "Mantente conectado con nosotros y obtén una muestra de lo que está sucediendo en [Nombre del Restaurante] siguiéndonos en redes sociales. ¡Nos encanta compartir nuestras últimas creaciones, eventos especiales y más!"
     }
   },
   "product": {
@@ -55,34 +100,46 @@
       },
       "cold": {
         "title": "Bebidas frías",
-        "description": "Jue - Sab de 06:00 a 11:00"
+        "description": "No hay descripción"
       },
       "hot": {
         "title": "Cafés y tés",
-        "description": "Domingos de 10:00 a 15:00"
+        "description": "No hay descripción"
       },
       "fresh": {
         "title": "Zumos naturales y batidos",
-        "description": "Jue - Dom de 11:00 a 18:30"
+        "description": "No hay descripción"
       },
       "alcohol": {
         "title": "Vinos y Cervezas",
-        "description": "Jue - Dom de 18:30 a 22:00"
+        "description": "No hay descripción"
       },
       "cocktail": {
         "title": "Cóckteles",
-        "description": "Jue - Dom de 18:30 a 22:00"
+        "description": "No hay descripción"
       }
+    },
+    "crossSelling": {
+      "food": {
+        "title": "¿Te apetece algo de comer?",
+        "button": "Ir a comidas"
+      },
+      "drink": {
+        "title": "¿Te apetece algo de beber?",
+        "button": "Ir a bebidas"
+      }
+    }
+  },
+  "foods": {
+    "intro": {
+      "title": "Título en la página de la carta",
+      "paragraph": "Párrafo en la página de a carta"
     }
   },
   "drinks": {
     "intro": {
       "title": "Título en la página de la bebidas",
       "paragraph": "Párrafo en la página de a bebidas"
-    },
-    "hotDrink": "Bebidas calientes",
-    "coldDrink": "Bebidas frías",
-    "alcoholicDrink": "Bebidas alcohólicas",
-    "nonAlcoholicDrink": "Bebidas sin alcohol"
+    }
   }
 }
