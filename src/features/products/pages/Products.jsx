@@ -1,5 +1,4 @@
 // Import styles and libraries
-// import '../../../App.scss'; -> it's imported in products.scss
 import '../products.scss';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -21,12 +20,12 @@ import iconArrowDown from '../../../assets/img/icon-arrow-down.svg';
 
 function Products() {
     // const for translations
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     // get language code
     let lang = i18n.language.split('-')[0];
     // REDUX
     const dispatch = useDispatch();
-    // const { products: reduxProducts, errorMessage } = useSelector((state) => state.product);
+    const { products: reduxProducts, errorMessage } = useSelector((state) => state.product);
     const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
     // const { token } = useSelector((state) => state.user);
     // State to show/hidde products
@@ -109,60 +108,61 @@ function Products() {
         setSelectedProduct(null);
     };
 
-    // Handle return based in status fetched data
-    if (isLoading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    // Display error message if fetching failed
+    if (errorMessage) return <div>{errorMessage}</div>;
 
     return (
         <div className='products-page crud-page'>
             <header className='header-container'>
                 <div className='title-container'>
-                    <h1 className='title'>Products</h1>
+                    <h1 className='title'>{t('crud.title.product')}</h1>
                     {showProducts === false ?
                         ( <img className='icon' onClick={(toggleProducts)} src={iconArrowDown} alt='delete icon' width='20px' height='20px'/> )
                         : ( <img className='icon' onClick={(toggleProducts)} src={iconArrowUp} alt='delete icon' width='20px' height='20px'/> )
                     }
                 </div>
                 <button className="button" onClick={() => createProduct()}>
-                    Create product <img className='icon' src={iconAdd} alt='delete icon' width='20px' height='20px'/>
+                    {t('crud.buttonCreate.product')} <img className='icon' src={iconAdd} alt='delete icon' width='20px' height='20px'/>
                 </button>
             </header>
-            {productsFilterList.length === 0 ? (
-                <p>No products found.</p>
+            {!reduxProducts || !reduxProducts ? (
+                <div>Loading data...</div>
             ) : (
                 <>
-                    {showProducts === false ? (
-                        <></>
+                    {productsFilterList.length === 0 ? (
+                        <p>No products found.</p>
                     ) : (
                         <>
-                            <div className='filter-bar-container'>
-                                <FilterProductBar setProductsFilterList={setProductsFilterList} productsList={productsList} />
-                            </div>
-                            <ul className='items-container'>
-                                {productsFilterList.map((product) => {
-                                    // Handle localized or non-localized name and description
-                                    const name = typeof product.name === 'string' ? product.name : product.name[lang] || product.name.en;
-                                    const description = typeof product.description === 'string' ? product.description : product.description[lang] || product.description.en;
-
-                                    return (
-                                        <li key={`product-${product._id}`} className='item'>
-                                            <div className='text-container'>
-                                                <p className='paragraph bold'>{name}</p>
-                                                <p className='paragraph description'>{description}</p>
-                                                <p className='paragraph description'>{product.price} €</p>
-                                            </div>
-                                            <div className='buttons-container'>
-                                                <button className='icon' onClick={() => selectProductDelete(product)}>
-                                                    <img className='icon' src={iconDelete} alt='delete icon' width='20px' height='20px' />
-                                                </button>
-                                                <button className='icon' onClick={() => selectProductEdit(product)}>
-                                                    <img className='icon' src={iconEdit} alt='edit icon' width='20px' height='20px' />
-                                                </button>
-                                            </div>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            {showProducts === false ? (
+                                <></>
+                            ) : (
+                                <>
+                                    <div className='filter-bar-container'>
+                                        <FilterProductBar setProductsFilterList={setProductsFilterList} productsList={productsList} />
+                                    </div>
+                                    <ul className='items-container'>
+                                        {productsFilterList.map((product) => {
+                                            return (
+                                                <li key={`product-${product._id}`} className='item'>
+                                                    <div className='text-container'>
+                                                        <p className='paragraph description'>{product.name[lang]}</p>
+                                                        <p className='paragraph description'>{product.description[lang]}</p>
+                                                        <p className='paragraph description'>{product.price} €</p>
+                                                    </div>
+                                                    <div className='buttons-container'>
+                                                        <button className='icon' onClick={() => selectProductDelete(product)}>
+                                                            <img className='icon' src={iconDelete} alt='delete icon' width='20px' height='20px' />
+                                                        </button>
+                                                        <button className='icon' onClick={() => selectProductEdit(product)}>
+                                                            <img className='icon' src={iconEdit} alt='edit icon' width='20px' height='20px' />
+                                                        </button>
+                                                    </div>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </>
+                            )}
                         </>
                     )}
                 </>

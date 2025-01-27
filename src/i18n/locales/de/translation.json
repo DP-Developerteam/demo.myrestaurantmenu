@@ -74,7 +74,7 @@
   "product": {
     "intro": {
       "title": "Restaurantname",
-      "paragraph": "Absatz auf der Essensseite",
+      "paragraph": "Absatz auf der Speisekarte",
       "button": "Kontakt"
     },
     "nav": {
@@ -87,7 +87,7 @@
         "description": "Sonntags von 10:00 bis 15:00"
       },
       "snack": {
-        "title": "Kleine Snacks",
+        "title": "Lil'Snacks",
         "description": "Do - So von 11:00 bis 18:30"
       },
       "lunch": {
@@ -100,23 +100,23 @@
       },
       "cold": {
         "title": "Kalte Getränke",
-        "description": "Keine Beschreibung"
+        "description": "Beschreibung Kalte Getränke"
       },
       "hot": {
         "title": "Kaffees und Tees",
-        "description": "Keine Beschreibung"
+        "description": "Beschreibung Kaffees und Tees"
       },
       "fresh": {
-        "title": "Natursäfte und Smoothies",
-        "description": "Keine Beschreibung"
+        "title": "Natürliche Säfte und Smoothies",
+        "description": "Beschreibung Natürliche Säfte und Smoothies"
       },
       "alcohol": {
         "title": "Weine und Biere",
-        "description": "Keine Beschreibung"
+        "description": "Beschreibung Weine und Biere"
       },
       "cocktail": {
         "title": "Cocktails",
-        "description": "Keine Beschreibung"
+        "description": "Beschreibung Cocktails"
       }
     },
     "crossSelling": {
@@ -127,6 +127,111 @@
       "drink": {
         "title": "Hast du Lust auf etwas zu trinken?",
         "button": "Zu den Getränken gehen"
+      }
+    }
+  },
+  "crud": {
+    "title": {
+      "user": "Benutzer",
+      "product": "Produkte"
+    },
+    "buttonCreate": {
+      "user": "Benutzer registrieren",
+      "product": "Produkt erstellen"
+    },
+    "filter": {
+      "bar": "Zum Suchen tippen...",
+      "all": "Alle anzeigen",
+      "role": {
+        "employee": "Mitarbeiter",
+        "client": "Kunde"
+      }
+    },
+    "form": {
+      "button": {
+        "create": "Erstellen",
+        "delete": "Löschen",
+        "update": "Bearbeiten",
+        "cancel": "Abbrechen",
+        "login": "Anmelden"
+      },
+      "user": {
+        "title": {
+          "create": "Benutzer registrieren",
+          "delete": "Benutzer löschen",
+          "update": "Benutzer bearbeiten",
+          "login": "Anmelden"
+        },
+        "question": {
+          "delete": "Möchten Sie den folgenden Benutzer wirklich löschen?"
+        },
+        "label": {
+          "id": "Benutzer-ID:",
+          "name": "Benutzername",
+          "username": "Kontoname",
+          "password": "Passwort",
+          "role": "Benutzerrolle"
+        },
+        "placeholder": {
+          "id": "Benutzer-ID:",
+          "name": "Geben Sie den Benutzernamen ein",
+          "username": "Geben Sie den Kontonamen ein",
+          "password": "Hier können Sie das Passwort ändern",
+          "loginPassword": "Geben Sie das Passwort ein",
+          "role": "Benutzerrolle"
+        }
+      },
+      "product": {
+        "title": {
+          "create": "Produkt erstellen",
+          "delete": "Produkt löschen",
+          "update": "Produkt bearbeiten"
+        },
+        "question": {
+          "delete": "Möchten Sie das folgende Produkt wirklich löschen?"
+        },
+        "label": {
+          "id": "Produkt-ID:",
+          "name": {
+            "en": "Name auf Englisch:",
+            "es": "Name auf Spanisch:",
+            "de": "Name auf Deutsch:"
+          },
+          "description": {
+            "en": "Beschreibung auf Englisch:",
+            "es": "Beschreibung auf Spanisch:",
+            "de": "Beschreibung auf Deutsch:"
+          },
+          "category": "Kategorie:",
+          "price": "Preis:",
+          "ingredients": "Zutaten:",
+          "vegetarian": "Ist es vegetarisch?",
+          "image": "Bild:",
+          "video": "Video:",
+          "yes": "Ja",
+          "no": "Nein"
+        },
+        "placeholder": {
+          "id": "Produkt-ID:",
+          "name": {
+            "en": "Produktname auf Englisch",
+            "es": "Produktname auf Spanisch",
+            "de": "Produktname auf Deutsch"
+          },
+          "description": {
+            "en": "Produktbeschreibung auf Englisch",
+            "es": "Produktbeschreibung auf Spanisch",
+            "de": "Produktbeschreibung auf Deutsch"
+          },
+          "category": "Produktkategorie",
+          "price": "Produktpreis",
+          "ingredients": "Produktzutaten",
+          "vegetarian": "Ist es vegetarisch?",
+          "image": "Produktbild",
+          "video": "Produktvideo",
+          "yes": "Ja",
+          "no": "Nein"
+        }
       }
     }
   },

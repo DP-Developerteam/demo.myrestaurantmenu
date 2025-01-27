@@ -20,7 +20,7 @@ function Drinks() {
     const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
     // REDUX
     const dispatch = useDispatch();
-    const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
+    const { products, error, lastUpdated } = useSelector((state) => state.product);
 
     // Check internet speed
     const isInternetSlow = () => {
@@ -51,7 +51,7 @@ function Drinks() {
             <ProductsCategory
                 category="cold"
                 titleKey="product.nav.cold.title"
-                // descriptionKey="product.nav.cold.description"
+                descriptionKey="product.nav.cold.description"
                 crossCategory="drinks"
                 productCardView={productCardView}
             />
@@ -60,7 +60,7 @@ function Drinks() {
             <ProductsCategory
                 category="hot"
                 titleKey="product.nav.hot.title"
-                // descriptionKey="product.nav.hot.description"
+                descriptionKey="product.nav.hot.description"
                 crossCategory="drinks"
                 productCardView={productCardView}
             />
@@ -69,7 +69,7 @@ function Drinks() {
             <ProductsCategory
                 category="fresh"
                 titleKey="product.nav.fresh.title"
-                // descriptionKey="product.nav.fresh.description"
+                descriptionKey="product.nav.fresh.description"
                 crossCategory="drinks"
                 productCardView={productCardView}
             />
@@ -78,7 +78,7 @@ function Drinks() {
             <ProductsCategory
                 category="alcohol"
                 titleKey="product.nav.alcohol.title"
-                // descriptionKey="product.nav.alcohol.description"
+                descriptionKey="product.nav.alcohol.description"
                 crossCategory="drinks"
                 productCardView={productCardView}
             />
@@ -87,7 +87,7 @@ function Drinks() {
             <ProductsCategory
                 category="cocktail"
                 titleKey="product.nav.cocktail.title"
-                // descriptionKey="product.nav.cocktail.description"
+                descriptionKey="product.nav.cocktail.description"
                 crossCategory="drinks"
                 productCardView={productCardView}
             />
@@ -100,13 +100,13 @@ function Drinks() {
     };
 
     // Handler to set product card view
-    const handleViewProductCard = (view = null) => {
+    const handleViewProductCard = () => {
+    // const handleViewProductCard = (view = null) => {
         setProductCardView(!productCardView); //this is a temporary solution until I get videos.
         // setProductCardView(view);
     }
 
     // Handle return based in status fetched data
-    // if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
@@ -142,7 +142,7 @@ function Drinks() {
                             >
                                 <p>{t(`product.nav.${category}.title`)}</p>
                                 <span className="fontSans18">
-                                {/* {t(`product.nav.${category}.description`)} */}
+                                    {t(`product.nav.${category}.description`)}
                                 </span>
                             </div>
                         ))}

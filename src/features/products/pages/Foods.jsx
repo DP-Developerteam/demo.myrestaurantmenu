@@ -20,7 +20,7 @@ function Foods() {
     const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
     // REDUX
     const dispatch = useDispatch();
-    const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
+    const { products, error, lastUpdated } = useSelector((state) => state.product);
 
     // Check internet speed
     const isInternetSlow = () => {
@@ -94,7 +94,6 @@ function Foods() {
     const handleViewProductCard = (view = null) => {
         setProductCardView(!productCardView); //this is a temporary solution until I get videos.
         // setProductCardView(view);
-        console.log(productCardView);
     }
 
     // Handle return based in status fetched data

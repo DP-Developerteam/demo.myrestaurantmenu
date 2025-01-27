@@ -100,23 +100,23 @@
       },
       "cold": {
         "title": "Cold Drinks",
-        "description": "No description"
+        "description": "Cold Drinks Description"
       },
       "hot": {
         "title": "Coffees and Teas",
-        "description": "No description"
+        "description": "Coffees and Teas Description"
       },
       "fresh": {
         "title": "Natural Juices and Smoothies",
-        "description": "No description"
+        "description": "Natural Juices and Smoothies Description"
       },
       "alcohol": {
         "title": "Wines and Beers",
-        "description": "No description"
+        "description": "Wines and Beers Description"
       },
       "cocktail": {
         "title": "Cocktails",
-        "description": "No description"
+        "description": "Cocktails Description"
       }
     },
     "crossSelling": {
@@ -127,6 +127,111 @@
       "drink": {
         "title": "Do you feel like something to drink?",
         "button": "Go to drinks"
+      }
+    }
+  },
+  "crud": {
+    "title": {
+      "user": "Users",
+      "product": "Products"
+    },
+    "buttonCreate": {
+      "user": "Register User",
+      "product": "Create Product"
+    },
+    "filter": {
+      "bar": "Type to search...",
+      "all": "Show all",
+      "role": {
+        "employee": "Employee",
+        "client": "Client"
+      }
+    },
+    "form": {
+      "button": {
+        "create": "Create",
+        "delete": "Delete",
+        "update": "Edit",
+        "cancel": "Cancel",
+        "login": "Log in"
+      },
+      "user": {
+        "title": {
+          "create": "Register User",
+          "delete": "Delete User",
+          "update": "Edit User",
+          "login": "Log in"
+        },
+        "question": {
+          "delete": "Are you sure you want to delete the following user?"
+        },
+        "label": {
+          "id": "User ID:",
+          "name": "User Name",
+          "username": "Account Name",
+          "password": "Password",
+          "role": "User Role"
+        },
+        "placeholder": {
+          "id": "User ID:",
+          "name": "Enter user name",
+          "username": "Enter account name",
+          "password": "You can change the password here",
+          "loginPassword": "Enter password",
+          "role": "User Role"
+        }
+      },
+      "product": {
+        "title": {
+          "create": "Create Product",
+          "delete": "Delete Product",
+          "update": "Edit Product"
+        },
+        "question": {
+          "delete": "Are you sure you want to delete the following product?"
+        },
+        "label": {
+          "id": "Product ID:",
+          "name": {
+            "en": "Name in English:",
+            "es": "Name in Spanish:",
+            "de": "Name in German:"
+          },
+          "description": {
+            "en": "Description in English:",
+            "es": "Description in Spanish:",
+            "de": "Description in German:"
+          },
+          "category": "Category:",
+          "price": "Price:",
+          "ingredients": "Ingredients:",
+          "vegetarian": "Is it vegetarian?",
+          "image": "Image:",
+          "video": "Video:",
+          "yes": "Yes",
+          "no": "No"
+        },
+        "placeholder": {
+          "id": "Product ID:",
+          "name": {
+            "en": "Product name in English",
+            "es": "Product name in Spanish",
+            "de": "Product name in German"
+          },
+          "description": {
+            "en": "Product description in English",
+            "es": "Product description in Spanish",
+            "de": "Product description in German"
+          },
+          "category": "Product category",
+          "price": "Product price",
+          "ingredients": "Product ingredients",
+          "vegetarian": "Is it vegetarian?",
+          "image": "Product image",
+          "video": "Product video",
+          "yes": "Yes",
+          "no": "No"
+        }
       }
     }
   },

@@ -2,12 +2,16 @@
 import '../../../App.scss';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 // Import service
 import { editUser } from '../userService';
 // Import assets
 import iconClose from '../../../assets/img/icon-close.svg';
 
 const EditUserForm = ({ user, onCloseModals, onSave }) => {
+    // Obtener el idioma actual
+    const { t } = useTranslation();
+
     // Get token to authorize update
     const { token } = useSelector((state) => state.user);
     // State for loading and error handling
@@ -96,7 +100,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
         <div className="modal-overlay">
                 <form className="form-container" onSubmit={handleSubmit}>
                     <header className="form-header">
-                        <h2>Edit User</h2>
+                        <h2>{t('crud.form.user.title.update')}</h2>
                         <button className="button" type="button" onClick={onCloseModals}>
                             <img className='icon' src={iconClose} alt='delete icon' width='20px' height='20px'/>
                         </button>
@@ -104,7 +108,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                     <div className='form-body'>
                         <div className='form-group'>
                             <div className='form-field'>
-                                <label>Name:</label>
+                                <label>{t('crud.form.user.label.name')}</label>
                                 <input
                                     type="text"
                                     name="name"
@@ -113,7 +117,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                                 />
                             </div>
                             <div className='form-field'>
-                                <label>User name:</label>
+                                <label>{t('crud.form.user.label.username')}</label>
                                 <input
                                     type="text"
                                     name="username"
@@ -122,23 +126,24 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                                 />
                             </div>
                             <div className='form-field'>
-                                <label>Password:</label>
+                                <label>{t('crud.form.user.label.password')}</label>
                                 <input
                                     type="password"
                                     name="password"
+                                    placeholder={t('crud.form.user.placeholder.password')}
                                     value={formData.password}
                                     onChange={handleChange}
                                 />
                             </div>
                             <div className='form-field'>
-                                <label>Role:</label>
+                                <label>{t('crud.form.user.label.role')}</label>
                                 <select
                                     name="role"
                                     value={formData.role}
                                     onChange={handleChange}
                                 >
-                                    <option value="client">Client</option>
-                                    <option value="employee">Employee</option>
+                                    <option value="employee">{t('crud.filter.role.employee')}</option>
+                                    <option value="client">{t('crud.filter.role.client')}</option>
                                 </select>
                             </div>
                         </div>
@@ -146,7 +151,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                     <footer className='form-footer'>
                         {successMessage && <p className="error-message">{successMessage}</p>}
                         {errorMessage && <p className="error-message">{errorMessage}</p>}
-                        <button className="button" type="submit">Update User</button>
+                        <button className="button" type="submit">{t('crud.form.button.update')}</button>
                     </footer>
                 </form>
         </div>

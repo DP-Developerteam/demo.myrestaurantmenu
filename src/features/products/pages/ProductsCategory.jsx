@@ -158,11 +158,6 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
             </div>
             <div className="cross-selling-container">
                 <div className='section section-icon-text'>
-                    {/* {crossCategory === 'foods' ?
-                        <h2>¿Algo de beber?</h2>
-                        :
-                        <h2>¿Algo de comer?</h2>
-                    } */}
                     <div className='icon-text-container row-start'>
                         <div className='icon-container row-center'>
                             {crossCategory === 'foods' ?

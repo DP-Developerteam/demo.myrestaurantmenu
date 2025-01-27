@@ -3,6 +3,7 @@ import api from '../api';
 // Add products path for the API
 const API_URL = '/products';
 
+// GET all products
 export const getProducts = async (lastUpdated) => {
     // console.log("PRODUCT SERVICE: call getProducts")
     try {
@@ -20,6 +21,7 @@ export const getProducts = async (lastUpdated) => {
     }
 };
 
+// CREATE product
 export const createProduct = async (productData, userToken) => {
     // console.log("PRODUCT SERVICE: call createProduct")
     try {
@@ -40,6 +42,7 @@ export const createProduct = async (productData, userToken) => {
     }
 };
 
+// UPDATE product
 export const editProduct = async (productData, userToken) => {
     // console.log("PRODUCT SERVICE: call editProduct")
     // Extract productId from the productData object
@@ -61,6 +64,7 @@ export const editProduct = async (productData, userToken) => {
     }
 };
 
+// DELETE product
 export const deleteProduct = async (productId, userToken) => {
     // console.log("PRODUCT SERVICE: call deleteProduct")
     try {

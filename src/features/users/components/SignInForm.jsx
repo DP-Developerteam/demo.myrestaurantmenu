@@ -3,6 +3,7 @@
 import '../users.scss';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // Importt REDUX
 import { useDispatch } from 'react-redux';
 import { clearUser, signInThunk } from '../userSlice';
@@ -12,6 +13,8 @@ import iconClose from '../../../assets/img/icon-close.svg';
 
 
 const SignInForm = ({ onSignInSuccess }) => {
+    // Obtener el idioma actual
+    const { t } = useTranslation();
     // COMMENT TODO
     const [formData, setFormData] = useState({
         username: '',
@@ -66,7 +69,7 @@ const SignInForm = ({ onSignInSuccess }) => {
         <div className='modal-overlay'>
             <form onSubmit={handleSubmit} className='form-container'>
                 <header className='form-header'>
-                    <h2>Signin</h2>
+                    <h2>{t('crud.form.user.title.login')}</h2>
                     <Link className='button' to='/'>
                         <img className='icon' src={iconClose} alt='delete icon' width='20px' height='20px'/>
                     </Link>
@@ -74,20 +77,20 @@ const SignInForm = ({ onSignInSuccess }) => {
                 <div className='form-body'>
                     <div className='form-group'>
                         <div className='form-field'>
-                            <label>User name:</label>
+                            <label>{t('crud.form.user.label.username')}</label>
                             <input
                                 type="text"
                                 name="username"
-                                placeholder="User name"
+                                placeholder={t('crud.form.user.placeholder.username')}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className='form-field'>
-                            <label>Password:</label>
+                            <label>{t('crud.form.user.label.password')}</label>
                             <input
                                 type="password"
                                 name="password"
-                                placeholder="Password"
+                                placeholder={t('crud.form.user.placeholder.loginPassword')}
                                 onChange={handleChange}
                                 required
                             />
@@ -96,7 +99,7 @@ const SignInForm = ({ onSignInSuccess }) => {
                 </div>
                 <footer className='form-footer'>
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
-                    <button className='button' type="submit">Login</button>
+                    <button className="button" type="submit">{t('crud.form.button.login')}</button>
                 </footer>
             </form>
         </div>

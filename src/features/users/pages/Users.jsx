@@ -2,6 +2,7 @@
 // import '../../../App.scss'; -> it's imported in users.scss
 import '../users.scss';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 // Import redux and slices
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersThunk, addUser, updateUser, deleteUser } from '../userSlice';
@@ -19,6 +20,8 @@ import iconArrowUp from '../../../assets/img/icon-arrow-up.svg';
 import iconArrowDown from '../../../assets/img/icon-arrow-down.svg';
 
 const Users = () => {
+    // const for translations
+    const { t } = useTranslation();
     // REDUX
     const dispatch = useDispatch();
     const { users: reduxUsers, token, errorMessage } = useSelector((state) => state.user);
@@ -101,14 +104,14 @@ const Users = () => {
         <div className='users-page crud-page'>
             <header className='header-container'>
                 <div className='title-container'>
-                    <h1 className='title'>Users</h1>
+                    <h1 className='title'>{t('crud.title.user')}</h1>
                     {showUsers === false ?
                         ( <img className='icon' onClick={(toggleUsers)} src={iconArrowDown} alt='delete icon' width='20px' height='20px'/> )
                         : ( <img className='icon' onClick={(toggleUsers)} src={iconArrowUp} alt='delete icon' width='20px' height='20px'/> )
                     }
                 </div>
                 <button className="button" onClick={() => createUser()}>
-                    Create user <img className='icon' src={iconAdd} alt='delete icon' width='20px' height='20px'/>
+                {t('crud.buttonCreate.user')} <img className='icon' src={iconAdd} alt='delete icon' width='20px' height='20px'/>
                 </button>
             </header>
             {!reduxUsers || !reduxUsers ? (

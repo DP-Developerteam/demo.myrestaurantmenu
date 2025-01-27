@@ -100,23 +100,23 @@
       },
       "cold": {
         "title": "Bebidas frías",
-        "description": "No hay descripción"
+        "description": "Descripción Bebidas frías"
       },
       "hot": {
         "title": "Cafés y tés",
-        "description": "No hay descripción"
+        "description": "Descripción Cafés y tés"
       },
       "fresh": {
         "title": "Zumos naturales y batidos",
-        "description": "No hay descripción"
+        "description": "Descripción Zumos naturales y batidos"
       },
       "alcohol": {
         "title": "Vinos y Cervezas",
-        "description": "No hay descripción"
+        "description": "Descripción Vinos y Cervezas"
       },
       "cocktail": {
         "title": "Cóckteles",
-        "description": "No hay descripción"
+        "description": "Descripción Cóckteles"
       }
     },
     "crossSelling": {
@@ -127,6 +127,111 @@
       "drink": {
         "title": "¿Te apetece algo de beber?",
         "button": "Ir a bebidas"
+      }
+    }
+  },
+  "crud": {
+    "title": {
+      "user": "Usuarios",
+      "product": "Productos"
+    },
+    "buttonCreate": {
+      "user": "Registrar usuario",
+      "product": "Crear producto"
+    },
+    "filter": {
+      "bar": "Escribe para buscar...",
+      "all": "Mostrar todo",
+      "role": {
+        "employee": "Empleado",
+        "client": "Cliente"
+      }
+    },
+    "form": {
+      "button": {
+          "create": "Crear",
+          "delete": "Eliminar",
+          "update": "Editar",
+          "cancel": "Cancelar",
+          "login": "Iniciar sesión"
+      },
+      "user": {
+        "title": {
+          "create": "Registrar usuario",
+          "delete": "Eliminar usuario",
+          "update": "Editar usuario",
+          "login": "Iniciar sesión"
+        },
+        "question": {
+          "delete": "¿Estás seguro que quieres eliminar el siguiente usuario?"
+        },
+        "label": {
+          "id": "ID del usuario:",
+          "name": "Nombre del usuario",
+          "username": "Nombre de la cuenta",
+          "password": "Contraseña",
+          "role": "Rol del usuario"
+        },
+        "placeholder": {
+          "id": "ID del usuario:",
+          "name": "Escriba nombre del usuario",
+          "username": "Escriba nombre de la cuenta",
+          "password": "Aquí puedes cambiar la contraseña",
+          "loginPassword": "Escriba contraseña",
+          "role": "Rol del usuario"
+        }
+      },
+      "product": {
+        "title": {
+          "create": "Crear producto",
+          "delete": "Eliminar producto",
+          "update": "Editar producto"
+        },
+        "question": {
+          "delete": "¿Estás seguro que quieres eliminar el siguiente producto?"
+        },
+        "label": {
+          "id": "ID del producto:",
+          "name": {
+            "en": "Nombre en inglés:",
+            "es": "Nombre en español:",
+            "de": "Nombre en alemán:"
+          },
+          "description": {
+            "en": "Desccripción en inglés:",
+            "es": "Desccripción en español:",
+            "de": "Desccripción en alemán:"
+          },
+          "category": "Categoría:",
+          "price": "Precio:",
+          "ingredients": "Ingredientes:",
+          "vegetarian": "¿Es vegetariano?",
+          "image": "Imagen:",
+          "video": "Vídeo:",
+          "yes": "Sí",
+          "no": "No"
+        },
+        "placeholder": {
+          "id": "ID del producto:",
+          "name": {
+            "en": "Nombre del producto en inglés",
+            "es": "Nombre del producto en español",
+            "de": "Nombre del producto en alemán"
+          },
+          "description": {
+            "en": "Desccripción del producto en inglés",
+            "es": "Desccripción del producto en español",
+            "de": "Desccripción del producto en alemán"
+          },
+          "category": "Categoría del producto",
+          "price": "Precio del producto",
+          "ingredients": "Ingredientes del producto",
+          "vegetarian": "¿Es vegetariano?",
+          "image": "Imagen del producto",
+          "video": "Vídeo del producto",
+          "yes": "Sí",
+          "no": "No"
+        }
       }
     }
   },
