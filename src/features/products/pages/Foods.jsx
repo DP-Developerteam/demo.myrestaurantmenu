@@ -11,14 +11,14 @@ import { getProductsThunk } from '../productSlice';
 import ProductsCategory from './ProductsCategory';
 
 function Foods() {
-    // const for translations
+    // Declare t for translations
     const { t } = useTranslation();
     // Single state to manage current view
     const [currentView, setCurrentView] = useState(null);
     // Single state to manage product card view: "default", "image", "video"
     // const [productCardView, setProductCardView] = useState("default");
     const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
-    // REDUX
+    // REDUX Initialize dispatch
     const dispatch = useDispatch();
     const { products, error, lastUpdated } = useSelector((state) => state.product);
 
@@ -132,7 +132,7 @@ function Foods() {
                                 onClick={() => handleViewChange(category)}
                             >
                                 <p>{t(`product.nav.${category}.title`)}</p>
-                                <span className="fontSans18">
+                                <span className="small">
                                 {t(`product.nav.${category}.description`)}
                                 </span>
                             </div>

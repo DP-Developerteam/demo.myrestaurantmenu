@@ -3,9 +3,9 @@ import '../../../App.scss';
 import React, { useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// Import redux and slices
+// Import redux
 import { useSelector } from 'react-redux';
-//Import images/icons
+//Import assets
 import IconNavFood from '../../../assets/img/icon-nav-food.svg';
 import IconNavDrink from '../../../assets/img/icon-nav-drink.svg';
 

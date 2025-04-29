@@ -48,8 +48,8 @@
                     width: 100%
                 }
                 label {
-                    @include fontSans(0.8rem, 400, $COLORS-base-900);
-                    text-align: start;
+                    // @include fontSans(0.8rem, 400, $COLORS-base-900);
+                    // text-align: start;
                 }
                 input[type="text"], input[type="password"], select, .custom-dropdown {
                     @include fontSans(1rem, 400, $COLORS-base-900);
@@ -93,9 +93,17 @@
         }
     }
     .form-footer {
+        @include displayFlex(column wrap, center, center);
+        gap: 10px;
         width: 100%;
-        .error-message {
-            @include fontSans(0.8rem, 300, $COLORS-base-900);
+        margin-bottom: 20px;
+        .error-messages {
+            width: 100%;
+        }
+        .error-messages p {
+            @include displayFlex(row nowrap, flex-start, center);
+            gap: 5px;
+            padding-left: 10px;
         }
         .button {
             @include button($COLORS-base-900, $COLORS-base-100);
@@ -104,6 +112,23 @@
             width: 100%;
             padding: 15px 0;
             margin-top: 10px;
+        }
+        .extra-button {
+            gap: 10px;
+            // margin-top: 30px;
+            .text-link {
+                @include hoverPointer();
+                gap: 10px;
+            }
+            .button-google {
+                @include buttonBorder($COLORS-base-200, $COLORS-base-900, $COLORS-base-400);
+                border-radius: 2rem;
+                padding: 0.7rem 2.5rem;
+            }
+            .button-google:hover {
+                background-color: $COLORS-base-300;
+                border-color: $COLORS-base-500;
+            }
         }
     }
     .button {

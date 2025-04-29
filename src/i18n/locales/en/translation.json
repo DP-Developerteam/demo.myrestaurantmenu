@@ -148,36 +148,40 @@
       }
     },
     "form": {
+      "or" : "Or maybe",
       "button": {
         "create": "Create",
         "delete": "Delete",
         "update": "Edit",
         "cancel": "Cancel",
-        "login": "Log in"
+        "send": "Send",
+        "signinGoogle": "Sign in with Google"
       },
       "user": {
         "title": {
-          "create": "Register User",
+          "create": "Create an account",
           "delete": "Delete User",
           "update": "Edit User",
-          "login": "Log in"
+          "signin": "Sign in"
         },
         "question": {
-          "delete": "Are you sure you want to delete the following user?"
+          "delete": "Are you sure you want to delete the following user?",
+          "signup": "You don't have an account?",
+          "google": "Or sign in with your Google account"
         },
         "label": {
           "id": "User ID:",
           "name": "User Name",
-          "username": "Account Name",
+          "email": "Email",
           "password": "Password",
           "role": "User Role"
         },
         "placeholder": {
           "id": "User ID:",
           "name": "Enter user name",
-          "username": "Enter account name",
+          "email": "Enter email",
           "password": "You can change the password here",
-          "loginPassword": "Enter password",
+          "signinPassword": "Enter password",
           "role": "User Role"
         }
       },

@@ -1,8 +1,8 @@
-// Import Redux
+// Import Redux Toolkit to create a slice of the Redux store
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// Import the getProducts function from productService
+// Import services
 import { getProducts } from './productService';
-// Imports Auth Bearing for Axios
+// Import Auth Bearing for Axios
 import { setAuthToken } from '../api';
 
 // THUNK - getProducts

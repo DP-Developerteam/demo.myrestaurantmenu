@@ -1,21 +1,24 @@
-// Import styles and libraries
+// Import styles and libs
 import '../../../App.scss';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-// Import redux and slices
+// Import redux
 import { useSelector } from 'react-redux';
-// Import functions
+// Import services
 import { createProduct } from '../productService';
 // Import assets
 import iconClose from '../../../assets/img/icon-close.svg';
 
 const CreateProductForm = ({ onCloseModals, onSave }) => {
-    // const for translations
+    // Declare t for translations
     const { t } = useTranslation();
 
     // State for loading and error handling
-    const { token, errorMessage } = useSelector((state) => state.user);
     const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // REDUX States
+    const { token } = useSelector((state) => state.user);
 
     // State formData
     const [formData, setFormData] = useState({
@@ -63,7 +66,16 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                 onSave(createdProduct);
             }
         } catch (error) {
-            console.error('Signup error:', error);
+            // Handle validation errors array
+            if (error.response?.status === 422 && Array.isArray(error.response?.data)) {
+                // Extract messages as an array
+                const message = error.response.data.map(err => err.msg);
+                setErrorMessage(message);
+            } else {
+                // Handle non-array errors
+                const message = error.response?.data?.message || error.message || 'An error occurred during sign up.';
+                setErrorMessage([message]);
+            }
         }
     };
 
@@ -78,9 +90,9 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                 </header>
                 <div className='form-body'>
                     <div className='form-group'>
-                        {/* Campo Name en inglés */}
+                        {/* Field Name in english */}
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.name.en')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.name.en')}</label>
                             <input
                                 type='text'
                                 name='name'
@@ -90,9 +102,9 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                                 required
                             />
                         </div>
-                        {/* Campo Name en español */}
+                        {/* Field Name in spanish */}
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.name.es')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.name.es')}</label>
                             <input
                                 type='text'
                                 name='name'
@@ -102,9 +114,9 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                                 required
                             />
                         </div>
-                        {/* Campo Name en alemán */}
+                        {/* Field Name in german */}
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.name.de')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.name.de')}</label>
                             <input
                                 type='text'
                                 name='name'
@@ -114,9 +126,9 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                                 required
                             />
                         </div>
-                        {/* Campo Description en inglés */}
+                        {/* Field Description in english */}
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.description.en')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.description.en')}</label>
                             <input
                                 type='text'
                                 name='description'
@@ -126,9 +138,9 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                                 required
                             />
                         </div>
-                        {/* Campo Description en español */}
+                        {/* Field Description in spanish */}
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.description.es')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.description.es')}</label>
                             <input
                                 type='text'
                                 name='description'
@@ -138,9 +150,9 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                                 required
                             />
                         </div>
-                        {/* Campo Description en alemán */}
+                        {/* Field Description in german */}
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.description.de')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.description.de')}</label>
                             <input
                                 type='text'
                                 name='description'
@@ -150,9 +162,9 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                                 required
                             />
                         </div>
-                        {/* Resto de los campos */}
+                        {/* Rest of the fields */}
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.category')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.category')}</label>
                             <input
                                 type='text'
                                 name='category'
@@ -163,7 +175,7 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.price')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.price')}</label>
                             <input
                                 type='text'
                                 name='price'
@@ -174,7 +186,7 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.ingredients')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.ingredients')}</label>
                             <input
                                 type='text'
                                 name='ingredients'
@@ -185,7 +197,7 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.vegetarian')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.vegetarian')}</label>
                             <select
                                 name='vegetarian'
                                 value={formData.vegetarian}
@@ -196,7 +208,7 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                             </select>
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.image')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.image')}</label>
                             <input
                                 type='text'
                                 name='image'
@@ -206,7 +218,7 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.video')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.video')}</label>
                             <input
                                 type='text'
                                 name='video'
@@ -219,7 +231,15 @@ const CreateProductForm = ({ onCloseModals, onSave }) => {
                 </div>
                 <footer className='form-footer'>
                     {successMessage && <p className="error-message">{successMessage}</p>}
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    {errorMessage.length > 0 && (
+                        <div className="error-messages">
+                            {errorMessage.map((message, index) => (
+                                <p key={index} className="font-smaller">
+                                    <img className='icon' src={iconClose} alt='delete icon' width='10px' height='10px'/> {message}
+                                </p>
+                            ))}
+                        </div>
+                    )}
                     <button className="button" type="submit">{t('crud.form.button.create')}</button>
                 </footer>
             </form>

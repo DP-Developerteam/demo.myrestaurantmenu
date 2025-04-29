@@ -2,9 +2,9 @@
 import '../../../App.scss';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-// Import redux and slices
+// Import redux
 import { useSelector } from 'react-redux';
-// Import service
+// Import services
 import { editProduct } from '../productService';
 // Import assets
 import iconClose from '../../../assets/img/icon-close.svg';
@@ -136,58 +136,58 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                 </header>
                 <div className='form-body'>
                     <div className='form-group'>
-                    <div className='form-field'>
-                        <label>{t('crud.form.product.label.name.en')}</label>
-                        <input
-                            type='text'
-                            name='name'
-                            value={formData.name.en || ''}
-                            onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value, lang: 'en' } })}
-                            required
-                        />
-                    </div>
-                    <div className='form-field'>
-                        <label>{t('crud.form.product.label.name.es')}</label>
-                        <input
-                            type='text'
-                            name='name'
-                            value={formData.name.es || ''}
-                            onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value, lang: 'es' } })}
-                            required
-                        />
-                    </div>
-                    <div className='form-field'>
-                        <label>{t('crud.form.product.label.name.de')}</label>
-                        <input
-                            type='text'
-                            name='name'
-                            value={formData.name.de || ''}
-                            onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value, lang: 'de' } })}
-                            required
-                        />
-                    </div>
-                    <div className='form-field'>
-                        <label>{t('crud.form.product.label.description.en')}</label>
-                        <input
-                            type='text'
-                            name='description'
-                            value={formData.description.en || ''}
-                            onChange={(e) => handleChange({ target: { name: 'description', value: e.target.value, lang: 'en' } })}
-                            required
-                        />
-                    </div>
-                    <div className='form-field'>
-                        <label>{t('crud.form.product.label.description.es')}</label>
-                        <input
-                            type='text'
-                            name='description'
-                            value={formData.description.es || ''}
-                            onChange={(e) => handleChange({ target: { name: 'description', value: e.target.value, lang: 'es' } })}
-                            required
-                        />
-                    </div>
-                    <div className='form-field'>
-                        <label>{t('crud.form.product.label.description.de')}</label>
+                        <div className='form-field'>
+                            <label className='font-small'>{t('crud.form.product.label.name.en')}</label>
+                            <input
+                                type='text'
+                                name='name'
+                                value={formData.name.en || ''}
+                                onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value, lang: 'en' } })}
+                                required
+                            />
+                        </div>
+                        <div className='form-field'>
+                            <label className='font-small'>{t('crud.form.product.label.name.es')}</label>
+                            <input
+                                type='text'
+                                name='name'
+                                value={formData.name.es || ''}
+                                onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value, lang: 'es' } })}
+                                required
+                            />
+                        </div>
+                        <div className='form-field'>
+                            <label className='font-small'>{t('crud.form.product.label.name.de')}</label>
+                            <input
+                                type='text'
+                                name='name'
+                                value={formData.name.de || ''}
+                                onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value, lang: 'de' } })}
+                                required
+                            />
+                        </div>
+                        <div className='form-field'>
+                            <label className='font-small'>{t('crud.form.product.label.description.en')}</label>
+                            <input
+                                type='text'
+                                name='description'
+                                value={formData.description.en || ''}
+                                onChange={(e) => handleChange({ target: { name: 'description', value: e.target.value, lang: 'en' } })}
+                                required
+                            />
+                        </div>
+                        <div className='form-field'>
+                            <label className='font-small'>{t('crud.form.product.label.description.es')}</label>
+                            <input
+                                type='text'
+                                name='description'
+                                value={formData.description.es || ''}
+                                onChange={(e) => handleChange({ target: { name: 'description', value: e.target.value, lang: 'es' } })}
+                                required
+                            />
+                        </div>
+                        <div className='form-field'>
+                        <label className='font-small'>{t('crud.form.product.label.description.de')}</label>
                         <input
                             type='text'
                             name='description'
@@ -195,9 +195,9 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                             onChange={(e) => handleChange({ target: { name: 'description', value: e.target.value, lang: 'de' } })}
                             required
                         />
-                    </div>
+                        </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.category')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.category')}</label>
                             <input
                                 type='text'
                                 name='category'
@@ -207,7 +207,7 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.price')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.price')}</label>
                             <input
                                 type='text'
                                 name='price'
@@ -217,7 +217,7 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.ingredients')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.ingredients')}</label>
                             <input
                                 type='text'
                                 name='ingredients'
@@ -227,7 +227,7 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.vegetarian')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.vegetarian')}</label>
                             <select
                                 name='vegetarian'
                                 value={formData.vegetarian}
@@ -238,7 +238,7 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                             </select>
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.image')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.image')}</label>
                             <input
                                 type='text'
                                 name='image'
@@ -247,7 +247,7 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.video')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.video')}</label>
                             <input
                                 type='text'
                                 name='video'

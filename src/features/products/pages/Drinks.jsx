@@ -7,20 +7,25 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductsThunk } from '../productSlice';
 
-// Import to render based on categories
+// Import pages renderer
 import ProductsCategory from './ProductsCategory';
 
 function Drinks() {
-    // const for translations
+    // Declare t for translations
     const { t } = useTranslation();
-    // Single state to manage current view
+
+    // REDUX declarations
+    const dispatch = useDispatch();
+
+    // REDUX States
+    const { products, error, lastUpdated } = useSelector((state) => state.product);
+
+    // State to manage current view
     const [currentView, setCurrentView] = useState(null);
-    // Single state to manage product card view: "default", "image", "video"
+
+    // State to manage product card view: "default", "image", "video"
     // const [productCardView, setProductCardView] = useState("default");
     const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
-    // REDUX
-    const dispatch = useDispatch();
-    const { products, error, lastUpdated } = useSelector((state) => state.product);
 
     // Check internet speed
     const isInternetSlow = () => {
@@ -141,7 +146,7 @@ function Drinks() {
                                 onClick={() => handleViewChange(category)}
                             >
                                 <p>{t(`product.nav.${category}.title`)}</p>
-                                <span className="fontSans18">
+                                <span className="small">
                                     {t(`product.nav.${category}.description`)}
                                 </span>
                             </div>

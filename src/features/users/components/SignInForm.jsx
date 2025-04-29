@@ -1,67 +1,70 @@
-// Import styles and libraries
+// Import styles and libs
 // import '../../../App.scss';
 import '../users.scss';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// Importt REDUX
-import { useDispatch } from 'react-redux';
-import { clearUser, signInThunk } from '../userSlice';
+// Import redux and slices
+import { useDispatch, useSelector } from 'react-redux';
+import { tokenSignInThunk } from '../userSlice';
+
 // Import assets
 import iconClose from '../../../assets/img/icon-close.svg';
+import iconGoogle from '../../../assets/img/icon-google.svg';
 
 
 
-const SignInForm = ({ onSignInSuccess }) => {
-    // Obtener el idioma actual
+const SignInForm = () => {
+    // Declare t for translations
     const { t } = useTranslation();
-    // COMMENT TODO
+
+    // State for loading and error handling
+    // const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState([]);
+
+    // REDUX States
+    const { isLoading } = useSelector(state => state.user);
+    // const { isAuthenticated, authMethod, isLoading, user } = useSelector(state => state.user);
+
+    // REDUX declarations
+    const dispatch = useDispatch();
+    // const navigate = useNavigate();
+
+    // State formData
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: '',
     });
-    // COMMENT TODO
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    // State for loading and error handling
-    const [errorMessage, setErrorMessage] = useState('');
 
+    // Set session sign in URL
+    const googleAuthUrl = `${process.env.REACT_APP_API_BASE_URL}/auth/google?redirect_uri=${
+        encodeURIComponent(`${process.env.REACT_APP_FRONT_BASE_URL}/login?google_redirect=true`)
+    }`;
+
+    // Handle changes in form
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    // Handle submit with token
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorMessage('');
-
         try {
-            // Dispatch the loginUser thunk action
-            const action = await dispatch(signInThunk(formData)).unwrap();
-
-            // Variables to manage the SignIn
-            const userToken = action.token;
-            const userRole = action.role;
-            const expiresIn = action.expiresIn;
-
-            if (userToken) {
-                // Show success SignIn notification
-                onSignInSuccess();
-
-                //Conditional to redirect based on role after login
-                navigate(userRole === 'employee' ? '/cms' : '/');
-
-                setTimeout(() => {
-                    // Clear user when token expires
-                    dispatch(clearUser());
-                    // Redirect to homepage
-                    navigate('/');
-                }, expiresIn); // Call this after the expiration time
-
-            }
-
+            // Service call
+            await dispatch(tokenSignInThunk(formData)).unwrap();
         } catch (error) {
-            setErrorMessage(error?.message || 'An error occurred during sign in.');
+            // Handle validation errors array
+            if (error.response?.status === 422 && Array.isArray(error.response?.data)) {
+                // Extract messages as an array
+                const message = error.response.data.map(err => err.msg);
+                setErrorMessage(message);
+            } else {
+                // Handle non-array errors
+                const message = error.response?.data?.message || error.message || 'An error occurred during sign up.';
+                setErrorMessage([message]);
+            }
         }
     };
 
@@ -69,7 +72,7 @@ const SignInForm = ({ onSignInSuccess }) => {
         <div className='modal-overlay'>
             <form onSubmit={handleSubmit} className='form-container'>
                 <header className='form-header'>
-                    <h2>{t('crud.form.user.title.login')}</h2>
+                    <h2>{t('crud.form.user.title.signin')}</h2>
                     <Link className='button' to='/'>
                         <img className='icon' src={iconClose} alt='delete icon' width='20px' height='20px'/>
                     </Link>
@@ -77,20 +80,20 @@ const SignInForm = ({ onSignInSuccess }) => {
                 <div className='form-body'>
                     <div className='form-group'>
                         <div className='form-field'>
-                            <label>{t('crud.form.user.label.username')}</label>
+                            <label className='font-small'>{t('crud.form.user.label.email')}</label>
                             <input
                                 type="text"
-                                name="username"
-                                placeholder={t('crud.form.user.placeholder.username')}
+                                name="email"
+                                placeholder={t('crud.form.user.placeholder.email')}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.user.label.password')}</label>
+                            <label className='font-small'>{t('crud.form.user.label.password')}</label>
                             <input
                                 type="password"
                                 name="password"
-                                placeholder={t('crud.form.user.placeholder.loginPassword')}
+                                placeholder={t('crud.form.user.placeholder.signinPassword')}
                                 onChange={handleChange}
                                 required
                             />
@@ -98,8 +101,33 @@ const SignInForm = ({ onSignInSuccess }) => {
                     </div>
                 </div>
                 <footer className='form-footer'>
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
-                    <button className="button" type="submit">{t('crud.form.button.login')}</button>
+                    {errorMessage.length > 0 && (
+                        <div className="error-messages ">
+                            {errorMessage.map((message, index) => (
+                                <p key={index} className="font-smaller">
+                                    <img className='icon' src={iconClose} alt='delete icon' width='10px' height='10px'/> {message}
+                                </p>
+                            ))}
+                        </div>
+                    )}
+                    <button className="button" type="submit" disabled={isLoading}>
+                        {isLoading ? t('auth.loading') : t('crud.form.button.send')}
+                    </button>
+                    <div className='extra-button column-center'>
+                        <p>{t('crud.form.or')}</p>
+                        <a href={googleAuthUrl} className="text-link button-google row-center" disabled={isLoading}>
+                            <img className='icon' src={iconGoogle} alt='delete icon' width='30px' height='30px'/>
+                            <p>{t('crud.form.button.signinGoogle')}</p>
+                        </a>
+                    </div>
+                    <div className='extra-button row-center'>
+                        <p>{t('crud.form.user.question.signup')}</p>
+                        <Link to="/signup" replace className="text-link" disabled={isLoading}>{t('crud.form.user.title.create')}</Link>
+                        {/* <a href={googleAuthUrl} className="text-link row-center" disabled={isLoading}>
+                            <p>{t('crud.form.user.question.signup')}</p>
+                            <a href={googleAuthUrl} className="text-link" disabled={isLoading}>{t('crud.form.user.title.create')}</a>
+                        </a> */}
+                    </div>
                 </footer>
             </form>
         </div>

@@ -153,14 +153,14 @@
           "delete": "Eliminar",
           "update": "Editar",
           "cancel": "Cancelar",
-          "login": "Iniciar sesión"
+          "signin": "Iniciar sesión"
       },
       "user": {
         "title": {
           "create": "Registrar usuario",
           "delete": "Eliminar usuario",
           "update": "Editar usuario",
-          "login": "Iniciar sesión"
+          "signin": "Iniciar sesión"
         },
         "question": {
           "delete": "¿Estás seguro que quieres eliminar el siguiente usuario?"
@@ -168,16 +168,16 @@
         "label": {
           "id": "ID del usuario:",
           "name": "Nombre del usuario",
-          "username": "Nombre de la cuenta",
+          "email": "Nombre de la cuenta",
           "password": "Contraseña",
           "role": "Rol del usuario"
         },
         "placeholder": {
           "id": "ID del usuario:",
           "name": "Escriba nombre del usuario",
-          "username": "Escriba nombre de la cuenta",
+          "email": "Escriba nombre de la cuenta",
           "password": "Aquí puedes cambiar la contraseña",
-          "loginPassword": "Escriba contraseña",
+          "signinPassword": "Escriba contraseña",
           "role": "Rol del usuario"
         }
       },

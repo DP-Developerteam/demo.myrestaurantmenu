@@ -26,18 +26,18 @@ function Notifications({type, onCloseNotification}) {
         ? "User DELETED successfully"
         : type === 'user-create'
         ? "User CREATED successfully"
-        : type === 'task-edit'
-        ? "Task EDITED successfully"
-        : type === 'task-delete'
-        ? "Task DELETED successfully"
-        : type === 'task-create'
-        ? "Task CREATED successfully"
+        : type === 'product-edit'
+        ? "Product EDITED successfully"
+        : type === 'product-delete'
+        ? "Product DELETED successfully"
+        : type === 'product-create'
+        ? "Product CREATED successfully"
         : "Notification";
 
     return (
         <div className='notifications' role="alert" aria-live="polite">
             <header className='notification-header'>
-                <p className='bold'>Hey!</p>
+                <p className='font-bold'>Hey!</p>
                 <button onClick={onCloseNotification} className="notification-close">
                     <img className='icon' src={iconClose} alt='delete icon' width='20px' height='20px'/>
                 </button>

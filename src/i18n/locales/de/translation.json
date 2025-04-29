@@ -153,14 +153,14 @@
         "delete": "Löschen",
         "update": "Bearbeiten",
         "cancel": "Abbrechen",
-        "login": "Anmelden"
+        "signin": "Anmelden"
       },
       "user": {
         "title": {
           "create": "Benutzer registrieren",
           "delete": "Benutzer löschen",
           "update": "Benutzer bearbeiten",
-          "login": "Anmelden"
+          "signin": "Anmelden"
         },
         "question": {
           "delete": "Möchten Sie den folgenden Benutzer wirklich löschen?"
@@ -168,16 +168,16 @@
         "label": {
           "id": "Benutzer-ID:",
           "name": "Benutzername",
-          "username": "Kontoname",
+          "email": "Kontoname",
           "password": "Passwort",
           "role": "Benutzerrolle"
         },
         "placeholder": {
           "id": "Benutzer-ID:",
           "name": "Geben Sie den Benutzernamen ein",
-          "username": "Geben Sie den Kontonamen ein",
+          "email": "Geben Sie den Kontonamen ein",
           "password": "Hier können Sie das Passwort ändern",
-          "loginPassword": "Geben Sie das Passwort ein",
+          "signinPassword": "Geben Sie das Passwort ein",
           "role": "Benutzerrolle"
         }
       },

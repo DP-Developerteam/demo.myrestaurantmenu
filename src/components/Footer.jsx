@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
-
+    // Declare t for translations
     const { t } = useTranslation();
 
     return (

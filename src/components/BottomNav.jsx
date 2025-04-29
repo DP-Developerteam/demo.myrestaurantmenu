@@ -14,10 +14,11 @@ import IconNavOrder from '../assets/img/icon-nav-order.svg';
 
 
 function BottomNav() {
+    // Declare t for translations
     const { t } = useTranslation();
 
-    // Access user role from Redux
-    const { role, isLoggedIn } = useSelector((state) => state.user);
+    // REDUX States
+    const { role, isAuthenticated } = useSelector((state) => state.user);
 
     const footerRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -72,7 +73,7 @@ function BottomNav() {
                 <NavLink className='tab' to='/order'>
                     <img className='icon' src={IconNavOrder} alt='Order nav icon'/>
                 </NavLink>
-                {isLoggedIn && role === 'employee' && (
+                {isAuthenticated && role === 'employee' && (
                     <NavLink className='tab' to='/cms'>{t('nav.user')}</NavLink>
                 )}
             </footer>

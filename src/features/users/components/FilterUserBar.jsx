@@ -1,18 +1,18 @@
-// Import libs
+// Import styles and libs
+// import '../../../App.scss';
+import '../users.scss';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import assets
 import iconSearch from '../../../assets/img/icon-search.svg';
 
 function FilterUserBar({ setUsersFilterList, usersList }) {
-    // const for translations
+    // Declare t for translations
     const { t } = useTranslation();
-    // State for the search input
-    const [searchTerm, setSearchTerm] = useState('');
-    // 'asc' for ascending, 'desc' for descending
-    const [sortOrder, setSortOrder] = useState('asc');
-    // State for the selected category
-        const [selectedCategory, setSelectedCategory] = useState('');
+    // States for filtering
+    const [searchTerm, setSearchTerm] = useState(''); // State for the search input
+    const [sortOrder, setSortOrder] = useState('asc'); // State for the order filter - 'asc' for ascending, 'desc' for descending
+    const [selectedCategory, setSelectedCategory] = useState(''); // State for the selected category
 
     // Handle search term change
     const handleSearchChange = (e) => {

@@ -23,7 +23,7 @@ function Products() {
     const { t, i18n } = useTranslation();
     // get language code
     let lang = i18n.language.split('-')[0];
-    // REDUX
+    // REDUX Initialize dispatch
     const dispatch = useDispatch();
     const { products: reduxProducts, errorMessage } = useSelector((state) => state.product);
     const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
@@ -115,7 +115,7 @@ function Products() {
         <div className='products-page crud-page'>
             <header className='header-container'>
                 <div className='title-container'>
-                    <h1 className='title'>{t('crud.title.product')}</h1>
+                    <h1 className='font-larger'>{t('crud.title.product')}</h1>
                     {showProducts === false ?
                         ( <img className='icon' onClick={(toggleProducts)} src={iconArrowDown} alt='delete icon' width='20px' height='20px'/> )
                         : ( <img className='icon' onClick={(toggleProducts)} src={iconArrowUp} alt='delete icon' width='20px' height='20px'/> )
@@ -145,9 +145,9 @@ function Products() {
                                             return (
                                                 <li key={`product-${product._id}`} className='item'>
                                                     <div className='text-container'>
-                                                        <p className='paragraph description'>{product.name[lang]}</p>
-                                                        <p className='paragraph description'>{product.description[lang]}</p>
-                                                        <p className='paragraph description'>{product.price} €</p>
+                                                        <p className='description'>{product.name[lang]}</p>
+                                                        <p className='description'>{product.description[lang]}</p>
+                                                        <p className='description'>{product.price} €</p>
                                                     </div>
                                                     <div className='buttons-container'>
                                                         <button className='icon' onClick={() => selectProductDelete(product)}>

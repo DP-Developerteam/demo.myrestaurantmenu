@@ -12,7 +12,7 @@ import rootReducer from './reducers';
 import { thunk } from 'redux-thunk';
 
 // Create a filter to exclude the 'users' field from persistence in the user reducer
-const userFilter = createFilter('user', ['token', 'userId', 'role', 'isLoggedIn', 'expiresIn']);
+const userFilter = createFilter('user', ['token', 'userId', 'role', 'isAuthenticated', 'authMethod', 'expiresIn']);
 
 // Configuration object for redux-persist
 const persistConfig = {

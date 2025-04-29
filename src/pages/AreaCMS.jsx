@@ -1,3 +1,4 @@
+// Import styles and libs
 import React, { useState } from 'react';
 
 // Import data from REDUX
@@ -14,9 +15,12 @@ import { Navigate } from 'react-router-dom';
 
 function AreaCMS() {
 
+    // REDUX States.
+    const { isAuthenticated } = useSelector(state => state.user);
+
     // Access user state from Redux to check if logged in
     const user = useSelector((state) => state.user);
-    const isLoggedIn = !!user.token;
+    // const isLoggedIn = !!user.token;
     const userRole = user.role;
     // States for notifications
     const [notificationModal, setNotificationModal] = useState(false);
@@ -33,7 +37,7 @@ function AreaCMS() {
     }
 
     // If user is not logged in, show sign-in modal
-    if (!isLoggedIn) {
+    if (!isAuthenticated) {
         return (
             <SignInForm
                 onSignInSuccess={() => {
@@ -43,7 +47,7 @@ function AreaCMS() {
         );
     }
     // Redirect unauthorized users
-    if (isLoggedIn && userRole !== 'employee') {
+    if (isAuthenticated && userRole !== 'employee') {
         return <Navigate to="/" replace />;
     }
 

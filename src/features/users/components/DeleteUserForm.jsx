@@ -1,22 +1,26 @@
-import '../../../App.scss';
+// Import styles and libs
+// import '../../../App.scss';
+import '../users.scss';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-//Import functions
-import { deleteUser } from '../userService';
-// Access user token from Redux
+// Import REDUX
 import { useSelector } from 'react-redux';
+//Import services
+import { deleteUser } from '../userService';
 // Import assets
 import iconClose from '../../../assets/img/icon-close.svg';
 
 
 function DeleteUserForm({ user, onCloseModals, onSave }) {
-    // Obtener el idioma actual
+    // Declare t for translations
     const { t } = useTranslation();
 
     // State for loading and error handling
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { token } = useSelector((state) => state.user);;
+
+    // REDUX States
+    const { token } = useSelector((state) => state.user);
 
     // Handle submit
     const handleSubmit = async (e) => {
@@ -24,7 +28,7 @@ function DeleteUserForm({ user, onCloseModals, onSave }) {
         setErrorMessage('');
 
         try {
-            // Directly calling deleteUser
+            // Service call
             const response = await deleteUser(user._id, token);
             // Check response
             if (response && response.message) {
@@ -33,8 +37,16 @@ function DeleteUserForm({ user, onCloseModals, onSave }) {
                 onSave(deletedUser);
             }
         } catch (error) {
-            const message = error.response?.data?.message || 'An error occurred during sign up.';
-            setErrorMessage(message);
+            // Handle validation errors array
+            if (error.response?.status === 422 && Array.isArray(error.response?.data)) {
+                // Extract messages as an array
+                const message = error.response.data.map(err => err.msg);
+                setErrorMessage(message);
+            } else {
+                // Handle non-array errors
+                const message = error.response?.data?.message || error.message || 'An error occurred during sign up.';
+                setErrorMessage([message]);
+            }
         }
     };
 
@@ -53,22 +65,30 @@ function DeleteUserForm({ user, onCloseModals, onSave }) {
                             <p>{t('crud.form.user.question.delete')}</p>
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.user.label.id')}</label>
+                            <label className='font-small'>{t('crud.form.user.label.id')}</label>
                             <input type="text" value={user._id} readOnly={true} />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.user.label.name')}</label>
+                            <label className='font-small'>{t('crud.form.user.label.name')}</label>
                             <input type="text" value={user.name} readOnly={true} />
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.user.label.role')}</label>
+                            <label className='font-small'>{t('crud.form.user.label.role')}</label>
                             {user.role === 'employee' ? <input type="text" value={t('crud.filter.role.employee')} readOnly={true} /> : <input type="text" value={t('crud.filter.role.client')} readOnly={true} />}
                         </div>
                     </div>
                 </div>
                 <footer className='form-footer'>
                     {successMessage && <p className="error-message">{successMessage}</p>}
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    {errorMessage.length > 0 && (
+                        <div className="error-messages">
+                            {errorMessage.map((message, index) => (
+                                <p key={index} className="font-smaller">
+                                    <img className='icon' src={iconClose} alt='delete icon' width='10px' height='10px'/> {message}
+                                </p>
+                            ))}
+                        </div>
+                    )}
                     <button className="button" onClick={handleSubmit}>{t('crud.form.button.delete')}</button>
                     <button className="button" onClick={onCloseModals}>{t('crud.form.button.cancel')}</button>
                 </footer>

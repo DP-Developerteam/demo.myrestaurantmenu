@@ -1,27 +1,30 @@
-// Import styles and libraries
-import '../../../App.scss';
+// Import styles and libs
+// import '../../../App.scss';
+import '../users.scss';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-// Import service
+// Import REDUX
+import { useSelector } from 'react-redux';
+//Import services
 import { editUser } from '../userService';
 // Import assets
 import iconClose from '../../../assets/img/icon-close.svg';
 
 const EditUserForm = ({ user, onCloseModals, onSave }) => {
-    // Obtener el idioma actual
+    // Declare t for translations
     const { t } = useTranslation();
 
-    // Get token to authorize update
-    const { token } = useSelector((state) => state.user);
     // State for loading and error handling
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
+    // REDUX States
+    const { token } = useSelector((state) => state.user);
+
     // Set formData when user is updated
     const [formData, setFormData] = useState({
         name: user.name || '',
-        username: user.username || '',
+        email: user.email || '',
         password: '',
         role: user.role || '',
     });
@@ -29,7 +32,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
     useEffect(() => {
         setFormData({
             name: user.name || '',
-            username: user.username || '',
+            email: user.email || '',
             password: '',
             role: user.role || '',
         });
@@ -80,7 +83,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
         }
 
         try {
-            // Directly calling editUser
+            // Service call
             const response = await editUser(filteredFormData, token);
             // Check response
             if (response && response.message) {
@@ -88,11 +91,17 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                 setSuccessMessage(response.message);
                 onSave(editedUser);
             }
-            // onSave(filteredFormData);
         } catch (error) {
-            console.error('Error updating user:', error);
-            const message = error.response?.data?.message || 'An error occurred while updating the user.';
-            setErrorMessage(message);
+            // Handle validation errors array
+            if (error.response?.status === 422 && Array.isArray(error.response?.data)) {
+                // Extract messages as an array
+                const message = error.response.data.map(err => err.msg);
+                setErrorMessage(message);
+            } else {
+                // Handle non-array errors
+                const message = error.response?.data?.message || error.message || 'An error occurred during sign up.';
+                setErrorMessage([message]);
+            }
         }
     };
 
@@ -108,7 +117,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                     <div className='form-body'>
                         <div className='form-group'>
                             <div className='form-field'>
-                                <label>{t('crud.form.user.label.name')}</label>
+                                <label className='font-small'>{t('crud.form.user.label.name')}</label>
                                 <input
                                     type="text"
                                     name="name"
@@ -117,16 +126,16 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                                 />
                             </div>
                             <div className='form-field'>
-                                <label>{t('crud.form.user.label.username')}</label>
+                                <label className='font-small'>{t('crud.form.user.label.email')}</label>
                                 <input
                                     type="text"
-                                    name="username"
-                                    value={formData.username}
+                                    name="email"
+                                    value={formData.email}
                                     onChange={handleChange}
                                 />
                             </div>
                             <div className='form-field'>
-                                <label>{t('crud.form.user.label.password')}</label>
+                                <label className='font-small'>{t('crud.form.user.label.password')}</label>
                                 <input
                                     type="password"
                                     name="password"
@@ -136,7 +145,7 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                                 />
                             </div>
                             <div className='form-field'>
-                                <label>{t('crud.form.user.label.role')}</label>
+                                <label className='font-small'>{t('crud.form.user.label.role')}</label>
                                 <select
                                     name="role"
                                     value={formData.role}
@@ -150,7 +159,15 @@ const EditUserForm = ({ user, onCloseModals, onSave }) => {
                     </div>
                     <footer className='form-footer'>
                         {successMessage && <p className="error-message">{successMessage}</p>}
-                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        {errorMessage.length > 0 && (
+                            <div className="error-messages">
+                                {errorMessage.map((message, index) => (
+                                    <p key={index} className="font-smaller">
+                                        <img className='icon' src={iconClose} alt='delete icon' width='10px' height='10px'/> {message}
+                                    </p>
+                                ))}
+                            </div>
+                        )}
                         <button className="button" type="submit">{t('crud.form.button.update')}</button>
                     </footer>
                 </form>

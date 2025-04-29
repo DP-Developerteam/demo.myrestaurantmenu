@@ -17,7 +17,7 @@
 
 .header {
     @include displayFlex(row nowrap, space-between, center);
-    @include fontSerif(16px, 400, $COLORS-base-900);
+    @include fontSans(16px, 400, $COLORS-base-900);
     position: fixed;
     top: 0;
     z-index: 90;
@@ -51,7 +51,7 @@
         .tab {
             @include hoverPointer();
             margin: 10px 0;
-            @include fontSerif(28px, 400, $COLORS-base-100);
+            @include fontSans(28px, 400, $COLORS-base-100);
         }
         .languagesBox {
             @include displayFlex(row wrap, center, center);
@@ -80,7 +80,6 @@
         margin-bottom: 10px;
         gap: 15px;
     }
-    p {}
 }
 
 .bottomNav {

@@ -13,7 +13,7 @@ import ImgCarousel1 from '../assets/img/22994.jpg';
 import ImgGoogleBadge from '../assets/img/google-badge.png';
 
 function Homepage() {
-
+    // Declare t for translations
     const { t } = useTranslation();
 
     return (

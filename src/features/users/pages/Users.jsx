@@ -1,5 +1,5 @@
-// Import styles and libraries
-// import '../../../App.scss'; -> it's imported in users.scss
+// Import styles and libs
+// import '../../../App.scss';
 import '../users.scss';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -20,27 +20,33 @@ import iconArrowUp from '../../../assets/img/icon-arrow-up.svg';
 import iconArrowDown from '../../../assets/img/icon-arrow-down.svg';
 
 const Users = () => {
-    // const for translations
+    // Declare t for translations
     const { t } = useTranslation();
-    // REDUX
+
+    // REDUX declarations
     const dispatch = useDispatch();
+
+    // REDUX States
     const { users: reduxUsers, token, errorMessage } = useSelector((state) => state.user);
+
     // State to show/hidde users
-    // const [showUsers, setShowUsers] = useState(false);
     const [showUsers, setShowUsers] = useState(window.innerWidth > 765);
-    // Array to store and filter user data
+
+    // States for store and filter user data
     const [usersList, setUsersList] = useState([]);
     const [usersFilterList, setUsersFilterList] = useState([]);
+
     // States for modals and selected user
     const [deleteModal, setDeleteModal] = useState(false);
     const [editModal, setEditModal] = useState(false);
     const [createModal, setCreateModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+
     // States for notifications
     const [notificationModal, setNotificationModal] = useState(false);
     const [notificationType, setNotificationType] = useState('');
 
-    // Show hide tasks
+    // Show hide users
     const toggleUsers = () => {
         setShowUsers(!showUsers)
     }
@@ -57,6 +63,7 @@ const Users = () => {
     useEffect(() => {
         dispatch(getUsersThunk(token));
     }, [dispatch, token]);
+
     // Update local users when Redux users change
     useEffect(() => {
         setUsersList(reduxUsers || []);
@@ -104,14 +111,14 @@ const Users = () => {
         <div className='users-page crud-page'>
             <header className='header-container'>
                 <div className='title-container'>
-                    <h1 className='title'>{t('crud.title.user')}</h1>
+                    <h1 className='font-larger'>{t('crud.title.user')}</h1>
                     {showUsers === false ?
                         ( <img className='icon' onClick={(toggleUsers)} src={iconArrowDown} alt='delete icon' width='20px' height='20px'/> )
                         : ( <img className='icon' onClick={(toggleUsers)} src={iconArrowUp} alt='delete icon' width='20px' height='20px'/> )
                     }
                 </div>
                 <button className="button" onClick={() => createUser()}>
-                {t('crud.buttonCreate.user')} <img className='icon' src={iconAdd} alt='delete icon' width='20px' height='20px'/>
+                    {t('crud.buttonCreate.user')} <img className='icon' src={iconAdd} alt='delete icon' width='20px' height='20px'/>
                 </button>
             </header>
             {!reduxUsers || !reduxUsers ? (
@@ -133,8 +140,8 @@ const Users = () => {
                                         {usersFilterList.map((user) => (
                                             <li key={`user-${user._id}`} className='item'>
                                                 <div className='text-container'>
-                                                    <p className='paragraph bold'>{user.name}</p>
-                                                    <p className='paragraph'>{user.company}</p>
+                                                    <p className='font-bold'>{user.name}</p>
+                                                    <p>{user.email}</p>
                                                 </div>
                                                 <div className='buttons-container'>
                                                     <button className='icon' onClick={() => selectUserDelete(user)}>

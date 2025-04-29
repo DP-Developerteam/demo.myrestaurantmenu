@@ -3,9 +3,9 @@ import './__components.scss';
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// Import Redux hooks
+// Import redux
 import { useSelector, useDispatch } from 'react-redux';
-import { clearUser } from '../features/users/userSlice';
+import { clearUser, sessionSignOutThunk } from '../features/users/userSlice';
 //Import images/icons
 import Isologotipo from '../assets/img/ISOLOGOTIPO-DP-rest-menu.svg';
 import MenuIcon from '../assets/img/menu-icon.svg';
@@ -36,20 +36,32 @@ function Header() {
     //Hook for navigation and location (URL)
     const navigate = useNavigate();
     const location = useLocation();
-    // REDUX Initialize dispatch to update info of userSlice
+    // REDUX Initialize dispatch
     const dispatch = useDispatch();
 
+    // REDUX States
+    const { authMethod, isAuthenticated, csrfToken } = useSelector((state) => state.user);
+
+
     // Function to SignOut
-    const signOut = () => {
-        // Clear user information from Redux
-        dispatch(clearUser());
-        // Close Menu
-        closeMenu();
-        // Redirect to SignIn
-        navigate('/cms');
+    const signOut = async () => {
+        console.log("HEADER signout - csrfToken ", csrfToken)
+        // console.log("HEADER signout START")
+        try {
+            if (authMethod === "session") {
+                // Perform session logout
+                await dispatch(sessionSignOutThunk(csrfToken));
+            }
+            // Clear local state
+            dispatch(clearUser());
+            // Force reload to clear session cookies
+            window.location.reload();
+            // Navigate to Sign in
+            navigate('/cms');
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
     };
-    // REDUX Variable to know if user is logged in or not. Used to render of the buttons.
-    const { isLoggedIn } = useSelector((state) => state.user);
 
     // Variables to know if page is SignIn or SignUp
     const isOnSignInPage = location.pathname === '/signin';
@@ -71,10 +83,10 @@ function Header() {
                 <NavLink className='tab' onClick={closeMenu} to='/foods'>{t('nav.foods')}</NavLink>
                 <NavLink className='tab' onClick={closeMenu} to='/drinks'>{t('nav.drinks')}</NavLink>
 
-                {!isLoggedIn && !isOnSignInPage && (
+                {!isAuthenticated && !isOnSignInPage && (
                     <NavLink className='tab' onClick={closeMenu} to='/cms'>{t('nav.signIn')}</NavLink>
                 )}
-                {isLoggedIn && (
+                {isAuthenticated && (
                     <p className='tab' onClick={signOut}>{t('nav.signOut')}</p>
                 )}
 

@@ -58,11 +58,11 @@ const DeleteProductForm = ({ product, onCloseModals, onSave }) => {
                             <p>{t('crud.form.product.question.delete')}</p>
                         </div>
                         <div className='form-field'>
-                            <label>{t('crud.form.product.label.id')}</label>
+                            <label className='font-small'>{t('crud.form.product.label.id')}</label>
                             <input type="text" value={product._id} readOnly={true} />
                         </div>
                         <div className='form-field'>
-                            <label>{t(`crud.form.product.label.name.${lang}`)}</label>
+                            <label className='font-small'>{t(`crud.form.product.label.name.${lang}`)}</label>
                             <input
                                 type="text"
                                 value={typeof product.name === 'string' ? product.name : product.name[lang] || product.name.en}
@@ -70,7 +70,7 @@ const DeleteProductForm = ({ product, onCloseModals, onSave }) => {
                             />
                         </div>
                         <div className='form-field'>
-                            <label>{t(`crud.form.product.label.description.${lang}`)}</label>
+                            <label className='font-small'>{t(`crud.form.product.label.description.${lang}`)}</label>
                             <input
                                 type="text"
                                 value={typeof product.description === 'string' ? product.description : product.description[lang] || product.description.en}

@@ -10,16 +10,17 @@
     width: fit-content;
     padding: 0.3rem 1rem;
     background-color: $background;
-    @font-face {
-        font-family: 'PT Serif';
-        src:
-            url('../assets/fonts/PTSerif-Regular.woff2') format('woff2'),
-            url('../assets/fonts/PTSerif-Regular.woff') format('woff'),
-            url('../assets/fonts/PTSerif-Regular.ttf') format('truetype');
-        font-weight: 400;
-        font-style: normal;
-        font-size: 24px;
-    }
+    // @font-face {
+    //     font-family: 'PT Serif';
+    //     src:
+    //         url('../assets/fonts/PTSerif-Regular.woff2') format('woff2'),
+    //         url('../assets/fonts/PTSerif-Regular.woff') format('woff'),
+    //         url('../assets/fonts/PTSerif-Regular.ttf') format('truetype');
+    //     font-weight: 400;
+    //     font-style: normal;
+    //     font-size: 24px;
+    // }
+    @include fontSans(1.1rem, 400, $COLORS-base-900);
     color: $color;
     border-radius: 5px;
 }
@@ -30,16 +31,17 @@
     width: fit-content;
     padding: 0.3rem 1rem;
     background-color: $background;
-    @font-face {
-        font-family: 'PT Serif';
-        src:
-            url('../assets/fonts/PTSerif-Regular.woff2') format('woff2'),
-            url('../assets/fonts/PTSerif-Regular.woff') format('woff'),
-            url('../assets/fonts/PTSerif-Regular.ttf') format('truetype');
-        font-weight: 400;
-        font-style: normal;
-        font-size: 24px;
-    }
+    // @font-face {
+    //     font-family: 'PT Serif';
+    //     src:
+    //         url('../assets/fonts/PTSerif-Regular.woff2') format('woff2'),
+    //         url('../assets/fonts/PTSerif-Regular.woff') format('woff'),
+    //         url('../assets/fonts/PTSerif-Regular.ttf') format('truetype');
+    //     font-weight: 400;
+    //     font-style: normal;
+    //     font-size: 24px;
+    // }
+    @include fontSans(1.1rem, 400, $COLORS-base-900);
     color: $color;
     border-radius: 0.3rem;
     border: solid 0.1rem;
