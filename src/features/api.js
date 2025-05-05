@@ -1,8 +1,6 @@
 //Import Axios
 import axios from 'axios';
 
-
-
 // Create an Axios instance with default settings
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_BASE_URL,
@@ -19,7 +17,7 @@ export const setAuthToken = (token) => {
     }
 };
 
-// Optional: Add response interceptors if needed
+// Add response interceptors if needed
 api.interceptors.response.use(
     (response) => response,
     (error) => {
