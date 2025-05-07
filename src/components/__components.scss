@@ -71,6 +71,10 @@
             }
         }
     }
+    @media (min-width:1200px) {
+        max-width: 1200px;
+        border-radius: 0 0 5px 5px;
+    }
 }
 
 .footer {

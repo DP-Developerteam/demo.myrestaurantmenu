@@ -22,6 +22,7 @@ function Homepage() {
                 <h1>{t('restaurant.info.name')}</h1>
                 <button className="btn-solid-dark">{t('nav.contact')}</button>
             </div>
+
             <div className='section section-grid-nav'>
                 <NavLink className='nav-item' to='/'>
                     <img className='icon' src={IconNavHome} alt='Home nav icon'/>
@@ -57,65 +58,76 @@ function Homepage() {
             </div>
 
             <div className='section section-carousel'>
-                <p>{t('section.carousel.content')}</p>
-                <div className='carousel-container'>
-                    <div className='img-container'>
-                        <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
-                    </div>
-                    <div className='img-container'>
-                        <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
-                    </div>
-                    <div className='img-container'>
-                        <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
-                    </div>
-                    <div className='img-container'>
-                        <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                <div className='section-content'>
+                    <p>{t('section.carousel.content')}</p>
+                    <div className='carousel-container'>
+                        <div className='img-container'>
+                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                        </div>
+                        <div className='img-container'>
+                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                        </div>
+                        <div className='img-container'>
+                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                        </div>
+                        <div className='img-container'>
+                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className='section section-dark'>
+            <div className='section section-dark section-review'>
                 <div className='img-container'>
                     <img src={ImgGoogleBadge} alt="" width="250px" heigth="250px"/>
                 </div>
-                <p>{t('section.review.content')}</p>
-                <button className="btn-border-light btn-full-width">{t('section.review.button')}</button>
+                <div className='text-container column-start'>
+                    <p>{t('section.review.content')}</p>
+                    <button className="btn-border-light btn-full-width">{t('section.review.button')}</button>
+                </div>
             </div>
 
             <div className='section section-icon-text'>
                 <h2>{t('section.deals.title')}</h2>
-                <div className='icon-text-container row-start'>
-                    <div className='icon-container row-center'>
-                        <img className='icon' src={IconNavDrink} alt='Drink nav icon'/>
+                <div className='items-container'>
+
+                    <div className='icon-text-container row-start'>
+                        <div className='icon-container row-center'>
+                            <img className='icon' src={IconNavDrink} alt='Drink nav icon'/>
+                        </div>
+                        <div className='text-container column-start'>
+                            <h3>{t('section.deals.offerHappyHour.title')}</h3>
+                            <p>{t('section.deals.offerHappyHour.content-1')}</p>
+                            <p>{t('section.deals.offerHappyHour.content-2')}</p>
+                        </div>
                     </div>
-                    <div className='text-container column-start'>
-                        <h3>{t('section.deals.offerHappyHour.title')}</h3>
-                        <p>{t('section.deals.offerHappyHour.content-1')}</p>
-                        <p>{t('section.deals.offerHappyHour.content-2')}</p>
-                    </div>
-                </div>
-                <div className='icon-text-container row-start'>
-                    <div className='icon-container row-center'>
-                        <img className='icon' src={IconNavDrink} alt='Drink nav icon'/>
-                    </div>
-                    <div className='text-container column-start'>
-                        <h3>{t('section.deals.eventNewYear.title')}</h3>
-                        <p>{t('section.deals.eventNewYear.content-1')}</p>
-                        <p>{t('section.deals.eventNewYear.content-2')}</p>
-                        <button className="btn-border-dark btn-full-width">{t('section.deals.eventNewYear.button')}</button>
+                    <div className='icon-text-container row-start'>
+                        <div className='icon-container row-center'>
+                            <img className='icon' src={IconNavDrink} alt='Drink nav icon'/>
+                        </div>
+                        <div className='text-container column-start'>
+                            <h3>{t('section.deals.eventNewYear.title')}</h3>
+                            <p>{t('section.deals.eventNewYear.content-1')}</p>
+                            <p>{t('section.deals.eventNewYear.content-2')}</p>
+                            <button className="btn-border-dark btn-full-width">{t('section.deals.eventNewYear.button')}</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div className='section'>
                 <h2>{t('section.newsletter.title')}</h2>
-                <p>{t('section.newsletter.content-1')}</p>
-                <div className='img-container'>
-                    <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                <div className='section-content'>
+                    <div className='img-container'>
+                        <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                    </div>
+                    <div className='text-container'>
+                        <p>{t('section.newsletter.content-1')}</p>
+                        <p>{t('section.newsletter.content-2')}</p>
+                        <p>{t('section.newsletter.content-3')}</p>
+                        <button className="btn-border-dark btn-full-width">{t('section.newsletter.button')}</button>
+                    </div>
                 </div>
-                <p>{t('section.newsletter.content-2')}</p>
-                <p>{t('section.newsletter.content-3')}</p>
-                <button className="btn-border-dark btn-full-width">{t('section.newsletter.button')}</button>
             </div>
 
             <div className='section section-dark'>

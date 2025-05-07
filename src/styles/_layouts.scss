@@ -28,14 +28,29 @@
     gap: 30px;
     width: 100dvw;
     padding: 20px;
+    .section-content {
+        @include displayFlex(column nowrap, flex-start, flex-start);
+        gap: 30px;
+        width: 100dvw;
+    }
+    @media (min-width:720px) {
+        align-items: center;
+        justify-content: center;
+        .section-content {
+            flex-direction: row;
+            justify-content: center;
+            padding: 20px;
+        }
+    }
+    @media (min-width:1200px) {
+        .section-content {
+            max-width: 1200px;
+        }
+    }
 }
 
 .section-dark {
-    @include displayFlex(column nowrap, flex-start, flex-start);
-    gap: 30px;
-    width: 100dvw;
     padding: 50px 20px;
-
     background-color: $COLORS-base-800;
     color: $COLORS-base-100;
 }

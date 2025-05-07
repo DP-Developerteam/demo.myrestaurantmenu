@@ -36,8 +36,8 @@
         .nav-item {
             @include displayFlex(column nowrap, center, center);
             gap: 5px;
-            width: 120px;
-            height: 120px;
+            min-width: 120px;
+            min-height: 120px;
             border-radius: 5px;
             background-color: $COLORS-base-100;
             .icon {
@@ -48,6 +48,9 @@
         }
         @media (min-width: 380px) {
             margin: 50px 0;
+        }
+        @media (min-width: 600px) {
+            flex-wrap: nowrap;
         }
     }
 
@@ -60,55 +63,100 @@
         border-radius: 5px;
         background-color: $COLORS-base-100;
         @include fontSans(24px, 400, $COLORS-base-900);
+        @media (min-width: 629px) {
+            max-width: 600px;
+            .btn-border-dark {
+                max-width: 270px;
+            }
+        }
+        @media (min-width: 1220px) {
+            max-width: 1160px;
+        }
     }
 
+
     .section-carousel {
-        // Section carousel contains a p element for intro, and the carousel container
-        gap: 30px;
-        p {
-            max-width: 290px;
-        }
-        .carousel-container {
-            @include displayFlex(row nowrap, flex-start, flex-start);
-            gap: 20px;
-            width: calc(100dvw - 40px);
-            overflow-x: auto;
-            &::-webkit-scrollbar {
-                display: none;
+        .section-content {
+            // Section carousel contains a p element for intro, and the carousel container
+            gap: 30px;
+            p {
+                max-width: 290px;
             }
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            .img-container {
-                margin: 0 auto;
-                width: 250px;
-                height: auto;
-                // height: 250px;
-                object-fit: cover;
-                img {
-                    border-radius: 8px;
+            .carousel-container {
+                @include displayFlex(row nowrap, flex-start, flex-start);
+                gap: 20px;
+                width: calc(100dvw - 40px);
+                overflow-x: auto;
+                &::-webkit-scrollbar {
+                    display: none;
                 }
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                .img-container {
+                    margin: 0 auto;
+                    width: 250px;
+                    height: auto;
+                    // height: 250px;
+                    object-fit: cover;
+                    img {
+                        border-radius: 8px;
+                    }
+                }
+            }
+            @media (min-width:530px) {
+                p {
+                    max-width: 500px;
+                }
+            }
+            @media (min-width: 720px) {
+                flex-direction: row;
+                p {
+                    max-width: 290px;
+                }
+            }
+        }
+    }
+
+    .section-review {
+        @media (min-width: 720px) {
+            flex-direction: row;
+            align-items: flex-start;
+            .text-container {
+                max-width: 500px;
             }
         }
     }
 
     .section-icon-text {
-        .icon-text-container {
-            gap: 20px;
-            flex-wrap: nowrap;
-            .icon-container {
-                flex-shrink: 0;
-                width: 100px;
-                height: 100px;
-                background-color: $COLORS-base-100;
-                border-radius: 8px;
-                .icon {
-                    max-width: 60px;
-                    max-height: 60px;
+        .items-container {
+            @include displayFlex(column nowrap, center, flex-start);
+            gap: 30px;
+            .icon-text-container {
+                gap: 20px;
+                flex-wrap: nowrap;
+                min-width: 270px;
+                .icon-container {
+                    flex-shrink: 0;
+                    width: 100px;
+                    height: 100px;
+                    background-color: $COLORS-base-100;
+                    border-radius: 8px;
+                    .icon {
+                        max-width: 60px;
+                        max-height: 60px;
+                    }
                 }
             }
-        }
-        .text-container {
-            gap: 10px;
+            .text-container {
+                gap: 10px;
+            }
+            @media (min-width:720px) {
+                flex-direction: row;
+                gap: 50px;
+                .text-container {
+                    max-width: 400px;
+                }
+            }
         }
     }
 

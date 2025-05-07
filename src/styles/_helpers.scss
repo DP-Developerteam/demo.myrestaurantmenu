@@ -36,3 +36,8 @@
 .column-end {
     @include displayFlex(column wrap, flex-end, flex-end);
 }
+
+.text-container {
+    @include displayFlex(column nowrap, flex-start, flex-start);
+    gap: 30px;
+}
