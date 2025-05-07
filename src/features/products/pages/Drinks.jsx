@@ -132,10 +132,9 @@ function Drinks() {
                 </>
             ) : (
                 // Default view with navigation
-                <div className='section-product-page-default'>
+                <div className='section section-product-page-default'>
                     <div className='section section-intro'>
                         <h1>{t('restaurant.info.name')}</h1>
-                        <br/>
                         <button className="btn-border-dark">{t('nav.contact')}</button>
                     </div>
                     <div className='section section-extra-nav'>
