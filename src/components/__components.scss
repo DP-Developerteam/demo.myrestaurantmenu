@@ -30,6 +30,7 @@
         height: 30px;
     }
     .buttonMenu {
+        @include hoverPointer();
         .icon {
             width: 28px;
         }
