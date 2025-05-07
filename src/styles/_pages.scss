@@ -19,7 +19,7 @@
         width: 100%;
         max-width: 570px;
         h1 {
-            max-width: 240px;
+            max-width: 255px;
             font-size: 2.5rem;
         }
         .btn-solid {
@@ -39,6 +39,7 @@
         .nav-item {
             @include displayFlex(column nowrap, center, center);
             gap: 5px;
+            @include hoverPointer();
             min-width: 120px;
             min-height: 120px;
             border-radius: 5px;
