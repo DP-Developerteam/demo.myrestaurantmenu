@@ -118,8 +118,8 @@ function Foods() {
                 </>
             ) : (
                 // Default view with navigation
-                <>
-                    <div className='intro'>
+                <div className='section-product-page-default'>
+                    <div className='section section-intro'>
                         <h1>{t('restaurant.info.name')}</h1>
                         <br/>
                         <button className="btn-border-dark">{t('nav.contact')}</button>
@@ -138,7 +138,7 @@ function Foods() {
                             </div>
                         ))}
                     </div>
-                </>
+                </div>
             )}
         </div>
     );

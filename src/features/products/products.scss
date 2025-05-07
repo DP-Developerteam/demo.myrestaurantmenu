@@ -1,13 +1,5 @@
 @import '../../App.scss';
 
-@media (min-width: 766px) {
-    .products-page {
-        .items-container {
-            height: calc(100dvh - 263.5px) !important;
-        }
-    }
-}
-
 .product-page {
     max-width: 1200px;
     .nav-products-view {
@@ -63,6 +55,27 @@
         }
         img {
             max-width: 100%;
+        }
+    }
+    @media (min-width: 1220px) {
+        .section-product-page-default {
+            @include displayFlex(row nowrap, flex-start, center);
+            gap: 100px;
+            .section-intro {
+                width: fit-content;
+            }
+            .section-extra-nav {
+                flex-direction: column;
+                width: fit-content;
+            }
+        }
+    }
+}
+
+@media (min-width: 766px) {
+    .products-page {
+        .items-container {
+            height: calc(100dvh - 263.5px) !important;
         }
     }
 }

@@ -18,7 +18,7 @@ function Homepage() {
 
     return (
         <div className='page homepage'>
-            <div className='section intro'>
+            <div className='section section-intro'>
                 <h1>{t('restaurant.info.name')}</h1>
                 <button className="btn-solid-dark">{t('nav.contact')}</button>
             </div>

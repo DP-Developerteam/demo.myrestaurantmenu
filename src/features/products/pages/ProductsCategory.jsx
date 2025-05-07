@@ -144,7 +144,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
 
     return (
         <>
-            <div className="intro">
+            <div className="section-intro">
                 <h1>{t(titleKey)}</h1>
                 <p>{t(descriptionKey)}</p>
             </div>

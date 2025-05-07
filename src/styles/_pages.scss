@@ -11,7 +11,7 @@
     height: 100%;
     padding: 50px 0;
 
-    .intro {
+    .section-intro {
         // Intro class contains an h1 element and a button
         // @include displayFlex(column nowrap, flex-star, flex-start);
         gap: 20px;
@@ -65,6 +65,7 @@
         @include fontSans(24px, 400, $COLORS-base-900);
         @media (min-width: 630px) {
             max-width: 600px;
+            width: 100dvw;
             .btn {
                 max-width: 270px;
             }
