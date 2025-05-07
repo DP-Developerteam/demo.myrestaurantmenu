@@ -43,16 +43,16 @@ function Homepage() {
             </div>
 
             <div className='section section-extra-nav'>
-                <NavLink className='btn-border-dark btn-full-width' to='/'>
+                <NavLink className='btn btn-border-dark btn-full-width' to='/'>
                     <p>{t('nav.reservation')}</p>
                 </NavLink>
-                <NavLink className='btn-border-dark btn-full-width' to='/'>
+                <NavLink className='btn btn-border-dark btn-full-width' to='/'>
                     <p>{t('nav.gift')}</p>
                 </NavLink>
-                <NavLink className='btn-border-dark btn-full-width' to='/'>
+                <NavLink className='btn btn-border-dark btn-full-width' to='/'>
                     <p>{t('nav.rewards')}</p>
                 </NavLink>
-                <NavLink className='btn-border-dark btn-full-width' to='/'>
+                <NavLink className='btn btn-border-dark btn-full-width' to='/'>
                     <p>{t('nav.personal')}</p>
                 </NavLink>
             </div>

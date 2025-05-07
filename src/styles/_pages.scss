@@ -65,12 +65,12 @@
         @include fontSans(24px, 400, $COLORS-base-900);
         @media (min-width: 629px) {
             max-width: 600px;
-            .btn-border-dark {
+            .btn {
                 max-width: 270px;
             }
         }
         @media (min-width: 1220px) {
-            max-width: 1160px;
+            max-width: 1180px;
         }
     }
 

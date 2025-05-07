@@ -124,10 +124,10 @@ function Foods() {
                         <br/>
                         <button className="btn-border-dark">{t('nav.contact')}</button>
                     </div>
-                    <div className='section-extra-nav'>
+                    <div className='section section-extra-nav'>
                         {Object.keys(componentMap).map((category) => (
                             <div
-                                className="btn-border-dark btn-full-width btn-subtitel"
+                                className="btn btn-border-dark btn-full-width btn-subtitel"
                                 key={category}
                                 onClick={() => handleViewChange(category)}
                             >
