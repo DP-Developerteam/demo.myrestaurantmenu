@@ -62,11 +62,16 @@
             @include displayFlex(row nowrap, flex-start, center);
             gap: 100px;
             .section-intro {
+                align-items: flex-start;
+                gap: 0;
                 width: fit-content;
             }
             .section-extra-nav {
                 flex-direction: column;
-                width: fit-content;
+                width: 600px;
+                .btn {
+                    max-width: 100%;
+                }
             }
         }
     }
