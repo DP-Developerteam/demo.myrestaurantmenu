@@ -90,7 +90,6 @@ function Homepage() {
             <div className='section section-icon-text'>
                 <h2>{t('section.deals.title')}</h2>
                 <div className='items-container'>
-
                     <div className='icon-text-container row-start'>
                         <div className='icon-container row-center'>
                             <img className='icon' src={IconNavDrink} alt='Drink nav icon'/>

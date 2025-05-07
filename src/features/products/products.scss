@@ -8,8 +8,9 @@
     }
 }
 
-.product-nav {
-    .nav-products-view{
+.product-page {
+    max-width: 1200px;
+    .nav-products-view {
         justify-content: space-between;
         position: fixed;
         top: 55px;
@@ -24,51 +25,44 @@
             gap: 5px;
         }
     }
-}
-.products-container {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 40px;
-    width: 90%;
-
-    .product-card {
+    .products-container {
         display: flex;
         flex-flow: column nowrap;
-        gap: 5px;
-        width: 100%;
-        border-radius: 8px;
-
-        .product-image {
-            position: relative;
-            .icons-container {
-                @include displayFlex(row nowrap, space-around, center);
-                position: absolute;
-                right: 0;
-                bottom: -10px;
-                width: 160px;
+        gap: 40px;
+        width: 90%;
+        .product-card {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 5px;
+            width: 100%;
+            border-radius: 8px;
+            .product-image {
+                position: relative;
+                .icons-container {
+                    @include displayFlex(row nowrap, space-around, center);
+                    position: absolute;
+                    right: 0;
+                    bottom: -10px;
+                    width: 160px;
+                }
+            }
+            .product-card-content {
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: stretch;
+                .column {
+                    display: flex;
+                    flex-flow: column nowrap;
+                }
+                .price {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+                }
             }
         }
-
-        .product-card-content {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: stretch;
-
-            .column {
-                display: flex;
-                flex-flow: column nowrap;
-            }
-
-            .price {
-                justify-content: flex-end;
-                align-items: flex-end;
-            }
+        img {
+            max-width: 100%;
         }
     }
-
-}
-
-.products-container img {
-    max-width: 100%;
 }

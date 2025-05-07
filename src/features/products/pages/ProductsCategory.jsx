@@ -158,27 +158,29 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
             </div>
             <div className="cross-selling-container">
                 <div className='section section-icon-text'>
-                    <div className='icon-text-container row-start'>
-                        <div className='icon-container row-center'>
-                            {crossCategory === 'foods' ?
-                                <img className='icon' src={IconNavDrink} alt='Drink nav icon'/>
-                                :
-                                <img className='icon' src={IconNavFood} alt='Food nav icon'/>
-                            }
-                        </div>
-                        <div className='text-container column-start'>
-                            {crossCategory === 'foods' ?
-                                <>
-                                    <h3>{t('product.crossSelling.drink.title')}</h3>
-                                </>
-                                :
-                                <>
-                                    <h3>{t('product.crossSelling.food.title')}</h3>
-                                </>
-                            }
-                            <NavLink className='nav-item btn-border-dark btn-full-width' to={crossSellingPath}>
-                                <p>{crossCategory === 'foods' ? t('product.crossSelling.drink.button') : t('product.crossSelling.food.button') }</p>
-                            </NavLink>
+                    <div className='items-container'>
+                        <div className='icon-text-container row-start'>
+                            <div className='icon-container row-center'>
+                                {crossCategory === 'foods' ?
+                                    <img className='icon' src={IconNavDrink} alt='Drink nav icon'/>
+                                    :
+                                    <img className='icon' src={IconNavFood} alt='Food nav icon'/>
+                                }
+                            </div>
+                            <div className='text-container column-start'>
+                                {crossCategory === 'foods' ?
+                                    <>
+                                        <h3>{t('product.crossSelling.drink.title')}</h3>
+                                    </>
+                                    :
+                                    <>
+                                        <h3>{t('product.crossSelling.food.title')}</h3>
+                                    </>
+                                }
+                                <NavLink className='nav-item btn-border-dark btn-full-width' to={crossSellingPath}>
+                                    <p>{crossCategory === 'foods' ? t('product.crossSelling.drink.button') : t('product.crossSelling.food.button') }</p>
+                                </NavLink>
+                            </div>
                         </div>
                     </div>
                 </div>

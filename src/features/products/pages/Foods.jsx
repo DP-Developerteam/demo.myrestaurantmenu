@@ -101,7 +101,7 @@ function Foods() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div className='page product-nav foods'>
+        <div className='page product-page foods'>
             {currentView ? (
                 // Render selected component if a view is selected
                 <>
