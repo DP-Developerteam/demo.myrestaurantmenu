@@ -64,12 +64,12 @@
         @include displayFlex(row wrap, center, center);
         gap: 10px;
         width: 95%;
+        max-width: 600px;
         padding: 20px;
         border-radius: 5px;
         background-color: $COLORS-base-100;
         @include fontSans(24px, 400, $COLORS-base-900);
         @media (min-width: 630px) {
-            max-width: 600px;
             width: 100dvw;
             .btn {
                 max-width: 270px;

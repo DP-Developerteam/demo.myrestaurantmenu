@@ -34,8 +34,10 @@
         top: 55px;
         z-index: 50;
         width: 100%;
+        max-width: 1200px;
         padding: 5px 20px;
-        background: $COLORS-base-100;
+        background: $COLORS-base-300;
+        border-radius: 5px;
         .btn-border-dark {
             padding: 0.1rem 0.5rem;
         }
@@ -48,6 +50,7 @@
         flex-flow: column nowrap;
         gap: 40px;
         width: 90%;
+        max-width: 510px;
         .product-card {
             display: flex;
             flex-flow: column nowrap;
@@ -86,7 +89,7 @@
 }
 
 @media (min-width: 766px) {
-    .products-page {
+    .product-page {
         .items-container {
             height: calc(100dvh - 263.5px) !important;
         }
