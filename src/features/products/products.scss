@@ -4,6 +4,13 @@
     max-width: 1200px;
     .section-product-page-default {
         @include displayFlex(column nowrap, flex-start, center);
+        @media (min-width: 630px) {
+            .section-extra-nav {
+                .btn {
+                    max-width: 100%;
+                }
+            }
+        }
         @media (min-width: 1220px) {
             flex-direction: row;
             flex-wrap: nowrap;
