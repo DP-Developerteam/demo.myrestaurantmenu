@@ -1,7 +1,6 @@
 // Import styles and libraries
 import '../../../App.scss';
 import React, { useState, useEffect } from 'react';
-// import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 // Import redux and slices
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,22 +9,19 @@ import { getProductsThunk } from '../productSlice';
 // Import pages renderer
 import ProductsCategory from './ProductsCategory';
 
+//Import assets
+import IconView from '../../../assets/img/icon-view.svg';
+
 function Drinks() {
     // Declare t for translations
     const { t } = useTranslation();
-
-    // REDUX declarations
-    const dispatch = useDispatch();
-
-    // REDUX States
-    const { products, error, lastUpdated } = useSelector((state) => state.product);
-
-    // State to manage current view
+    // Single state to manage current view
     const [currentView, setCurrentView] = useState(null);
-
-    // State to manage product card view: "default", "image", "video"
-    // const [productCardView, setProductCardView] = useState("default");
-    const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
+    // Single state to manage product card view: 'default', 'image', 'video'
+    const [productCardView, setProductCardView] = useState('image');
+    // REDUX Initialize dispatch
+    const dispatch = useDispatch();
+    const { products, error, lastUpdated } = useSelector((state) => state.product);
 
     // Check internet speed
     const isInternetSlow = () => {
@@ -46,7 +42,7 @@ function Drinks() {
             dispatch(getProductsThunk());
         } else {
             // If internet is slow and products have been fetched once, then avoid doing API calls.
-            console.log("Using cache due to slow internet or already updated products.");
+            console.log('Using cache due to slow internet or already updated products.');
         }
     }, [dispatch, lastUpdated, currentView, products]);
 
@@ -54,46 +50,46 @@ function Drinks() {
     const componentMap = {
         cold: (
             <ProductsCategory
-                category="cold"
-                titleKey="product.nav.cold.title"
-                descriptionKey="product.nav.cold.description"
-                crossCategory="drinks"
+                category='cold'
+                titleKey='product.nav.cold.title'
+                descriptionKey='product.nav.cold.description'
+                crossCategory='drinks'
                 productCardView={productCardView}
             />
         ),
         hot: (
             <ProductsCategory
-                category="hot"
-                titleKey="product.nav.hot.title"
-                descriptionKey="product.nav.hot.description"
-                crossCategory="drinks"
+                category='hot'
+                titleKey='product.nav.hot.title'
+                descriptionKey='product.nav.hot.description'
+                crossCategory='drinks'
                 productCardView={productCardView}
             />
         ),
         fresh: (
             <ProductsCategory
-                category="fresh"
-                titleKey="product.nav.fresh.title"
-                descriptionKey="product.nav.fresh.description"
-                crossCategory="drinks"
+                category='fresh'
+                titleKey='product.nav.fresh.title'
+                descriptionKey='product.nav.fresh.description'
+                crossCategory='drinks'
                 productCardView={productCardView}
             />
         ),
         alcohol: (
             <ProductsCategory
-                category="alcohol"
-                titleKey="product.nav.alcohol.title"
-                descriptionKey="product.nav.alcohol.description"
-                crossCategory="drinks"
+                category='alcohol'
+                titleKey='product.nav.alcohol.title'
+                descriptionKey='product.nav.alcohol.description'
+                crossCategory='drinks'
                 productCardView={productCardView}
             />
         ),
         cocktail: (
             <ProductsCategory
-                category="cocktail"
-                titleKey="product.nav.cocktail.title"
-                descriptionKey="product.nav.cocktail.description"
-                crossCategory="drinks"
+                category='cocktail'
+                titleKey='product.nav.cocktail.title'
+                descriptionKey='product.nav.cocktail.description'
+                crossCategory='drinks'
                 productCardView={productCardView}
             />
         ),
@@ -106,12 +102,15 @@ function Drinks() {
 
     // Handler to set product card view
     const handleViewProductCard = () => {
-    // const handleViewProductCard = (view = null) => {
-        setProductCardView(!productCardView); //this is a temporary solution until I get videos.
-        // setProductCardView(view);
+        setProductCardView(view => {
+            if (view === 'image') return 'default';
+            if (view === 'default') return 'video';
+            return 'image';
+        });
     }
 
     // Handle return based in status fetched data
+    // if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
@@ -121,12 +120,10 @@ function Drinks() {
                 <>
                     <div className='nav-products-view row-center'>
                         <button className='btn-border-dark' onClick={() => handleViewChange()}>&lt;</button>
-                        <div className='view-icons row-center'>
-                            <button className='btn-border-dark' onClick={() => handleViewProductCard()}>change VIEW</button> {/* this is a temporary solution until I get videos. */}
-                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('default')}>Default VIEW</button> */}
-                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('image')}>Image VIEW</button> */}
-                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('video')}>Video VIEW</button> */}
-                        </div>
+                        <button className='view-icons' onClick={handleViewProductCard}>
+                            <p className='font-smaller'>{`${productCardView === 'default' ? 'Basic' : productCardView === 'image' ? 'Fotos' : 'Videos'}`}</p>
+                            <img className='icon' src={IconView} alt='Drink nav icon'/>
+                        </button>
                     </div>
                     {componentMap[currentView]}
                 </>
@@ -135,17 +132,17 @@ function Drinks() {
                 <div className='section section-product-page-default'>
                     <div className='section section-intro'>
                         <h1>{t('restaurant.info.name')}</h1>
-                        <button className="btn-border-dark">{t('nav.contact')}</button>
+                        <h3>{t('drinks.intro.title')}</h3>
                     </div>
                     <div className='section section-extra-nav'>
                         {Object.keys(componentMap).map((category) => (
                             <div
-                                className="btn btn-border-dark btn-full-width btn-subtitel"
+                                className='btn btn-border-dark btn-full-width btn-subtitel'
                                 key={category}
                                 onClick={() => handleViewChange(category)}
                             >
                                 <p>{t(`product.nav.${category}.title`)}</p>
-                                <span className="small">
+                                <span className='font-smaller'>
                                     {t(`product.nav.${category}.description`)}
                                 </span>
                             </div>

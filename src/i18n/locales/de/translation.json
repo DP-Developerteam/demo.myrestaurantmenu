@@ -69,9 +69,17 @@
       "content-1": "Gegründet im Jahr [Jahr], ist [Restaurantname] darauf ausgerichtet, köstliche, hausgemachte Gerichte in einer freundlichen und einladenden Umgebung zu servieren. Ob Sie für eine lockere Mahlzeit oder einen besonderen Anlass hier sind – unser Team ist bestrebt, jedes kulinarische Erlebnis unvergesslich zu machen.",
       "content-2": "Im Laufe der Jahre wurden wir mit mehreren Auszeichnungen geehrt, die unser Engagement für Qualität, Service und kulinarische Exzellenz anerkennen. Wir sind stolz auf die Auszeichnungen, die wir erhalten haben, und streben weiterhin nach Exzellenz in jedem Gericht, das wir servieren.",
       "content-3": "Bleiben Sie mit uns in Verbindung und erhalten Sie einen Einblick in das, was bei [Restaurantname] passiert, indem Sie uns in den sozialen Medien folgen. Wir lieben es, unsere neuesten Kreationen, besondere Events und mehr zu teilen!"
+    },
+    "orders": {
+      "intro": {
+        "title": "Meine Auswahl:"
+      }
     }
   },
   "product": {
+    "action": {
+      "add": "Auf meine Liste setzen"
+    },
     "intro": {
       "title": "Restaurantname",
       "paragraph": "Absatz auf der Speisekarte",
@@ -237,13 +245,13 @@
   },
   "foods": {
     "intro": {
-      "title": "Titel auf der Speisekartenseite",
+      "title": "Speisekarte",
       "paragraph": "Absatz auf der Speisekartenseite"
     }
   },
   "drinks": {
     "intro": {
-      "title": "Titel auf der Getränkeseite",
+      "title": "Getränkekarte",
       "paragraph": "Absatz auf der Getränkeseite"
     }
   }

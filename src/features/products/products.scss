@@ -4,29 +4,6 @@
     max-width: 1200px;
     .section-product-page-default {
         @include displayFlex(column nowrap, flex-start, center);
-        @media (min-width: 630px) {
-            .section-extra-nav {
-                .btn {
-                    max-width: 100%;
-                }
-            }
-        }
-        @media (min-width: 1220px) {
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
-            .section-intro {
-                align-items: flex-start;
-                width: fit-content;
-            }
-            .section-extra-nav {
-                flex-direction: column;
-                width: 600px;
-                .btn {
-                    max-width: 100%;
-                }
-            }
-        }
     }
     .nav-products-view {
         justify-content: space-between;
@@ -42,40 +19,55 @@
             padding: 0.1rem 0.5rem;
         }
         .view-icons {
+            @include displayFlex(row nowrap, center, center);
             gap: 5px;
+            @include hoverPointer();
+            .icon {
+                width: 20px;
+                height: auto;
+            }
         }
     }
     .products-container {
-        display: flex;
-        flex-flow: column nowrap;
+        @include displayFlex(column nowrap, flex-start, flex-start);
         gap: 40px;
         width: 90%;
         max-width: 510px;
         .product-card {
-            display: flex;
-            flex-flow: column nowrap;
+            @include displayFlex(column nowrap, flex-start, stretch);
             gap: 5px;
             width: 100%;
             border-radius: 8px;
+            -webkit-box-shadow: 0px 5px 10px 2px rgba(0,0,0,0.1);
+            box-shadow: 0px 5px 10px 2px rgba(0,0,0,0.1);
             .product-image {
-                position: relative;
-                width: 90vw;
-                height: 90vw;
-                max-width: 400px;
-                max-height: 400px;
-                aspect-ratio: 1 / 1;
+                @include displayFlex(column nowrap, flex-start, flex-start);
                 img {
                     width: 100%;
                     height: 100%;
+                    max-height: 350px;
                     object-fit: cover;
                     border-radius: 5px;
+                    aspect-ratio: 1 / 1;
                 }
-                .icons-container {
-                    @include displayFlex(row nowrap, space-around, center);
-                    position: absolute;
-                    right: 0;
-                    bottom: -10px;
-                    width: 160px;
+            }
+            .icons-container {
+                @include displayFlex(row nowrap, space-between, center);
+                gap: 30px;
+                width: 100%;
+                background: rgba($COLORS-base-100, 0.4);
+                border-radius: 5px;
+                button {
+                    @include displayFlex(row nowrap, center, center);
+                    @include hoverPointer();
+                    gap: 10px;
+                    padding: 10px;
+                    .icon {
+                        aspect-ratio: auto;
+                        height: 15px;
+                        width: auto;
+                        border-radius: 0;
+                    }
                 }
             }
             .product-card-content {
@@ -83,6 +75,7 @@
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: stretch;
+                padding: 10px;
                 .column {
                     display: flex;
                     flex-flow: column nowrap;
@@ -90,6 +83,47 @@
                 .price {
                     justify-content: flex-end;
                     align-items: flex-end;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 630px) {
+    .product-page {
+        .section-product-page-default {
+            .section-extra-nav {
+                .btn {
+                    max-width: 100%;
+                }
+            }
+        }
+        .products-container {
+            .product-card {
+                    .product-image {
+                        img {
+                            max-height: 250px;
+                        }
+                    }
+            }
+        }
+    }
+}
+@media (min-width: 1220px) {
+    .product-page {
+        .section-product-page-default {
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            .section-intro {
+                align-items: flex-start;
+                width: fit-content;
+            }
+            .section-extra-nav {
+                flex-direction: column;
+                width: 600px;
+                .btn {
+                    max-width: 100%;
                 }
             }
         }

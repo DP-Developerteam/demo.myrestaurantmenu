@@ -69,13 +69,16 @@
       "content-1": "Founded in [Year], [Restaurant Name] is dedicated to serving delicious, homemade dishes in a friendly and welcoming environment. Whether you’re here for a casual meal or a special occasion, our team is committed to making every dining experience memorable.",
       "content-2": "Over the years, we’ve been honored to receive multiple awards, recognizing our commitment to quality, service, and culinary excellence. We’re proud of the accolades we’ve earned, and we continue to strive for excellence in every dish we serve.",
       "content-3": "Stay connected with us and get a taste of what’s happening at [Restaurant Name] by following us on social media. We love sharing our latest creations, special events, and more!"
+    },
+    "orders": {
+      "intro": {
+        "title": "My list of products:"
+      }
     }
   },
   "product": {
-    "intro": {
-      "title": "Restaurant Name",
-      "paragraph": "Paragraph on the food page",
-      "button": "Contact"
+    "action": {
+      "add": "Add to my list"
     },
     "nav": {
       "breakfast": {
@@ -241,14 +244,14 @@
   },
   "foods": {
     "intro": {
-      "title": "Title on the menu page",
-      "paragraph": "Paragraph on the menu page"
+      "title": "Food menu",
+      "description": "Explore our menu."
     }
   },
   "drinks": {
     "intro": {
-      "title": "Title on the drinks page",
-      "paragraph": "Paragraph on the drinks page"
+      "title": "Drinks menu",
+      "description": "Paragraph on the drinks page"
     }
   }
 }

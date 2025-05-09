@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 //Import assets
 import IconNavFood from '../../../assets/img/icon-nav-food.svg';
 import IconNavDrink from '../../../assets/img/icon-nav-drink.svg';
+import IconProductLike from '../../../assets/img/icon-like.svg';
+import IconProductAdd from '../../../assets/img/icon-add.svg';
 
 const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, productCardView }) => {
     // const for translations
@@ -36,18 +38,57 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
         // Handle localized or non-localized name and description
         const localizedName = typeof product.name === 'string' ? product.name : product.name[lang] || product.name.en;
         const localizedDescription = typeof product.description === 'string' ? product.description : product.description[lang] || product.description.en;
-
-        return (
-            <>
-                {productCardView ?
+        // Determine the actual view mode
+        let actualViewMode = productCardView;
+        // Check if the product has a video
+        if (productCardView === 'video' && product.video === '') {
+            actualViewMode = 'image'; // Fallback to image if video not available
+        }
+        // Check if the product has an image
+        if (actualViewMode === 'image' && product.image === '') {
+            actualViewMode = 'default'; // Fallback to default if image not available
+        }
+        // Switch view of the card
+        switch (actualViewMode) {
+            case "default":
+                return (
+                    <>
+                        <div className='icons-container'>
+                            <button>
+                                <img className='icon' src={IconProductLike} alt='Like icon'/>
+                                <p className='font-small'>{product.likes}</p>
+                            </button>
+                            <button>
+                                <p className='font-small'>{t('product.action.add')}</p>
+                                <img className='icon' src={IconProductAdd} alt='Like icon'/>
+                            </button>
+                        </div>
+                        <div className='product-card-content'>
+                            <div className='text column'>
+                                <h3>{localizedName}</h3>
+                                <p>{localizedDescription}</p>
+                            </div>
+                            <div className='price column'>
+                                <p>{product.price} €</p>
+                            </div>
+                        </div>
+                    </>
+                );
+            case "image":
+                return (
                     <>
                         <div className='product-image'>
                             <img src={product.image} alt="" loading="lazy"/>
-                            <div className='icons-container'>
-                                <p>C</p>
-                                <p>L</p>
-                                <p>S</p>
-                            </div>
+                        </div>
+                        <div className='icons-container'>
+                            <button>
+                                <img className='icon' src={IconProductLike} alt='Like icon'/>
+                                <p className='font-small'>{product.likes}</p>
+                            </button>
+                            <button>
+                                <p className='font-small'>{t('product.action.add')}</p>
+                                <img className='icon' src={IconProductAdd} alt='Like icon'/>
+                            </button>
                         </div>
                         <div className='product-card-content'>
                             <div className='text column'>
@@ -55,91 +96,63 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                                 <p>{localizedDescription}</p>
                             </div>
                             <div className='price column'>
-                                <p>${product.price}</p>
+                                <p>{product.price}€</p>
                             </div>
                         </div>
                     </>
-                    :
+                );
+            case "video":
+                return (
                     <>
+                        <div className='product-image'>
+                            <img src={product.video} alt="" loading="lazy"/>
+                        </div>
+                        <div className='icons-container'>
+                            <button>
+                                <img className='icon' src={IconProductLike} alt='Like icon'/>
+                                <p className='font-small'>{product.likes}</p>
+                            </button>
+                            <button>
+                                <p className='font-small'>{t('product.action.add')}</p>
+                                <img className='icon' src={IconProductAdd} alt='Like icon'/>
+                            </button>
+                        </div>
                         <div className='product-card-content'>
                             <div className='text column'>
                                 <h3>{localizedName}</h3>
                                 <p>{localizedDescription}</p>
                             </div>
                             <div className='price column'>
-                                <p>${product.price}</p>
+                                <p>{product.price}€</p>
                             </div>
                         </div>
                     </>
-                }
-            </>
-        )
-        //SWITCH IS COMMENTED UNTIL I GET VIDEOS
-        // switch (productCardView) {
-        //     case "default":
-        //         return <>
-        //                     <div className='product-card-content'>
-        //                         <div className='text column'>
-        //                             <h3>{localizedName}</h3>
-        //                             <p>{localizedDescription}</p>
-        //                         </div>
-        //                         <div className='price column'>
-        //                             <p>${product.price}</p>
-        //                         </div>
-        //                     </div>
-        //                     <hr/>
-        //                 </>;
-        //     case "image":
-        //         return <>
-        //                     <div className='product-image'>
-        //                         <img src={product.image} alt="" width="400" height="400" loading="lazy"/>
-        //                         <div className='icons-container'>
-        //                             <p>C</p>
-        //                             <p>L</p>
-        //                             <p>S</p>
-        //                         </div>
-        //                     </div>
-        //                     <div className='product-card-content'>
-        //                         <div className='text column'>
-        //                             <h3>{localizedName}</h3>
-        //                             <p>{localizedDescription}</p>
-        //                         </div>
-        //                         <div className='price column'>
-        //                             <p>${product.price}</p>
-        //                         </div>
-        //                     </div>
-        //                     <hr/>
-        //                 </>;
-        //     case "video":
-        //         return <>
-        //                     <div className='product-image'>
-        //                         <img src={product.image} alt="" width="400" height="400" loading="lazy"/>
-        //                     </div>
-        //                     <div className='product-card-content'>
-        //                         <div className='text column'>
-        //                             <h3>{localizedName}</h3>
-        //                             <p>{localizedDescription}</p>
-        //                         </div>
-        //                         <div className='price column'>
-        //                             <p>${product.price}</p>
-        //                         </div>
-        //                     </div>
-        //                     <hr/>
-        //                 </>;
-        //     default:
-        //         return <>
-        //                     <div className='product-card-content'>
-        //                         <div className='text column'>
-        //                             <h3>{localizedName}</h3>
-        //                             <p>{localizedDescription}</p>
-        //                         </div>
-        //                         <div className='price column'>
-        //                             <p>${product.price}</p>
-        //                         </div>
-        //                     </div>
-        //                     <hr/>
-        //                 </>;
-        // }
+                );
+            default:
+                return (
+                    <>
+                        <div className='icons-container'>
+                            <button>
+                                <img className='icon' src={IconProductLike} alt='Like icon'/>
+                                <p className='font-small'>{product.likes}</p>
+                            </button>
+                            <button>
+                                <p className='font-small'>{t('product.action.add')}</p>
+                                <img className='icon' src={IconProductAdd} alt='Like icon'/>
+                            </button>
+                        </div>
+                        <div className='product-card-content'>
+                            <div className='text column'>
+                                <h3>{localizedName}</h3>
+                                <p>{localizedDescription}</p>
+                            </div>
+                            <div className='price column'>
+                                <p>{product.price} €</p>
+                            </div>
+                        </div>
+                    </>
+                );
+        }
     };
 
     return (
@@ -152,7 +165,6 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 {categoryFilter.map((product) => (
                     <div key={product._id} className='product-card'>
                         {renderProductCard(product)}
-                        <hr/>
                     </div>
                 ))}
             </div>

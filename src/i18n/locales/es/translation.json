@@ -69,9 +69,17 @@
       "content-1": "Fundado en [Año], [Nombre del Restaurante] está dedicado a servir platos deliciosos y caseros en un ambiente amigable y acogedor. Ya sea que estés aquí para una comida casual o una ocasión especial, nuestro equipo se compromete a hacer que cada experiencia culinaria sea memorable.",
       "content-2": "A lo largo de los años, hemos tenido el honor de recibir múltiples premios, reconociendo nuestro compromiso con la calidad, el servicio y la excelencia culinaria. Estamos orgullosos de los galardones que hemos obtenido y seguimos esforzándonos por la excelencia en cada plato que servimos.",
       "content-3": "Mantente conectado con nosotros y obtén una muestra de lo que está sucediendo en [Nombre del Restaurante] siguiéndonos en redes sociales. ¡Nos encanta compartir nuestras últimas creaciones, eventos especiales y más!"
+    },
+    "orders": {
+      "intro": {
+        "title": "Mi lista de productos:"
+      }
     }
   },
   "product": {
+    "action": {
+      "add": "Añadir a mi lista"
+    },
     "intro": {
       "title": "Nombre del restaurante",
       "paragraph": "Párrafo en la página de a comidas",
@@ -237,13 +245,13 @@
   },
   "foods": {
     "intro": {
-      "title": "Título en la página de la carta",
-      "paragraph": "Párrafo en la página de a carta"
+      "title": "Menú de comida",
+      "paragraph": "Explora nuestra carta"
     }
   },
   "drinks": {
     "intro": {
-      "title": "Título en la página de la bebidas",
+      "title": "Menú de bebidas",
       "paragraph": "Párrafo en la página de a bebidas"
     }
   }

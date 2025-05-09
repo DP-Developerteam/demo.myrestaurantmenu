@@ -1,7 +1,6 @@
 // Import styles and libraries
 import '../../../App.scss';
 import React, { useState, useEffect } from 'react';
-// import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 // Import redux and slices
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,14 +9,16 @@ import { getProductsThunk } from '../productSlice';
 // Import to render based on categories
 import ProductsCategory from './ProductsCategory';
 
+//Import assets
+import IconView from '../../../assets/img/icon-view.svg';
+
 function Foods() {
     // Declare t for translations
     const { t } = useTranslation();
     // Single state to manage current view
     const [currentView, setCurrentView] = useState(null);
-    // Single state to manage product card view: "default", "image", "video"
-    // const [productCardView, setProductCardView] = useState("default");
-    const [productCardView, setProductCardView] = useState(false); //this is a temporary solution until I get videos.
+    // Single state to manage product card view: 'default', 'image', 'video'
+    const [productCardView, setProductCardView] = useState('image');
     // REDUX Initialize dispatch
     const dispatch = useDispatch();
     const { products, error, lastUpdated } = useSelector((state) => state.product);
@@ -41,7 +42,7 @@ function Foods() {
             dispatch(getProductsThunk());
         } else {
             // If internet is slow and products have been fetched once, then avoid doing API calls.
-            console.log("Using cache due to slow internet or already updated products.");
+            console.log('Using cache due to slow internet or already updated products.');
         }
     }, [dispatch, lastUpdated, currentView, products]);
 
@@ -49,37 +50,37 @@ function Foods() {
     const componentMap = {
         breakfast: (
             <ProductsCategory
-                category="breakfast"
-                titleKey="product.nav.breakfast.title"
-                descriptionKey="product.nav.breakfast.description"
-                crossCategory="foods"
+                category='breakfast'
+                titleKey='product.nav.breakfast.title'
+                descriptionKey='product.nav.breakfast.description'
+                crossCategory='foods'
                 productCardView={productCardView}
             />
         ),
         brunch: (
             <ProductsCategory
-                category="brunch"
-                titleKey="product.nav.brunch.title"
-                descriptionKey="product.nav.brunch.description"
-                crossCategory="foods"
+                category='brunch'
+                titleKey='product.nav.brunch.title'
+                descriptionKey='product.nav.brunch.description'
+                crossCategory='foods'
                 productCardView={productCardView}
             />
         ),
         snack: (
             <ProductsCategory
-                category="snack"
-                titleKey="product.nav.snack.title"
-                descriptionKey="product.nav.snack.description"
-                crossCategory="foods"
+                category='snack'
+                titleKey='product.nav.snack.title'
+                descriptionKey='product.nav.snack.description'
+                crossCategory='foods'
                 productCardView={productCardView}
             />
         ),
         dinner: (
             <ProductsCategory
-                category="dinner"
-                titleKey="product.nav.dinner.title"
-                descriptionKey="product.nav.dinner.description"
-                crossCategory="foods"
+                category='dinner'
+                titleKey='product.nav.dinner.title'
+                descriptionKey='product.nav.dinner.description'
+                crossCategory='foods'
                 productCardView={productCardView}
             />
         ),
@@ -91,9 +92,12 @@ function Foods() {
     };
 
     // Handler to set product card view
-    const handleViewProductCard = (view = null) => {
-        setProductCardView(!productCardView); //this is a temporary solution until I get videos.
-        // setProductCardView(view);
+    const handleViewProductCard = () => {
+        setProductCardView(view => {
+            if (view === 'image') return 'default';
+            if (view === 'default') return 'video';
+            return 'image';
+        });
     }
 
     // Handle return based in status fetched data
@@ -107,12 +111,10 @@ function Foods() {
                 <>
                     <div className='nav-products-view row-center'>
                         <button className='btn-border-dark' onClick={() => handleViewChange()}>&lt;</button>
-                        <div className='view-icons row-center'>
-                            <button className='btn-border-dark' onClick={() => handleViewProductCard()}>change VIEW</button> {/* this is a temporary solution until I get videos. */}
-                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('default')}>Default VIEW</button> */}
-                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('image')}>Image VIEW</button> */}
-                            {/* <button className='btn-border-dark' onClick={() => handleViewProductCard('video')}>Video VIEW</button> */}
-                        </div>
+                        <button className='view-icons' onClick={handleViewProductCard}>
+                            <p className='font-smaller'>{`${productCardView === 'default' ? 'Basic' : productCardView === 'image' ? 'Fotos' : 'Videos'}`}</p>
+                            <img className='icon' src={IconView} alt='Drink nav icon'/>
+                        </button>
                     </div>
                     {componentMap[currentView]}
                 </>
@@ -121,17 +123,17 @@ function Foods() {
                 <div className='section section-product-page-default'>
                     <div className='section section-intro'>
                         <h1>{t('restaurant.info.name')}</h1>
-                        <button className="btn-border-dark">{t('nav.contact')}</button>
+                        <h3>{t('foods.intro.title')}</h3>
                     </div>
                     <div className='section section-extra-nav'>
                         {Object.keys(componentMap).map((category) => (
                             <div
-                                className="btn btn-border-dark btn-full-width btn-subtitel"
+                                className='btn btn-border-dark btn-full-width btn-subtitel'
                                 key={category}
                                 onClick={() => handleViewChange(category)}
                             >
                                 <p>{t(`product.nav.${category}.title`)}</p>
-                                <span className="small">
+                                <span className='font-smaller'>
                                 {t(`product.nav.${category}.description`)}
                                 </span>
                             </div>
