@@ -42,7 +42,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 {productCardView ?
                     <>
                         <div className='product-image'>
-                            <img src={product.image} alt="" width="400" height="400" loading="lazy"/>
+                            <img src={product.image} alt="" loading="lazy"/>
                             <div className='icons-container'>
                                 <p>C</p>
                                 <p>L</p>
