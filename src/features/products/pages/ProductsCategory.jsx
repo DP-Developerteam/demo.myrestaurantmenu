@@ -105,7 +105,19 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 return (
                     <>
                         <div className='product-image'>
-                            <img src={product.video} alt="" loading="lazy"/>
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                controls={false}
+                                src={product.video}
+                                poster={product.image}
+                                loading="lazy"
+                                aria-label={localizedName}
+                            >
+                                Your browser does not support HTML5 video.
+                            </video>
                         </div>
                         <div className='icons-container'>
                             <button>

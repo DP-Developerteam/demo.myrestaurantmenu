@@ -42,7 +42,7 @@
             box-shadow: 0px 5px 10px 2px rgba(0,0,0,0.1);
             .product-image {
                 @include displayFlex(column nowrap, flex-start, flex-start);
-                img {
+                img, video {
                     width: 100%;
                     height: 100%;
                     max-height: 350px;
@@ -101,7 +101,7 @@
         .products-container {
             .product-card {
                     .product-image {
-                        img {
+                        img, video {
                             max-height: 250px;
                         }
                     }
