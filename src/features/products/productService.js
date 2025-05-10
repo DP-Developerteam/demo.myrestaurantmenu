@@ -48,19 +48,28 @@ export const editProduct = async (productData, userToken) => {
     // Extract productId from the productData object
     const productId = productData._id;
     try {
-        // Make a PUT request to update product details
-        const response = await api.put(`${API_URL}/edit/${productId}`, productData, {
-            // Include the token in the header for authorization
-            headers: {
-                Authorization: `Bearer ${userToken}`,
-            }
-        });
-        // Return data from the edited product
-        return response.data;
+        if (userToken && userToken !== "null" && userToken !== "undefined") {
+            // Only add header if userToken is truthy and not "null"/"undefined"
+            // Make a PUT request to update product details
+            const response = await api.put(`${API_URL}/edit/${productId}`, productData, {
+                headers: {
+                    // Include the token in the header
+                    Authorization: `Bearer ${userToken}`
+                }
+            }, productData);
+            // Return the data received from the API
+            return response.data;
+        } else {
+            // No token provided - rely on session-based auth
+            // Make a PUT request to update product details
+            const response = await api.put(`${API_URL}/edit/${productId}`, productData);
+            // Return the data received from the API
+            return response.data;
+        }
     } catch (error) {
-        // Log the error in case of failure and throw it to be handled later
+        // Log the error and throw it for further handling
         console.error('Error editing product:', error);
-        throw error;
+        throw error; // Rethrow the error for handling in the calling function
     }
 };
 
