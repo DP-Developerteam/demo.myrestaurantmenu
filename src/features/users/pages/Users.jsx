@@ -51,12 +51,14 @@ const Users = () => {
         setShowUsers(!showUsers)
     }
     useEffect(() => {
-        const handleResize = () => {
-            setShowUsers(window.innerWidth > 765);
-        };
+        if (window.innerWidth > 765) {
+            const handleResize = () => {
+                setShowUsers(window.innerWidth > 765);
+            };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
     }, []);
 
     // Fetch users when the component mounts
