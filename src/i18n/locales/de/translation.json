@@ -156,12 +156,14 @@
       }
     },
     "form": {
+      "or" : "Oder vielleicht",
       "button": {
         "create": "Erstellen",
         "delete": "Löschen",
         "update": "Bearbeiten",
         "cancel": "Abbrechen",
-        "signin": "Anmelden"
+        "send": "Senden",
+        "signinGoogle": "Mit Google anmelden"
       },
       "user": {
         "title": {
@@ -171,7 +173,9 @@
           "signin": "Anmelden"
         },
         "question": {
-          "delete": "Möchten Sie den folgenden Benutzer wirklich löschen?"
+          "delete": "Möchten Sie den folgenden Benutzer wirklich löschen?",
+          "signup": "Hast du kein Konto?",
+          "google": "Oder mit Google anmelden"
         },
         "label": {
           "id": "Benutzer-ID:",

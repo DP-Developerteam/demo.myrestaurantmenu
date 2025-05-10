@@ -156,12 +156,14 @@
       }
     },
     "form": {
+      "or" : "O quizás",
       "button": {
           "create": "Crear",
           "delete": "Eliminar",
           "update": "Editar",
           "cancel": "Cancelar",
-          "signin": "Iniciar sesión"
+          "send": "Enviar",
+          "signinGoogle": "Iniciar sesión con Google"
       },
       "user": {
         "title": {
@@ -171,7 +173,9 @@
           "signin": "Iniciar sesión"
         },
         "question": {
-          "delete": "¿Estás seguro que quieres eliminar el siguiente usuario?"
+          "delete": "¿Estás seguro que quieres eliminar el siguiente usuario?",
+          "signup": "¿No tienes una cuenta?",
+          "google": "O inicia sesión con Google"
         },
         "label": {
           "id": "ID del usuario:",
