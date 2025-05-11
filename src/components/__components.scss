@@ -79,11 +79,23 @@
 }
 
 .footer {
+    @include displayFlex(column nowrap, flex-start, flex-start);
+    gap: 15px;
     width: 100%;
-    padding: 0 20px 60px;
-    div {
-        margin-bottom: 10px;
+    padding: 0 20px 80px;
+    .links {
+        @include displayFlex(row nowrap, center, center);
         gap: 15px;
+        a {
+            @include hoverPointer();
+        }
+    }
+    @media (min-width: 900px) {
+        @include displayFlex(row nowrap, center, center);
+        max-width: 1200px;
+        .links {
+            margin-bottom: 0;
+        }
     }
 }
 

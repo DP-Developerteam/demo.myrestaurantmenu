@@ -42,28 +42,29 @@
     color: $color;
 }
 
+// .font-error {
+//     @include fontSans(0.65rem, 400, $COLORS-accent-secondary);
+// }
+.font-larger {
+    @include fontSans(1.5rem, 600, inherit);
+}
+.font-large{
+    @include fontSans(1.25rem, 600, inherit);
+}
+.font-normal {
+    @include fontSans(1rem, 400, inherit);
+}
+.font-small {
+    @include fontSans(0.85rem, 400, inherit);
+}
+.font-smaller {
+    @include fontSans(0.75rem, 400, inherit);
+}
+
 //FONTS helpers
 .font-bold {
     font-weight: 600;
 }
 .font-normal {
     font-weight: 600;
-}
-// .font-error {
-//     @include fontSans(0.65rem, 400, $COLORS-accent-secondary);
-// }
-.font-larger {
-    @include fontSans(1.5rem, 600, $COLORS-base-900);
-}
-.font-large{
-    @include fontSans(1.25rem, 600, $COLORS-base-900);
-}
-.font-normal {
-    @include fontSans(1rem, 400, $COLORS-base-900);
-}
-.font-small {
-    @include fontSans(0.85rem, 400, $COLORS-base-900);
-}
-.font-smaller {
-    @include fontSans(0.75rem, 400, $COLORS-base-900);
 }

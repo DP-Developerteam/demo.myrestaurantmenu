@@ -102,6 +102,10 @@
             }
         }
     }
+    .btn.active {
+        background: $COLORS-base-900;
+        color: $COLORS-base-100;
+    }
 }
 
 @media (min-width: 630px) {

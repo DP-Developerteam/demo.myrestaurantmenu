@@ -9,13 +9,13 @@ const Footer = () => {
     const { t } = useTranslation();
 
     return (
-        <div className='footer column-start'>
-            <div className='row-start'>
-                <NavLink to='/'>{t('footer.legal')}</NavLink>
-                <NavLink to='/'>{t('footer.privacy')}</NavLink>
-                {/* <NavLink to='/'>{t('footer.cookies')}</NavLink> */}
+        <div className='footer'>
+            <div className='links'>
+                <NavLink className='font-small' to='/'>{t('footer.legal')}</NavLink>
+                <NavLink className='font-small' to='/'>{t('footer.privacy')}</NavLink>
+                <NavLink className='font-small' to='/'>{t('footer.cookies')}</NavLink>
             </div>
-            <p>{t('footer.copyright')}</p>
+            <p className='font-small font-bold'>{t('footer.copyright')}</p>
         </div>
     )
 }

@@ -89,6 +89,7 @@ function Foods() {
     // Handler to set current view
     const handleViewChange = (view = null) => {
         setCurrentView(view);
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     // Handler to set product card view
@@ -114,7 +115,7 @@ function Foods() {
                         <div className='nav-container'>
                             {Object.keys(componentMap).map((category) => (
                                 <button
-                                    className='btn btn-border-dark'
+                                    className={`btn btn-border-dark ${currentView === category ? 'active' : ''}`}
                                     key={category}
                                     onClick={() => handleViewChange(category)}
                                 >
@@ -131,13 +132,13 @@ function Foods() {
                     <div className='section section-extra-nav'>
                         {Object.keys(componentMap).map((category) => (
                             <div
-                                className='btn btn-border-dark btn-full-width btn-subtitel'
+                                className={`btn btn-border-dark btn-full-width btn-subtitel ${currentView === category ? 'active' : ''}`}
                                 key={category}
                                 onClick={() => handleViewChange(category)}
                             >
                                 <p>{t(`product.nav.${category}.title`)}</p>
                                 <span className='font-smaller'>
-                                {t(`product.nav.${category}.description`)}
+                                    {t(`product.nav.${category}.description`)}
                                 </span>
                             </div>
                         ))}
