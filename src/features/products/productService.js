@@ -25,20 +25,28 @@ export const getProducts = async (lastUpdated) => {
 export const createProduct = async (productData, userToken) => {
     // console.log("PRODUCT SERVICE: call createProduct")
     try {
-        // Send a POST request to the '/create' endpoint with product data to create a new product
-        const response = await api.post(`${API_URL}/create`, productData, {
-            headers: {
-                // Include the token in the header
-                Authorization: `Bearer ${userToken}`
-            }
-        });
-        // Return the response data
-        return response.data;
+        if (userToken && userToken !== "null" && userToken !== "undefined") {
+            // Only add header if userToken is truthy and not "null"/"undefined"
+            // Make a POST request to create a new product
+            const response = await api.post(`${API_URL}/create`, productData, {
+                headers: {
+                    // Include the token in the header
+                    Authorization: `Bearer ${userToken}`
+                }
+            });
+            // Return the data received from the API
+            return response.data;
+        } else {
+            // No token provided - rely on session-based auth
+            // Make a POST request to create a new product
+            const response = await api.post(`${API_URL}/create`, productData);
+            // Return the data received from the API
+            return response.data;
+        }
     } catch (error) {
-        // Log an error to the console if the create product process fails
+        // Log the error and throw it for further handling
         console.error('Error creating product:', error);
-        // Re-throw the error so it can be handled by the caller
-        throw error;
+        throw error; // Rethrow the error for handling in the calling function
     }
 };
 
@@ -77,18 +85,27 @@ export const editProduct = async (productData, userToken) => {
 export const deleteProduct = async (productId, userToken) => {
     // console.log("PRODUCT SERVICE: call deleteProduct")
     try {
-        // Make a DELETE request to remove the product by ID
-        const response = await api.delete(`${API_URL}/delete/${productId}`, {
-            // Include the token in the header for authorization
-            headers: {
-                Authorization: `Bearer ${userToken}`,
-            }
-        });
-        // Return data from the deleted product
-        return response.data;
+        if (userToken && userToken !== "null" && userToken !== "undefined") {
+            // Only add header if userToken is truthy and not "null"/"undefined"
+            // Make a DELETE request to remove the product by ID
+            const response = await api.delete(`${API_URL}/delete/${productId}`, {
+                headers: {
+                    // Include the token in the header
+                    Authorization: `Bearer ${userToken}`
+                }
+            });
+            // Return the data received from the API
+            return response.data;
+        } else {
+            // No token provided - rely on session-based auth
+            // Make a DELETE request to remove the product by ID
+            const response = await api.delete(`${API_URL}/delete/${productId}`);
+            // Return the data received from the API
+            return response.data;
+        }
     } catch (error) {
-        // Log the error in case of failure and throw it to be handled later
+        // Log the error and throw it for further handling
         console.error('Error deleting product:', error);
-        throw error;
+        throw error; // Rethrow the error for handling in the calling function
     }
 };
