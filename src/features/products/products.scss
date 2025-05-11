@@ -6,7 +6,8 @@
         @include displayFlex(column nowrap, flex-start, center);
     }
     .nav-products-view {
-        justify-content: space-between;
+        @include displayFlex(row nowrap, space-between, center);
+        gap: 20px;
         position: fixed;
         top: 55px;
         z-index: 50;
@@ -15,12 +16,25 @@
         padding: 5px 20px;
         background: rgba($COLORS-base-100, 0.6);
         border-radius: 5px;
-        .btn-border-dark {
-            padding: 0.1rem 0.5rem;
+        .nav-container {
+            @include displayFlex(row nowrap, space-between, center);
+            gap: 10px;
+            overflow-x: scroll;
+            scrollbar-width: none;
+            .btn-border-dark {
+                padding: 0.1rem 0.5rem;
+            }
+            .btn {
+                @include hoverPointer();
+                p {
+                    white-space: nowrap;
+                }
+            }
         }
         .view-icons {
             @include displayFlex(row nowrap, center, center);
             gap: 5px;
+            // padding-left: 20px;
             @include hoverPointer();
             .icon {
                 width: 20px;
@@ -71,10 +85,8 @@
                 }
             }
             .product-card-content {
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-                align-items: stretch;
+                @include displayFlex(row nowrap, space-between, stretch);
+                gap: 5px;
                 padding: 10px;
                 .column {
                     display: flex;
@@ -83,6 +95,9 @@
                 .price {
                     justify-content: flex-end;
                     align-items: flex-end;
+                    p {
+                        white-space: nowrap;
+                    }
                 }
             }
         }
@@ -129,11 +144,3 @@
         }
     }
 }
-
-// @media (min-width: 766px) {
-//     .product-page {
-//         .items-container {
-//             height: calc(100dvh - 263.5px) !important;
-//         }
-//     }
-// }

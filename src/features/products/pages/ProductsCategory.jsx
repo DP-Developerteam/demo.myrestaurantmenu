@@ -18,7 +18,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
     let lang = i18n.language.split('-')[0];
 
     // REDUX
-    const { products, isLoading, error } = useSelector((state) => state.product);
+    const { products, error } = useSelector((state) => state.product);
 
     // Memoizing the filtered products to prevent recalculation on every render
     const categoryFilter = useMemo(() => {
@@ -96,7 +96,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                                 <p>{localizedDescription}</p>
                             </div>
                             <div className='price column'>
-                                <p>{product.price}€</p>
+                                <p>{product.price} €</p>
                             </div>
                         </div>
                     </>
@@ -135,7 +135,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                                 <p>{localizedDescription}</p>
                             </div>
                             <div className='price column'>
-                                <p>{product.price}€</p>
+                                <p>{product.price} €</p>
                             </div>
                         </div>
                     </>

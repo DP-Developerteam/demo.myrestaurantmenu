@@ -109,14 +109,39 @@ function Foods() {
             {currentView ? (
                 // Render selected component if a view is selected
                 <>
-                    <div className='nav-products-view row-center'>
-                        <button className='btn-border-dark' onClick={() => handleViewChange()}>&lt;</button>
+                    <div className='nav-products-view'>
+                        {/* <button className='btn-border-dark' onClick={() => handleViewChange()}>&lt;</button> */}
+                        <div className='nav-container'>
+                            {Object.keys(componentMap).map((category) => (
+                                <button
+                                    className='btn btn-border-dark'
+                                    key={category}
+                                    onClick={() => handleViewChange(category)}
+                                >
+                                    <p>{t(`product.nav.${category}.title`)}</p>
+                                </button>
+                            ))}
+                        </div>
                         <button className='view-icons' onClick={handleViewProductCard}>
                             <p className='font-smaller'>{`${productCardView === 'default' ? 'Basic' : productCardView === 'image' ? 'Fotos' : 'Videos'}`}</p>
                             <img className='icon' src={IconView} alt='Drink nav icon'/>
                         </button>
                     </div>
                     {componentMap[currentView]}
+                    <div className='section section-extra-nav'>
+                        {Object.keys(componentMap).map((category) => (
+                            <div
+                                className='btn btn-border-dark btn-full-width btn-subtitel'
+                                key={category}
+                                onClick={() => handleViewChange(category)}
+                            >
+                                <p>{t(`product.nav.${category}.title`)}</p>
+                                <span className='font-smaller'>
+                                {t(`product.nav.${category}.description`)}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 </>
             ) : (
                 // Default view with navigation
