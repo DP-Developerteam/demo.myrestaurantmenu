@@ -1,15 +1,18 @@
 // Import styles and libraries
 import '../../../App.scss';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 // Import redux
 import { useSelector } from 'react-redux';
+// Import components
+import ProductModal from '../components/ProductModal.jsx'
 //Import assets
 import IconNavFood from '../../../assets/img/icon-nav-food.svg';
 import IconNavDrink from '../../../assets/img/icon-nav-drink.svg';
 import IconProductLike from '../../../assets/img/icon-like.svg';
 import IconProductAdd from '../../../assets/img/icon-add.svg';
+import IconExpand from '../../../assets/img/icon-expand.svg';
 
 const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, productCardView }) => {
     // const for translations
@@ -28,6 +31,22 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
     // Determine the cross-selling target based on the current category
     const crossSellingCategory = crossCategory === 'foods' ? 'drinks' : 'foods';
     const crossSellingPath = `/${crossSellingCategory}`;
+
+    // State for modal
+    const [productModal, setProductModal] = useState({
+        isOpen: false,
+        type: null,
+        product: {}
+    });
+    // Handle modal
+    const handleProductModal = (type, product) => {
+        console.log('product', product)
+        setProductModal({ isOpen: true, type: type, product: product });
+    };
+    // Close modal
+    const closeProductModal = () => {
+        setProductModal({ isOpen: false, type: null, content: null });
+    };
 
     // Handle return based in status fetched data
     // if (isLoading) return <p>Loading...</p>;
@@ -78,10 +97,11 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 return (
                     <>
                         <div className='product-image'>
+                            <img className='icon' src={IconExpand} alt="" loading="lazy" onClick={() => handleProductModal('image', product)}/>
                             <img src={product.image} alt="" loading="lazy"/>
                         </div>
                         <div className='icons-container'>
-                            <button>
+                            <button onClick={() => handleProductModal('unauthorized', product)} >
                                 <img className='icon' src={IconProductLike} alt='Like icon'/>
                                 <p className='font-small'>{product.likes}</p>
                             </button>
@@ -120,7 +140,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                             </video>
                         </div>
                         <div className='icons-container'>
-                            <button>
+                            <button onClick={() => handleProductModal('unauthorized', product)} >
                                 <img className='icon' src={IconProductLike} alt='Like icon'/>
                                 <p className='font-small'>{product.likes}</p>
                             </button>
@@ -144,7 +164,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 return (
                     <>
                         <div className='icons-container'>
-                            <button>
+                            <button onClick={() => handleProductModal('unauthorized', product)} >
                                 <img className='icon' src={IconProductLike} alt='Like icon'/>
                                 <p className='font-small'>{product.likes}</p>
                             </button>
@@ -209,6 +229,13 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                     </div>
                 </div>
             </div>
+            {productModal.isOpen && (
+                <ProductModal
+                    type={productModal.type}
+                    product={productModal.product}
+                    onCloseProductModal={closeProductModal}
+                />
+            )}
         </>
     );
 };

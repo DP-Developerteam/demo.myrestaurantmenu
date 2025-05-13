@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 // Import services
 import { editProduct } from '../productService';
 // Import assets
-import iconClose from '../../../assets/img/icon-close.svg';
+import IconClose from '../../../assets/img/icon-close.svg';
 
 const EditProductForm = ({ product, onCloseModals, onSave }) => {
     // Obtener el idioma actual
@@ -131,7 +131,7 @@ const EditProductForm = ({ product, onCloseModals, onSave }) => {
                 <header className="form-header">
                     <h2>{t('crud.form.product.title.update')}</h2>
                     <button className="button" type="button" onClick={onCloseModals}>
-                        <img className='icon' src={iconClose} alt='delete icon' width='20px' height='20px' />
+                        <img className='icon' src={IconClose} alt='delete icon' width='20px' height='20px' />
                     </button>
                 </header>
                 <div className='form-body'>

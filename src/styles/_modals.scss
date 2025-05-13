@@ -1,0 +1,54 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import './general.scss';
+@import './helpers.scss';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .modal-container {
+        @include displayFlex(column nowrap, flex-start, center);
+        position: relative;
+        width: 99dvw;
+        max-width: 600px;
+        height: fit-content;
+        max-height: 90dvh;
+        border-radius: 5px;
+        background-color: $COLORS-base-100;
+        overflow: scroll;
+        .modal-header {
+            @include displayFlex(row nowrap, space-between, center);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: $COLORS-base-100;
+            z-index: 99;
+            .button {
+                @include displayFlex(row nowrap, space-between, center);
+                @include hoverPointer();
+            }
+        }
+        .modal-content {
+            @include displayFlex(column nowrap, center, flex-start);
+            padding: 10px;
+            width: 100%;
+            img {
+                object-fit: contain;
+                max-width: 100%;
+            }
+        }
+        .modal-content.image {
+            padding: 0;
+        }
+    }
+}

@@ -55,6 +55,7 @@
             -webkit-box-shadow: 0px 5px 10px 2px rgba(0,0,0,0.1);
             box-shadow: 0px 5px 10px 2px rgba(0,0,0,0.1);
             .product-image {
+                position: relative;
                 @include displayFlex(column nowrap, flex-start, flex-start);
                 img, video {
                     width: 100%;
@@ -63,6 +64,16 @@
                     object-fit: cover;
                     border-radius: 5px;
                     aspect-ratio: 1 / 1;
+                }
+                .icon {
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    width: 20px;
+                    height: auto;
+                    border-radius: 0;
+                    filter: brightness(0) invert(1);
+                    @include hoverPointer();
                 }
             }
             .icons-container {
