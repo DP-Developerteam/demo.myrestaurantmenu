@@ -117,6 +117,7 @@ function Homepage() {
             <div className='section'>
                 <h2>{t('section.newsletter.title')}</h2>
                 <div className='section-content'>
+                {/* <div> */}
                     <div className='img-container'>
                         <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
                     </div>

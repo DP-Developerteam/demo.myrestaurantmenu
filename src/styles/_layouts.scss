@@ -31,7 +31,7 @@
     .section-content {
         @include displayFlex(column nowrap, flex-start, flex-start);
         gap: 30px;
-        width: 100dvw;
+        width: 100%;
     }
     @media (min-width:720px) {
         align-items: center;
