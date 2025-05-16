@@ -75,7 +75,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.33
+            threshold: 0.4
         };
         // Declare callback for IntersectionObserver
         const callback = (entries) => {
