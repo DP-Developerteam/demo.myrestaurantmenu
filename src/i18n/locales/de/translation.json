@@ -136,6 +136,14 @@
         "title": "Hast du Lust auf etwas zu trinken?",
         "button": "Zu den Getränken gehen"
       }
+    },
+    "modal": {
+      "like": {
+        "line1": "Gefällt dir ",
+        "line2": "Melde dich an, um zu teilen, was dir gefällt!",
+        "line3": "Neu hier?",
+        "line4": "Erstelle in Sekunden ein Konto."
+      }
     }
   },
   "crud": {

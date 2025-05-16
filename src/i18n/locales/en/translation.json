@@ -131,6 +131,14 @@
         "title": "Do you feel like something to drink?",
         "button": "Go to drinks"
       }
+    },
+    "modal": {
+      "like": {
+        "line1": "Want to like ",
+        "line2": "Sign in to share your love!",
+        "line3": "New here?",
+        "line4": "Create an account in seconds."
+      }
     }
   },
   "crud": {

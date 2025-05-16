@@ -1,6 +1,7 @@
 // Import styles and libraries
-import React from 'react';
+// import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 //Import assets
 import IconClose from '../../../assets/img/icon-close.svg';
 
@@ -12,27 +13,42 @@ const ProductModal = ({ type, product, onCloseProductModal }) => {
     // Determine product name based on current language
     const localizedName = typeof product.name === 'string' ? product.name : product.name[lang] || product.name.en;
 
-    console.log(product)
-
     const renderContent = () => {
         switch (type) {
         case 'image':
             return (
                 <img src={product.image} alt="Expanded view" className="modal-image" />
             );
+        case 'video':
+            return (
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls={false}
+                    src={product.video}
+                    poster={product.image}
+                    loading="lazy"
+                    aria-label={localizedName}
+                >
+                    Your browser does not support HTML5 video.
+                </video>
+            );
         case 'unauthorized':
             return (
             <>
-                <p>Seems like you have tried to like "{localizedName}"</p>
-                <p>To like a product you need to sign in before</p>
-                <p>Sign in now and hit that like button like there is no tomorrow</p>
-                <p>Don't you have an account yet? Create one right now</p>
+                <p className='bold font-large' >{t('product.modal.like.line1')} {localizedName}?</p>
+                <Link className='font-small button btn-border-dark' to="/cms">{t('product.modal.like.line2')}</Link>
+                <p className='font-bold' >{t('product.modal.like.line3')}</p>
+                <Link className='font-small button btn-border-dark' to="/signup">{t('product.modal.like.line4')}</Link>
             </>
             );
         default:
             return null;
         }
     };
+
     return (
         <div className="modal-overlay" onClick={onCloseProductModal}>
             <div className={`modal-container ${type}`} onClick={(e) => e.stopPropagation()}>

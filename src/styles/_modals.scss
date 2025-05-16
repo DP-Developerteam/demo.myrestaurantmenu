@@ -18,8 +18,9 @@
     .modal-container {
         @include displayFlex(column nowrap, flex-start, center);
         position: relative;
-        width: 99dvw;
-        max-width: 600px;
+        width: fit-content;
+        min-width: 300px;
+        max-width: 95dvw;
         height: fit-content;
         max-height: 90dvh;
         border-radius: 5px;
@@ -40,14 +41,24 @@
         }
         .modal-content {
             @include displayFlex(column nowrap, center, flex-start);
-            padding: 10px;
+            gap: 10px;
+            padding: 20px;
             width: 100%;
-            img {
+            img,
+            video {
                 object-fit: contain;
-                max-width: 100%;
+                width: 100%;
+                max-width: 600px;
+            }
+            .button {
+                margin-bottom: 15px;
+            }
+            .button:last-of-type {
+                margin-bottom: 0;
             }
         }
-        .modal-content.image {
+        .modal-content.image,
+        .modal-content.video {
             padding: 0;
         }
     }

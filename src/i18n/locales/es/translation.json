@@ -136,6 +136,14 @@
         "title": "¿Te apetece algo de beber?",
         "button": "Ir a bebidas"
       }
+    },
+    "modal": {
+      "like": {
+        "line1": "¿Quieres dar un me gusta a ",
+        "line2": "Inicia sesión para compartir lo que te gusta!",
+        "line3": "¿No tienes cuenta?",
+        "line4": "Crea una cuenta en segundos."
+      }
     }
   },
   "crud": {

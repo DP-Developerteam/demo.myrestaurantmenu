@@ -64,6 +64,7 @@
                     object-fit: cover;
                     border-radius: 5px;
                     aspect-ratio: 1 / 1;
+                    z-index: 20;
                 }
                 .icon {
                     position: absolute;
@@ -74,6 +75,7 @@
                     border-radius: 0;
                     filter: brightness(0) invert(1);
                     @include hoverPointer();
+                    z-index: 40;
                 }
             }
             .icons-container {

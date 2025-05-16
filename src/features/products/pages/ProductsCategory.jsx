@@ -1,6 +1,6 @@
 // Import styles and libraries
 import '../../../App.scss';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 // Import redux
@@ -22,6 +22,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
 
     // REDUX
     const { products, error } = useSelector((state) => state.product);
+    const { isAuthenticated } = useSelector(state => state.user);
 
     // Memoizing the filtered products to prevent recalculation on every render
     const categoryFilter = useMemo(() => {
@@ -40,12 +41,81 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
     });
     // Handle modal
     const handleProductModal = (type, product) => {
-        console.log('product', product)
         setProductModal({ isOpen: true, type: type, product: product });
     };
     // Close modal
     const closeProductModal = () => {
         setProductModal({ isOpen: false, type: null, content: null });
+    };
+
+    // Handle like button
+    const handleProductLike = (type, product) => {
+        if (!isAuthenticated) {
+            handleProductModal(type, product);
+        } else {
+            console.log("You clicked the like button")
+            return
+        }
+    }
+    // Handle add button
+    const handleProductAdd = () => {
+        console.log("You clicked the add button")
+        return
+    }
+
+    // Optimization video autoplay only when item is visible in the screen
+    // Declare videoRefs
+    const videoRefs = useRef([]);
+    // useEffect
+    useEffect(() => {
+        // Check if productCardView. Continue only if it is video.
+        if (productCardView === 'image' || productCardView === 'default') return;
+
+        // Declare options for IntersectionObserver
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.33
+        };
+        // Declare callback for IntersectionObserver
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play()
+                        .then(() => {
+                            video.classList.add('playing');
+                        })
+                        .catch(e => console.log('Autoplay prevented:', e));
+                } else {
+                    video.pause();
+                    video.classList.remove('playing');
+                }
+            });
+        };
+        // Declare observers
+        const observers = [];
+
+        videoRefs.current.forEach(video => {
+            if (video) {
+                const observer = new IntersectionObserver(callback, options);
+                observer.observe(video);
+                observers.push(observer);
+            }
+        });
+
+        return () => {
+            observers.forEach(observer => observer.disconnect());
+        };
+    }, [productCardView, categoryFilter]); // Re-run when view or category changes
+
+    // Set video Ref
+    const setVideoRef = (el) => {
+        if (el && !videoRefs.current.includes(el)) {
+            videoRefs.current.push(el);
+        } else if (!el) {
+            videoRefs.current = videoRefs.current.filter(ref => ref !== el);
+        }
     };
 
     // Handle return based in status fetched data
@@ -73,11 +143,11 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 return (
                     <>
                         <div className='icons-container'>
-                            <button>
+                            <button onClick={() => handleProductLike('unauthorized', product)} >
                                 <img className='icon' src={IconProductLike} alt='Like icon'/>
                                 <p className='font-small'>{product.likes}</p>
                             </button>
-                            <button>
+                            <button onClick={() => handleProductAdd('unauthorized', product)} >
                                 <p className='font-small'>{t('product.action.add')}</p>
                                 <img className='icon' src={IconProductAdd} alt='Like icon'/>
                             </button>
@@ -101,11 +171,11 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                             <img src={product.image} alt="" loading="lazy"/>
                         </div>
                         <div className='icons-container'>
-                            <button onClick={() => handleProductModal('unauthorized', product)} >
+                            <button onClick={() => handleProductLike('unauthorized', product)} >
                                 <img className='icon' src={IconProductLike} alt='Like icon'/>
                                 <p className='font-small'>{product.likes}</p>
                             </button>
-                            <button>
+                            <button onClick={() => handleProductAdd('unauthorized', product)} >
                                 <p className='font-small'>{t('product.action.add')}</p>
                                 <img className='icon' src={IconProductAdd} alt='Like icon'/>
                             </button>
@@ -125,8 +195,9 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 return (
                     <>
                         <div className='product-image'>
+                            <img className='icon' src={IconExpand} alt="" loading="lazy" onClick={() => handleProductModal('video', product)}/>
                             <video
-                                autoPlay
+                                ref={setVideoRef}
                                 muted
                                 loop
                                 playsInline
@@ -134,17 +205,18 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                                 src={product.video}
                                 poster={product.image}
                                 loading="lazy"
+                                preload="none"
                                 aria-label={localizedName}
                             >
                                 Your browser does not support HTML5 video.
                             </video>
                         </div>
                         <div className='icons-container'>
-                            <button onClick={() => handleProductModal('unauthorized', product)} >
+                            <button onClick={() => handleProductLike('unauthorized', product)} >
                                 <img className='icon' src={IconProductLike} alt='Like icon'/>
                                 <p className='font-small'>{product.likes}</p>
                             </button>
-                            <button>
+                            <button onClick={() => handleProductAdd('unauthorized', product)} >
                                 <p className='font-small'>{t('product.action.add')}</p>
                                 <img className='icon' src={IconProductAdd} alt='Like icon'/>
                             </button>
@@ -164,11 +236,11 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 return (
                     <>
                         <div className='icons-container'>
-                            <button onClick={() => handleProductModal('unauthorized', product)} >
+                            <button onClick={() => handleProductLike('unauthorized', product)} >
                                 <img className='icon' src={IconProductLike} alt='Like icon'/>
                                 <p className='font-small'>{product.likes}</p>
                             </button>
-                            <button>
+                            <button onClick={() => handleProductAdd('unauthorized', product)} >
                                 <p className='font-small'>{t('product.action.add')}</p>
                                 <img className='icon' src={IconProductAdd} alt='Like icon'/>
                             </button>
