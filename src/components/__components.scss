@@ -108,6 +108,7 @@
     height: 50px;
     border-radius: 10px 10px 0 0;
     background-color: $COLORS-base-100;
+    z-index: 99;
     @include fontSans(16px, 400, $COLORS-base-900);
     .bottomNavContainer {
         @include displayFlex(row nowrap, space-around, center);

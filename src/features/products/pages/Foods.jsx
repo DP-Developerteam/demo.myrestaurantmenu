@@ -66,6 +66,15 @@ function Foods() {
                 productCardView={productCardView}
             />
         ),
+        lunch: (
+            <ProductsCategory
+                category='lunch'
+                titleKey='product.nav.lunch.title'
+                descriptionKey='product.nav.lunch.description'
+                crossCategory='foods'
+                productCardView={productCardView}
+            />
+        ),
         snack: (
             <ProductsCategory
                 category='snack'

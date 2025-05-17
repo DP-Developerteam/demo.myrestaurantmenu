@@ -32,8 +32,9 @@ const Order = () => {
         <div className='page order-page'>
             <div className='section section-intro'>
                 <h2>{t('section.orders.intro.title')}</h2>
+                <p>{t('section.orders.intro.content')}</p>
             </div>
-            <div className='section section-intro'>
+            <div className='section section-order'>
                 <ul className='items-container'>
                     {products.map((product) => {
                     // {productsAddedList.map((product) => {
@@ -42,16 +43,15 @@ const Order = () => {
                                 <div className='text-container'>
                                     <p className='description'>{product.name[lang]}</p>
                                 </div>
-                                <div className='buttons-container'>
-                                    <button className='icon'>
-                                    {/* <button className='icon' onClick={() => selectProductDelete(product)}> */}
-                                        <img className='icon' src={iconDelete} alt='delete icon' width='20px' height='20px' />
-                                    </button>
-                                    <button className='icon'>
-                                    {/* <button className='icon' onClick={() => selectProductEdit(product)}> */}
-                                        <img className='icon' src={iconEdit} alt='edit icon' width='20px' height='20px' />
-                                    </button>
+                                <div className='amount-container'>
+                                    <button className='icon btn-border-dark'>+</button>
+                                    <p>5</p>
+                                    <button className='icon btn-border-dark'>-</button>
                                 </div>
+                                <button className='icon'>
+                                {/* <button className='icon' onClick={() => selectProductDelete(product)}> */}
+                                    <img className='icon' src={iconDelete} alt='delete icon' width='20px' height='20px' />
+                                </button>
                             </li>
                         );
                     })}
