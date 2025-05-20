@@ -5,10 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 // Import redux and slices
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductsThunk } from '../features/products/productSlice';
-// Import assets
-import iconDelete from '../assets/img/icon-delete.svg';
-import iconEdit from '../assets/img/icon-edit.svg';
 
 const Order = () => {
     // Declare t for translations
@@ -17,7 +13,7 @@ const Order = () => {
     let lang = i18n.language.split('-')[0];
     // REDUX Initialize dispatch
     const dispatch = useDispatch();
-    const { products, isLoading, error, lastUpdated } = useSelector((state) => state.product);
+    const { products, isLoading, error } = useSelector((state) => state.product);
     // Array to store and filter products data
     const [productsList, setProductsList] = useState([]);
     const [productsFilterList, setProductsFilterList] = useState([]);
@@ -48,10 +44,6 @@ const Order = () => {
                                     <p>5</p>
                                     <button className='icon btn-border-dark'>-</button>
                                 </div>
-                                <button className='icon'>
-                                {/* <button className='icon' onClick={() => selectProductDelete(product)}> */}
-                                    <img className='icon' src={iconDelete} alt='delete icon' width='20px' height='20px' />
-                                </button>
                             </li>
                         );
                     })}

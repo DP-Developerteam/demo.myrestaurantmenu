@@ -68,14 +68,13 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
     const videoRefs = useRef([]);
     // useEffect
     useEffect(() => {
-        // Check if productCardView. Continue only if it is video.
+        // Check productCardView. Continue only if it is video.
         if (productCardView === 'image' || productCardView === 'default') return;
-
         // Declare options for IntersectionObserver
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.4
+            threshold: 0.4 // percentage of view of the video to set autoplay
         };
         // Declare callback for IntersectionObserver
         const callback = (entries) => {
@@ -95,7 +94,7 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
         };
         // Declare observers
         const observers = [];
-
+        // IntersectionObserver
         videoRefs.current.forEach(video => {
             if (video) {
                 const observer = new IntersectionObserver(callback, options);
@@ -103,12 +102,10 @@ const ProductsCategory = ({ category, titleKey, descriptionKey, crossCategory, p
                 observers.push(observer);
             }
         });
-
         return () => {
             observers.forEach(observer => observer.disconnect());
         };
     }, [productCardView, categoryFilter]); // Re-run when view or category changes
-
     // Set video Ref
     const setVideoRef = (el) => {
         if (el && !videoRefs.current.includes(el)) {

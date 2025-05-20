@@ -9,8 +9,12 @@ import IconNavHome from '../assets/img/icon-nav-home.svg';
 import IconNavFood from '../assets/img/icon-nav-food.svg';
 import IconNavDrink from '../assets/img/icon-nav-drink.svg';
 import IconNavOrder from '../assets/img/icon-nav-order.svg';
-import ImgCarousel1 from '../assets/img/22994.jpg';
 import ImgGoogleBadge from '../assets/img/google-badge.png';
+import ImgCarrousel1 from '../assets/img/freepik-home-carrousel-1.webp';
+import ImgCarrousel2 from '../assets/img/freepik-home-carrousel-2.webp';
+import ImgCarrousel3 from '../assets/img/freepik-home-carrousel-3.webp';
+import ImgCarrousel4 from '../assets/img/freepik-home-carrousel-4.webp';
+import ImgNewsletter from '../assets/img/freepik-home-newsletter.webp';
 
 function Homepage() {
     // Declare t for translations
@@ -62,16 +66,16 @@ function Homepage() {
                     <p>{t('section.carousel.content')}</p>
                     <div className='carousel-container'>
                         <div className='img-container'>
-                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                            <img src={ImgCarrousel1} alt="" width="250px" heigth="250px"/>
                         </div>
                         <div className='img-container'>
-                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                            <img src={ImgCarrousel2} alt="" width="250px" heigth="250px"/>
                         </div>
                         <div className='img-container'>
-                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                            <img src={ImgCarrousel3} alt="" width="250px" heigth="250px"/>
                         </div>
                         <div className='img-container'>
-                            <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                            <img src={ImgCarrousel4} alt="" width="250px" heigth="250px"/>
                         </div>
                     </div>
                 </div>
@@ -119,7 +123,7 @@ function Homepage() {
                 <div className='section-content'>
                 {/* <div> */}
                     <div className='img-container'>
-                        <img src={ImgCarousel1} alt="" width="250px" heigth="250px"/>
+                        <img src={ImgNewsletter} alt="" width="250px" heigth="250px"/>
                     </div>
                     <div className='text-container'>
                         <p>{t('section.newsletter.content-1')}</p>
