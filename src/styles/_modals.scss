@@ -25,7 +25,8 @@
         max-height: 90dvh;
         border-radius: 5px;
         background-color: $COLORS-base-100;
-        overflow: scroll;
+        overflow: auto;
+        scrollbar-width: none;
         .modal-header {
             @include displayFlex(row nowrap, space-between, center);
             position: sticky;
