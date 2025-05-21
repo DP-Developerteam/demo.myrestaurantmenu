@@ -14,7 +14,7 @@
         width: 100%;
         max-width: 1200px;
         padding: 5px 20px;
-        background: rgba($COLORS-base-100, 0.6);
+        background: rgba($COLORS-base-100, 0.9);
         border-radius: 5px;
         .nav-container {
             @include displayFlex(row nowrap, space-between, center);
