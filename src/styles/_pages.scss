@@ -61,7 +61,7 @@
 
     .section-extra-nav {
         // Section extra navfull width outlined buttons
-        @include displayFlex(row wrap, center, center);
+        @include displayFlex(column wrap, center, center);
         gap: 10px;
         width: 95%;
         max-width: 600px;
@@ -69,7 +69,10 @@
         border-radius: 5px;
         background-color: $COLORS-base-100;
         @include fontSans(24px, 400, $COLORS-base-900);
+    }
+    .section-extra-nav.homepage-extra-nav {
         @media (min-width: 630px) {
+            flex-direction: row;
             width: 100dvw;
             .btn {
                 max-width: 270px;

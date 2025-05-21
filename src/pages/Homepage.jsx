@@ -46,7 +46,7 @@ function Homepage() {
                 </NavLink>
             </div>
 
-            <div className='section section-extra-nav'>
+            <div className='section section-extra-nav homepage-extra-nav'>
                 <NavLink className='btn btn-border-dark btn-full-width' to='/'>
                     <p>{t('nav.reservation')}</p>
                 </NavLink>
